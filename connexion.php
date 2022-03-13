@@ -1,10 +1,7 @@
 <?php
+require('config.php');
 require('User.php');
 
-if (isset($_POST['connexion'])) {
-    $user = new User();
-    $user->Connect($_POST['mail'], $_POST['password']);
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,6 +17,8 @@ if (isset($_POST['connexion'])) {
         <div align="center" class="formpadding">
             <form method="POST">
                 <?php if (isset($_POST['connexion'])) {
+                        $user = new User();
+                        $user->Connect(htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['password']));
                     $user->alerts();
                 }
                 ?>
@@ -42,11 +41,6 @@ if (isset($_POST['connexion'])) {
                             <button class="button" type="submit" name="connexion">Me connecter</button>
                         </td>
                     </tr>
-                    <?php
-                    if (isset($_POST['connexion'])) {
-                        $user->Connect($_POST['mail'], $_POST['password']);
-                    }
-                    ?>
                 </table>
             </form>
         </div>

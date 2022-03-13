@@ -1,10 +1,6 @@
 <?php
+require('config.php');
 require('User.php');
-
-if (isset($_POST['inscription'])) {
-    $user = new User();
-    $user->Register($_POST['prenom'],$_POST['nom'],$_POST['mail'] ,$_POST['adresse'],$_POST['codepostal'],$_POST['ville'],$_POST['password'], $_POST['passwordverify']);
-}
 
 ?>
 
@@ -25,6 +21,8 @@ if (isset($_POST['inscription'])) {
         <div align="center">
             <form method="POST">
                 <?php if (isset($_POST['inscription'])) {
+                    $user = new User();
+                    $user->Register(htmlspecialchars($_POST['prenom']),htmlspecialchars($_POST['nom']),htmlspecialchars($_POST['mail']) , htmlspecialchars($_POST['adresse']),htmlspecialchars($_POST['codepostal']),htmlspecialchars($_POST['ville']),htmlspecialchars($_POST['password']), htmlspecialchars($_POST['passwordverify']));
                     $user->alerts();
                 }
                 ?>
@@ -57,7 +55,7 @@ if (isset($_POST['inscription'])) {
                     <tr>
                         <td>
                             <label>Code Postal*</label>
-                            <input type="number" pattern="[0-9]{5}" name="codepostal" placeholder="Entrer votre code postal" required>
+                            <input type="text" minlength="5" maxlength="5" name="codepostal" placeholder="Entrer votre code postal" required>
                         </td>
                     </tr>
                     <tr>
@@ -83,11 +81,6 @@ if (isset($_POST['inscription'])) {
                             <button class="button" type="submit" name="inscription">M'inscrire</button>
                         </td>
                     </tr>
-                    <!-- <?php
-                    if (isset($_POST['inscription'])) {
-                        $user->Register($_POST['prenom'],$_POST['nom'],$_POST['mail'] ,$_POST['adresse'],$_POST['codepostal'],$_POST['ville'],$_POST['password'], $_POST['passwordverify']);
-                    }
-                    ?> -->
                 </table>
             </form>
         </div>
