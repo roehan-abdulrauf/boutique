@@ -19,10 +19,4 @@
         <button class="" type="submit" id="btnNext" name="btnNext" value="Next">Cliquer pour confirmer achat</button>
     </form>
 
-    <?php
-    if ($_POST["btnNext"]) {
-        header('location:validation_de_commande.php');
-    }
-    ?>
-
 </html>
