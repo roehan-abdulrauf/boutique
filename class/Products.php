@@ -64,6 +64,7 @@ class Products extends Bdd
 
 
     public function totalCat(){
+
         // Recuperer le total de produits en fonction de leur categorie
         $total = $this->connect()->prepare('SELECT * FROM produits WHERE id_cat = :categorie');
         $total->bindValue(':categorie',$_GET['cat'], PDO::PARAM_INT);
@@ -73,9 +74,9 @@ class Products extends Bdd
 
 
     public function getComments(){ 
-
+        // select commentaires.commentaire, utilisateur.prenom FROM 'commentaires' INNER JOIN utilisateur ON utilisateur.id = commentaire.id_utilisateur WHERE id_porduits = :idproduit
         // recuperer les commentaires
-        $com = $this->connect()->prepare('SELECT commentaires.commentaire, utlisateur.prenom FROM `commentaires`INNER JOIN utilisateur WHERE commentaires.id_produit = :idproduit ');
+        $com = $this->connect()->prepare('SELECT commentaires.commentaire, utilisateur.prenom FROM commentaires INNER JOIN utilisateur ON utilisateur.id = commentaires.id_utilisateur WHERE id_produit = :idproduit');
         $com->bindValue(':idproduit',$_GET['id'],PDO::PARAM_INT);
         $com->execute();
 

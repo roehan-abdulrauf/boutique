@@ -31,3 +31,13 @@ require_once 'back/back_product.php';
                             </div>
                         </div>
                 </div> 
+
+                <div>
+                            
+                    <?php foreach($comments as $comment): ?>
+                
+
+                    <span><?php echo $comment['prenom']; ?> </span> 
+                    <span><?php echo $comment['commentaire']?></span>
+                    <?php endforeach ?> 
+                </div>

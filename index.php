@@ -1,9 +1,10 @@
 <?php
- 
+
 session_start();
-include 'Class/View.php';
-require_once 'Class/Products.php';
-require_once 'Class/Panier.php';
+include './class/View.php';
+require_once './class/Products.php';
+require_once './class/Panier.php';
+require_once './class/User.php';
 
 // Page is set to home (home.php) by default, so when the visitor visits that will be the page they see.
 $page = isset($_GET['page'])  && file_exists($_GET['page'] . '.php') ? $_GET['page'] : 'home';
