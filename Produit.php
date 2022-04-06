@@ -23,35 +23,29 @@ class Produit extends  Config
     public function CreerProduits($nom, $prix, $img, $description, $quantite, $categorie)
     {
 
-        $this->_nom = $nom;
-        $this->_prix = $prix;
-        $this->_img = $img;
-        $this->_description = $description;-
-        $this->_quantite = $quantite;
-        $this->_categorie = $categorie;
-
-        $check = $this->bdd->query("SELECT `nom`  FROM `produits` WHERE  `nom` = '$nom'");
+        $check = $this->bdd->prepare("SELECT `nom`  FROM `produits` WHERE  `nom` = :nom");
+        $check->execute(array(':nom' => $nom,));
         $res = $check->fetchAll(PDO::FETCH_ASSOC);
         var_dump($res);
         if (!empty($nom) && !empty($prix) && !empty($img) && !empty($description) && !empty($quantite) && !empty($categorie)) {
+            echo 2;
             if (count($res)) {
+                echo 3;
                 $this->_Malert = 'Nom de produit déjà utilisé.';
                 $this->_Talert = 2;
-            } elseif (count($res) == 0) {
-                $req = $this->bdd->prepare("INSERT INTO produits (nom, prix, img, description, quantite,vendu, date, id_cat) VALUES ('$nom', '$prix','$img','$description', '$quantite', '0', NOW(), '$categorie')");
-                $req->execute();
-                // $date = date('d-m-y');
-                // $req = $this->bdd->prepare(" INSERT INTO `produits` (nom, prix, img, description, quantite,vendu, date, id_cat) VALUES (':nom', ':prix',':img',':description', ':quantite', ':vendu',':date', ':id_cat')");
-                // $req->execute(array(
-                //     ':nom' => $nom,
-                //     ':prix' => $prix,
-                //     ':img' => $img,
-                //     ':description' => $description,
-                //     ':quantité' => $quantite,
-                //     ':vendu' => 0,
-                //     ':date' => $date,
-                //     ':id_cat' => $categorie
-                //     ));
+            } elseif (count($res) < 1) {
+                echo 4;
+                $date = date('Y-m-d H:i:s');
+                $req = $this->bdd->prepare("INSERT INTO produits (nom, prix, img, description, quantite, date, id_categories) VALUES (:nom, :prix, :img, :description, :quantite, :date, :id_categories)");
+                $req->execute(array(
+                    ':nom' => $nom,
+                    ':prix' => $prix,
+                    ':img' => $img,
+                    ':description' => $description,
+                    ':quantite' => $quantite,
+                    ':date' => $date,
+                    ':id_categories' => $categorie,
+                ));
                 var_dump($req);
                 var_dump($req->execute());
                 $this->_Malert = 'Le produit à bien été ajouter avec succès.';
@@ -59,54 +53,57 @@ class Produit extends  Config
 
                 // header('refresh:2;url=admin.php');
             } else {
+                echo 5;
                 $this->_Malert = 'Vous devez remplir correctement tous les champs.';
                 $this->_Talert = 2;
             }
-        }else{
+        } else {
             $this->_Malert = 'Vous devez remplir tous les champs.';
-            $this->_Talert = 2;  
+            $this->_Talert = 2;
         }
     }
 
     public function UpdateProduits($nom, $newnom, $prix, $img, $description, $quantite, $categorie)
     {
-        $this->_nom = $nom;
-        $this->_prix = $prix;
-        $this->_img = $img;
-        $this->_description = $description;
-        $this->_quantite = $quantite;
-        $this->_categorie = $categorie;
 
         if (!empty($nom) && !empty($newnom) && !empty($prix) && !empty($img) && !empty($description) && !empty($quantite) && !empty($categorie)) {
 
-            $check = $this->bdd->query("SELECT  `nom`  FROM `produits` WHERE  `nom` = '$nom'");
+            $check = $this->bdd->prepare("SELECT `nom`  FROM `produits` WHERE  `nom` = :nom");
+            $check->execute(array(':nom' => $nom,));
             $res = $check->fetchAll(PDO::FETCH_ASSOC);
             var_dump($res);
 
             if (count($res)) {
 
-                $req = $this->bdd->prepare(" UPDATE produits SET  nom = '$newnom' , prix = '$prix' , img = '$img' , description = '$description' , quantite = '$quantite' , vendu = '0' , date = NOW() , id_cat = '$categorie' WHERE nom = '$nom'");
-                $req->execute();
+                $check = $this->bdd->query("SELECT `nom`  FROM `produits`");
+                $res = $check->fetchAll();
+                $checknom = $res[0]['nom'];
 
-                // $date = date('d-m-y');
-                // $req = $this->bdd->prepare(" UPDATE `produits` SET  `nom` = ':nom' , `prix` = ':prix' , `img` = ':img' , `description` = ':description' , `quantite` = ':quantité' , `vendu` = ':vendu' , `date` = ':date' , `id_cat` = ':id_cat')");
-                // $req->execute(array(
-                //     ':nom' => $newnom,
-                //     ':prix' => $prix,
-                //     ':img' => $img,
-                //     ':description' => $description,
-                //     ':quantité' => $quantite,
-                //     ':vendu' => 0,
-                //     ':date' => $date,
-                //     ':id_cat' => $categorie
-                //     ));
-                var_dump($req);
-                var_dump($req->execute());
-                var_dump($categorie);
-                $this->_Malert = 'Le produit à bien été modifier avec succès.';
-                $this->_Talert = 1;
+                var_dump($res);
 
-                // header('refresh:2;url=admin.php');
+                if ($newnom != $checknom) {
+                    $this->_Malert = 'Nom de produit déjà utiliser.';
+                    $this->_Talert = 2;
+                }else{
+                    $date = date('Y-m-d H:i:s');
+                    $req = $this->bdd->prepare(" UPDATE `produits` SET  `nom` = :nom , `prix` = :prix , `img` = :img , `description` = :description , `quantite` = :quantite , `date` = :date , `id_categories` = :id_categories WHERE nom = '$nom'");
+                    $req->execute(array(
+                        ':nom' => $newnom,
+                        ':prix' => $prix,
+                        ':img' => $img,
+                        ':description' => $description,
+                        ':quantite' => $quantite,
+                        ':date' => $date,
+                        ':id_categories' => $categorie
+                    ));
+                    var_dump($req);
+                    var_dump($req->execute());
+                    var_dump($nom);
+                    $this->_Malert = 'Le produit à bien été modifier avec succès.';
+                    $this->_Talert = 1;
+
+                    // header('refresh:2;url=admin.php');
+                }
             } else {
                 $this->_Malert = 'Nom de produit invalide ou inexistent.';
                 $this->_Talert = 2;
