@@ -18,7 +18,7 @@ $meilleures_ventes = $sales->bestSales();
                 
                 <?php foreach ($meilleures_ventes as $produit): ?>
                 <a href="index.php?page=product&id=<?=$produit['id']?>" class="product">
-                    <img src="<?=$produit['img']?>.jpg" width="200" height="200" alt="<?=$produit['nom']?>">
+                    <img src="<?=$produit['img']?>" width="200" height="200" alt="<?=$produit['nom']?>">
                     <span class="name"><?=$produit['nom']?></span>
                     <span class="price">
                         <?=$produit['prix'].' euros';?>

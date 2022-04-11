@@ -19,8 +19,6 @@ class View
                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
             </head>
 
-            <body>
-
             <?php if(isset($_SESSION['id'])){ ?>
                 <header>
 
@@ -75,7 +73,7 @@ class View
                     <?php } else { ?>
 
                 <header>
-                        
+
                         <div class="content-wrapper">
 
                             <h1>Timestamp</h1>

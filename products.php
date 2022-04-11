@@ -10,8 +10,9 @@ require_once 'back/back_products.php';
 <h1>Montres</h1>
 <p><?=$total_products?> Products</p>
 <div class="products-wrapper">
-<?php foreach ($shop as $produit): ?>
+<?php foreach ($shop as $produit): ?>  
 <a href="index.php?page=product&id=<?=$produit['id']?>" class="product">
+
     <img src="<?=$produit['img']?>" width="200" height="200" alt="<?=$produit['nom']?>">
     <span class="name"><?=$produit['nom']?></span>
     <span class="price">
@@ -28,6 +29,7 @@ require_once 'back/back_products.php';
 <?php if ($total_products > ($current_page * $produitsParPage) - $produitsParPage + count($shop)): ?>
 <a href="index.php?page=products&p=<?=$current_page+1?>">Next</a>
 <?php endif; ?>
+
 </div>
 </div>
 

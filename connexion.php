@@ -7,14 +7,14 @@ $home -> headerStyle('Connexion');
 
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
     <title> Page de connexion</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="Style.css" />
-</head>
+</head> -->
 
 <body>
     <main>

@@ -1,8 +1,9 @@
 <?php
 
-require_once 'Bdd.php';
 
-class Products extends Bdd
+require_once 'config.php';
+
+class Products extends Config
 {
     
     
@@ -10,7 +11,7 @@ class Products extends Bdd
     public function getAllProducts($produitsParPage, $current_page){
 
         // Selection par des produits triés par date 
-        $req = $this->connect()->prepare('SELECT * FROM `produits` ORDER BY `produits`.`vendu` DESC LIMIT ?, ?');
+        $req = $this->bdd->prepare('SELECT * FROM produits ORDER BY date DESC LIMIT ?, ?');
         $req->bindValue(1, ($current_page - 1) * $produitsParPage, PDO::PARAM_INT);
         $req->bindValue(2, $produitsParPage, PDO::PARAM_INT);
         $req->execute();
@@ -21,14 +22,14 @@ class Products extends Bdd
 
     public function totalProducts(){
 
-        return $totalProduit = $this->connect()->query('SELECT * FROM produits')->rowCount();
+        return $totalProduit = $this->bdd->query('SELECT * FROM produits')->rowCount();
     }
 
 
     public function bestSales(){
 
         // recupere les articles les plus vendu
-        $ventes = $this->connect()->prepare('SELECT * FROM produits ORDER BY vendu DESC LIMIT 4');
+        $ventes = $this->bdd->prepare('SELECT * FROM produits ORDER BY date DESC LIMIT 4');
         $ventes->execute();
 
         return $ventes->fetchAll(PDO::FETCH_ASSOC);
@@ -38,7 +39,7 @@ class Products extends Bdd
     public function Produit(){
 
         // Preparation de la requete et execution alternée avec le ? pour eviter les injection sql
-        $req = $this->connect()->prepare('SELECT * FROM produits WHERE id = ?');
+        $req = $this->bdd->prepare('SELECT * FROM produits WHERE id = ?');
         $req->execute([$_GET['id']]);
 
         // Fetch la requete précedente et mettre dans un tableau associatif
@@ -49,7 +50,7 @@ class Products extends Bdd
     public function catProduits($current_page,$produitsParPage){
 
         // Selection des produits triés par date et en fonction de leur categorie
-        $req = $this->connect()->prepare('SELECT * FROM produits WHERE id_cat = ? ORDER BY "date" DESC LIMIT ?,?');
+        $req = $this->bdd->prepare('SELECT * FROM produits WHERE id_cat = ? ORDER BY date DESC LIMIT ?,?');
 
         // On ajoute les variables dans la requete grace à bindvalue
         $req->bindValue(1,$_GET['cat'] , PDO::PARAM_INT);
@@ -66,7 +67,7 @@ class Products extends Bdd
     public function totalCat(){
 
         // Recuperer le total de produits en fonction de leur categorie
-        $total = $this->connect()->prepare('SELECT * FROM produits WHERE id_cat = :categorie');
+        $total = $this->bdd->prepare('SELECT * FROM produits WHERE id_cat = :categorie');
         $total->bindValue(':categorie',$_GET['cat'], PDO::PARAM_INT);
         $total->execute();
         return $total->rowCount();
@@ -76,7 +77,7 @@ class Products extends Bdd
     public function getComments(){ 
         // select commentaires.commentaire, utilisateur.prenom FROM 'commentaires' INNER JOIN utilisateur ON utilisateur.id = commentaire.id_utilisateur WHERE id_porduits = :idproduit
         // recuperer les commentaires
-        $com = $this->connect()->prepare('SELECT commentaires.commentaire, utilisateur.prenom FROM commentaires INNER JOIN utilisateur ON utilisateur.id = commentaires.id_utilisateur WHERE id_produit = :idproduit');
+        $com = $this->bdd->prepare('SELECT commentaires.commentaire, utilisateur.prenom FROM commentaires INNER JOIN utilisateur ON utilisateur.id = commentaires.id_utilisateur WHERE id_produit = :idproduit');
         $com->bindValue(':idproduit',$_GET['id'],PDO::PARAM_INT);
         $com->execute();
 

@@ -1,21 +1,21 @@
 <?php
 session_start();
 // require('config.php');
-// require('./class/User.php');
+require('./class/User.php');
 $user = new User();
 
 $home = new View;
 $home -> headerStyle('Profil');
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
     <title> Modification de profil</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
-</head>
+</head> -->
 
 <body>
     <!-- <?php include('header.php') ?> -->

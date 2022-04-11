@@ -15,7 +15,7 @@ require_once 'back/back_product.php';
 
                             <span class="price">
                                 
-                                <?=$produit['prix']?>
+                                <?=$produit['prix']?> euros
                             </span>
 
                             <form action="index.php?page=cart" method="post">

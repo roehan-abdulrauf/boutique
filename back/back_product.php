@@ -7,7 +7,7 @@ if (isset($_GET['id'])&& is_numeric($_GET['id'])&& $_GET['id'] > 0 ) {
     $produit = $objet->Produit();
 
     $comments = $objet ->getComments();
-    var_dump($comments);
+    // var_dump($comments);
     
     
 }

@@ -6,14 +6,14 @@ $home = new View;
 $home -> headerStyle('Inscription');
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
     <title> Page d'inscription</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
-</head>
+</head> -->
 
 <body id="bodyform">
     <main>

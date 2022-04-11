@@ -1,14 +1,14 @@
 <?php
 
-require_once 'Bdd.php';
+require_once 'config.php';
 
-class Panier extends Bdd
+class Panier extends Config
 {
 
     public function getProduit($id){
 
         // Recupere le produit avec l'id correspondant
-        $req = $this->connect()->prepare('SELECT * FROM produits WHERE id = ?');
+        $req = $this->bdd->prepare('SELECT * FROM produits WHERE id = ?');
         $req->execute([$id]);
 
         // Fetch le produit et mettre le resultat dans un tableau associatif
@@ -36,7 +36,7 @@ class Panier extends Bdd
         // There are products in the cart so we need to select those products from the database
         // Products in cart array to question mark string array, we need the SQL statement to include IN (?,?,?,...etc)
         $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
-        $req = $this->connect()->prepare('SELECT * FROM produits WHERE id IN (' . $array_to_question_marks . ')');
+        $req = $this->bdd->prepare('SELECT * FROM produits WHERE id IN (' . $array_to_question_marks . ')');
 
         // les keys sont les id des produits
         $req->execute(array_keys($products_in_cart));

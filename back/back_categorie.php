@@ -13,7 +13,9 @@ if (isset($_GET['cat'])&& is_numeric($_GET['cat'])&& $_GET['cat']>0) {
     $produits = $objet->catProduits($current_page,$produitsParPage);
 
     $totalProduit = $objet->totalCat();
+    
 } else {
+
     header('location: index.php');
 }
     ?>
