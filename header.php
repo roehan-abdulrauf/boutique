@@ -6,14 +6,19 @@ if (isset($_POST['deconnexion'])) {
 ?>
 <header>
     <nav>
-        <h1>Titre de la boutique</h1>
         <div class="titreXicone">
-            <ul>connect</ul>
-            <ul>panier</ul>
+            <div class="logo">
+                <a href="#">Logo</a>
+            </div>
+            <h1><a href="#">Titre de la boutique</a></h1>
         </div>
-        <div class="titreXicone">
-            <ul>Boutique</ul>
-            <ul>Admin</ul>
+        <div class="dropdown">
+            <h1 class="h1-hov"><a href="#">Titre de la boutique</a></h1>
+            <div class="dropdown-child">
+                <h1><a href="#">Admin</a></h1>
+                <h1><a href="#">Modifier le profil</a></h1>
+                <h1><a href="#">Se deconnecter</a></h1>
+            </div>
         </div>
     </nav>
 </header>

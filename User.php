@@ -29,25 +29,31 @@ class User extends Config
         $res = $req->fetchAll(PDO::FETCH_ASSOC);
 
         var_dump($res);
-
+        $password = hash('sha512', $password);
         if (count($res)) {
+            if (!empty($mail) && !empty($password)) {
+                if ($password == $res[0]['password']) {
+                    $this->_id = $res[0]['id'];
+                    $this->_mail =  $res[0]['mail'];
+                    $this->_prenom = $res[0]['prenom'];
+                    $this->_nom = $res[0]['nom'];
+                    $this->_adresse = $res[0]['adresse'];
+                    $this->_codepostal = $res[0]['code_postal'];
+                    $this->_ville = $res[0]['ville'];
 
-            $this->_id = $res[0]['id'];
-            $this->_mail =  $res[0]['mail'];
-            $this->_prenom = $res[0]['prenom'];
-            $this->_nom = $res[0]['nom'];
-            $this->_adresse = $res[0]['adresse'];
-            $this->_codepostal = $res[0]['code_postal'];
-            $this->_ville = $res[0]['ville'];
+                    $this->_Malert = 'Connexion réussie, vous allez être redirigé.';
+                    $this->_Talert = 1;
 
-            $this->_Malert = 'Connexion réussie, vous allez être redirigé.';
-            $this->_Talert = 1;
-
-            header("Refresh:3;url=modifier_produit.php");
+                    header("Refresh:3;url=historique.php");
+                } else {
+                    echo "2";
+                    $this->_Malert = 'Mot de passe incorrect';
+                    $this->_Talert = 2;
+                }
+            }
         } else {
-
             echo "3";
-            $this->_Malert = 'Aucun utilisateur trouvé.';
+            $this->_Malert = 'Aucun utilisateur trouvé';
             $this->_Talert = 2;
         }
     }
@@ -226,9 +232,21 @@ class User extends Config
 
     public function getAllInfos()
     {
-        $user = ['id' => $this->_id, 'mail' => $this->_mail, 'password' => $this->_password, 'nom' => $this->_nom, 'prenom' => $this->_prenom, 'adresse' => $this->_adresse, 'codepostal' => $this->_codepostal, 'ville' => $this->_ville];
+        $check = $this->bdd->prepare("SELECT * FROM`utilisateurs`,`commentaires`");
+        $check->execute();
+        $res = $check->fetchAll(PDO::FETCH_ASSOC);
 
-        return $user;
+        foreach ($res as $data) { ?>
+
+            <tr>
+                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['nom']; ?></td>
+                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['prenom']; ?></td>
+                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['mail']; ?></td>
+                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['id_droits']; ?></td>
+                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['commentaire']; ?></td>
+            </tr>
+<?php
+        }
     }
 
     public function getId()
@@ -285,5 +303,13 @@ class User extends Config
         $password = $this->_ville;
 
         return $password;
+    }
+    public function GetOrderHistoryById()
+    {
+        $id = $_SESSION['id'];
+        $req = $this->bdd->prepare("SELECT * FROM `commandes` WHERE id=?");
+        $req->execute(array($id));
+        $req = $req->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($req);
     }
 }

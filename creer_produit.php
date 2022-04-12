@@ -15,8 +15,7 @@ $cat = new Categorie();
 </head>
 
 <body>
-   
-    
+
     <?php
     require_once 'header.php';
     require_once 'admin.php' ?>

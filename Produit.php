@@ -20,10 +20,31 @@ class Produit extends  Config
         }
     }
 
+    public function getProduits()
+    {
+
+        $check = $this->bdd->prepare("SELECT * FROM `produits`,`categories`");
+        $check->execute();
+        $res = $check->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($res as $data) { ?>
+
+            <tr>
+                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['blaze']; ?></td>
+                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['prix']; ?></td>
+                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['description']; ?></td>
+                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['quantite']; ?></td>
+                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['titre']; ?></td>
+                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['date']; ?></td>
+            </tr>
+<?php
+        }
+    }
+
     public function CreerProduits($nom, $prix, $img, $description, $quantite, $categorie)
     {
 
-        $check = $this->bdd->prepare("SELECT `nom`  FROM `produits` WHERE  `nom` = :nom");
+        $check = $this->bdd->prepare("SELECT `blaze`  FROM `produits` WHERE  `blaze` = :nom");
         $check->execute(array(':nom' => $nom,));
         $res = $check->fetchAll(PDO::FETCH_ASSOC);
         var_dump($res);
@@ -36,9 +57,9 @@ class Produit extends  Config
             } elseif (count($res) < 1) {
                 echo 4;
                 $date = date('Y-m-d H:i:s');
-                $req = $this->bdd->prepare("INSERT INTO produits (nom, prix, img, description, quantite, date, id_categories) VALUES (:nom, :prix, :img, :description, :quantite, :date, :id_categories)");
+                $req = $this->bdd->prepare("INSERT INTO produits (blaze, prix, img, description, quantite, date, id_categories) VALUES (:blaze, :prix, :img, :description, :quantite, :date, :id_categories)");
                 $req->execute(array(
-                    ':nom' => $nom,
+                    ':blaze' => $nom,
                     ':prix' => $prix,
                     ':img' => $img,
                     ':description' => $description,
@@ -68,27 +89,27 @@ class Produit extends  Config
 
         if (!empty($nom) && !empty($newnom) && !empty($prix) && !empty($img) && !empty($description) && !empty($quantite) && !empty($categorie)) {
 
-            $check = $this->bdd->prepare("SELECT `nom`  FROM `produits` WHERE  `nom` = :nom");
-            $check->execute(array(':nom' => $nom,));
+            $check = $this->bdd->prepare("SELECT `blaze`  FROM `produits` WHERE  `blaze` = :nom");
+            $check->execute(array(':blaze' => $nom,));
             $res = $check->fetchAll(PDO::FETCH_ASSOC);
             var_dump($res);
 
             if (count($res)) {
 
-                $check = $this->bdd->query("SELECT `nom`  FROM `produits`");
+                $check = $this->bdd->query("SELECT `blaze`  FROM `produits`");
                 $res = $check->fetchAll();
-                $checknom = $res[0]['nom'];
+                $checknom = $res[0]['blaze'];
 
                 var_dump($res);
 
                 if ($newnom != $checknom) {
                     $this->_Malert = 'Nom de produit déjà utiliser.';
                     $this->_Talert = 2;
-                }else{
+                } else {
                     $date = date('Y-m-d H:i:s');
-                    $req = $this->bdd->prepare(" UPDATE `produits` SET  `nom` = :nom , `prix` = :prix , `img` = :img , `description` = :description , `quantite` = :quantite , `date` = :date , `id_categories` = :id_categories WHERE nom = '$nom'");
+                    $req = $this->bdd->prepare(" UPDATE `produits` SET  `blaze` = :blaze , `prix` = :prix , `img` = :img , `description` = :description , `quantite` = :quantite , `date` = :date , `id_categories` = :id_categories WHERE nom = '$nom'");
                     $req->execute(array(
-                        ':nom' => $newnom,
+                        ':blaze' => $newnom,
                         ':prix' => $prix,
                         ':img' => $img,
                         ':description' => $description,

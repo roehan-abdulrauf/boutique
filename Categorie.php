@@ -20,7 +20,7 @@ class Categorie extends Config
 
         foreach ($res as $data) { ?>
 
-            <option value=" <?php echo $data['id']; ?>"> <?php echo $data['nom']; ?></option>
+            <option value=" <?php echo $data['id']; ?>"> <?php echo $data['titre']; ?></option>
 <?php
         }
     }
@@ -32,7 +32,7 @@ class Categorie extends Config
 
         if (!empty($select) && !empty($nom)) {
 
-            $req = $this->bdd->prepare("UPDATE `categories`  SET `nom` = $nom");
+            $req = $this->bdd->prepare("UPDATE `categories`  SET `titre` = $nom");
             $req->execute();
 
             $this->_Malert = 'La categorie à bien été modifier avec succès.';
@@ -48,7 +48,7 @@ class Categorie extends Config
     public function CreerCategories($nom)
     {
         if (!empty($nom)) {
-            $req = $this->bdd->prepare("INSERT INTO `categories` (`nom`) values ($nom)");
+            $req = $this->bdd->prepare("INSERT INTO `categories` (`titre`) values ($nom)");
             $req->execute();
 
             $this->_Malert = 'La categorie à bien été ajouter avec succès.';
