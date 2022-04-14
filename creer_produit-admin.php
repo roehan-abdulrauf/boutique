@@ -17,17 +17,16 @@ $cat = new Categorie();
 <body>
 
     <?php
-    require_once 'header.php';
     require_once 'admin.php' ?>
-    <section align="center">
+    <div class="form-admin">
         <form method="POST">
+            <h1>Ajouter un produit</h1>
             <?php if (isset($_POST['submit'])) {
                 $user->CreerProduits(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['prix']), htmlspecialchars($_POST['img']), htmlspecialchars($_POST['description']), htmlspecialchars($_POST['quantite']), htmlspecialchars($_POST['categorie']));
                 $user->alerts();
             }
             ?>
             <div>
-                <h1>Ajouter un produit</h1>
                 <label for="">Nom</label>
                 <input type="text" id="nom" name="nom" placeholder="Martin ..." required>
             </div>
@@ -54,11 +53,11 @@ $cat = new Categorie();
                     <?= $cat->getCategories(); ?>
                 </select>
             </div>
-            <div align="center">
+            <div class="form-admin-butt">
                 <button type="submit" name="submit">Ajouter</button>
             </div>
         </form>
-    </section>
+    </div>
 </body>
 
 </html>

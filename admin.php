@@ -63,51 +63,51 @@
                         <i class='bx bxs-dashboard'></i>
                         <span class="link_name">Tableau de bord</span>
                     </a>
-                    <ul class="sub-menu blank">
+                    <!-- <ul class="sub-menu blank">
                         <li><a href="#" class="link_name">Tableau de bord</a></li>
-                    </ul>
+                    </ul> -->
                 </div>
             </li>
             <li>
                 <div class="icon-links">
-                    <a href="#">
+                    <a href="produit-admin.php">
                         <i class='bx bxs-collection'></i>
                         <span class="link_name">Produits</span>
                     </a>
                     <i class='bx bx-chevron-down'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a href="#" class="link_name">Produits</a></li>
-                    <li><a href="#">Ajouter</a></li>
-                    <li><a href="#">Modifier</a></li>
+                    <!-- <li><a href="#" class="link_name">Produits</a></li> -->
+                    <li><a href="creer_produit-admin.php">Ajouter</a></li>
+                    <li><a href="modifier_produit-admin.php">Modifier</a></li>
                     <li><a href="#">Supprimer</a></li>
                 </ul>
             </li>
             <li>
                 <div class="icon-links">
-                    <a href="#">
+                    <a href="commentaire-admin.php">
                         <i class='bx bxs-comment-detail'></i>
                         <span class="link_name">Commentaires</span>
                     </a>
                     <i class='bx bx-chevron-down'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a href="#" class="link_name">Commentaires</a></li>
+                    <!-- <li><a href="#" class="link_name">Commentaires</a></li> -->
                     <li><a href="#">Avertissement</a></li>
                     <li><a href="#">Supprimer</a></li>
                 </ul>
             </li>
             <li>
                 <div class="icon-links">
-                    <a href="#">
+                    <a href="compte-admin.php">
                         <i class='bx bxs-user'></i>
                         <span class="link_name">Compte</span>
                     </a>
                     <i class='bx bx-chevron-down'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a href="#" class="link_name">Compte</a></li>
-                    <li><a href="#">Mofifer un role</a></li>
+                    <!-- <li><a href="#" class="link_name">Compte</a></li> -->
+                    <li><a href="modifier_droit-admin.php">Mofifer un role</a></li>
                     <li><a href="#">Supprimer</a></li>
                 </ul>
             </li>
@@ -117,9 +117,9 @@
                         <i class='bx bxs-folder'></i>
                         <span class="link_name">Médias</span>
                     </a>
-                    <ul class="sub-menu blank">
+                    <!-- <ul class="sub-menu blank">
                         <li><a href="#" class="link_name">Médias</a></li>
-                    </ul>
+                    </ul> -->
                 </div>
             </li>
             <li>
@@ -128,9 +128,9 @@
                         <i class='bx bxs-cart-alt'></i>
                         <span class="link_name">Commandes</span>
                     </a>
-                    <ul class="sub-menu blank">
+                    <!-- <ul class="sub-menu blank">
                         <li><a href="#" class="link_name">Commandes</a></li>
-                    </ul>
+                    </ul> -->
                 </div>
             </li>
             <li>
@@ -139,23 +139,44 @@
                         <i class='bx bx-cog'></i>
                         <span class="link_name">Paramètre</span>
                     </a>
-                    <ul class="sub-menu blank">
+                    <!-- <ul class="sub-menu blank">
                         <li><a href="#" class="link_name">Paramètre</a></li>
-                    </ul>
+                    </ul> -->
                 </div>
             </li>
-        </ul>
-        <div class="profile-details">
-            <div class="profile-content">
-            <i class='bx bxs-game' style='color:#ff0049'  ></i>
-            </div>
             <li>
-            <div class="name-job">
-                <div class="profile_name">Admin</div>
-            </div>
-            <i class='bx bx-log-out' ></i>
-        </div>
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <i class='bx bxs-game' style='color:#ff0049'></i>
+                    </div>
+                    <div class="name-job">
+                        <div class="profile_name">Admin</div>
+                    </div>
+                    <i class='bx bx-log-out'></i>
+            </li>
+        </ul>
     </div>
+    <!-- <section class="home-section">
+        <div class="home-content">
+            <i class='bx bx-menu'></i>
+            <span class="text">Drop Down Sidebar</span>
+        </div>
+    </section> -->
+    <!-- <script>
+        let arrow = document.querySelectorAll(".arrow");
+        for (var i = 0; i < arrow.length; i++) {
+            arrow[i].addEventListener("click", (e) => {
+                let arrowParent = e.target.parentElement.parentElement; //selecting main parent of arrow
+                arrowParent.classList.toggle("showMenu");
+            });
+        }
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".bx-menu");
+        console.log(sidebarBtn);
+        sidebarBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+    </script> -->
 </body>
 
 </html>

@@ -13,19 +13,21 @@ $user = new Produit();
 </head>
 
 <body>
+    <div class="h1-titre-admin">
+        <h1>Produits</h1>
+    </div>
     <?php
-    require_once 'header.php';
     require_once 'admin.php' ?>
     <section>
-        <table align="center">
+        <table>
             <thead>
                 <tr>
-                     <th scope="col">Nom</td>
-                     <th scope="col">Prix</td>
-                     <th scope="col">Description</td>
-                     <th scope="col">Quantité</td>
-                     <th scope="col">Catégorie</td>
-                     <th scope="col">Date</td>
+                    <th scope="col">Nom</td>
+                    <th scope="col">Prix</td>
+                    <th scope="col">Description</td>
+                    <th scope="col">Quantité</td>
+                    <th scope="col">Catégorie</td>
+                    <th scope="col">Date</td>
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +35,9 @@ $user = new Produit();
                 $user->getProduits();
                 ?>
             </tbody>
+            <tfoot>
+                
+            </tfoot>
         </table>
     </section>
 </body>

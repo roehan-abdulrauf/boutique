@@ -20,7 +20,7 @@ class Droits extends Config
 
         foreach ($res as $data) { ?>
 
-            <option value=" <?php echo $data['id']; ?>"> <?php echo $data['droit']; ?></option>
+            <option value=" <?php echo $data['id']; ?>"> <?php echo $data['nom']; ?></option>
 <?php
         }
 

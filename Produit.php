@@ -35,10 +35,17 @@ class Produit extends  Config
                 <td value=" <?php echo $data['id']; ?>"> <?php echo $data['description']; ?></td>
                 <td value=" <?php echo $data['id']; ?>"> <?php echo $data['quantite']; ?></td>
                 <td value=" <?php echo $data['id']; ?>"> <?php echo $data['titre']; ?></td>
-                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['date']; ?></td>
+                <td value=" <?php echo $data['id']; ?>"> <span>publié le</span> <?php echo $data['date']; ?></td>
             </tr>
 <?php
         }
+    }
+
+    public function getNombreProduits()
+    {
+        $check = $this->bdd->prepare("SELECT * FROM `produits`");
+        $check->execute();
+        // $res = $check->count();    
     }
 
     public function CreerProduits($nom, $prix, $img, $description, $quantite, $categorie)
