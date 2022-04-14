@@ -28,9 +28,11 @@ class View
                             <nav>
 
                                 <a href="index.php">Accueil</a>
-                                <a href="index.php?page=products">Tous nos produits</a>
+                                <a href="index.php?page=products">Nos produits</a>
                                 <a href="index.php?page=categorie&cat=1">Montres homme</a>
                                 <a href="index.php?page=categorie&cat=2">Montres femme</a>
+                                <a href="index.php?page=profil">Mon profil</a>
+                                <a href="index.php?page=deconnexion">Deconnexion</a>
                                 <!-- <a href="index.php?page=inscription">Inscription</a>
                                 <a href="index.php?page=connexion">Connexion</a> -->
                             </nav>
@@ -53,7 +55,7 @@ class View
                             <nav>
 
                                 <a href="index.php">Accueil</a>
-                                <a href="index.php?page=products">Tous nos produits</a>
+                                <a href="index.php?page=products">Nos produits</a>
                                 <a href="index.php?page=categorie&cat=1">Montres homme</a>
                                 <a href="index.php?page=categorie&cat=2">Montres femme</a>
                                 <a href="#">Admin</a>
@@ -80,7 +82,7 @@ class View
                             <nav>
 
                                 <a href="index.php">Accueil</a>
-                                <a href="index.php?page=products">Tous nos produits</a>
+                                <a href="index.php?page=products">Nos produits</a>
                                 <a href="index.php?page=categorie&cat=1">Montres homme</a>
                                 <a href="index.php?page=categorie&cat=2">Montres femme</a>
                                 <a href="index.php?page=inscription">Inscription</a>

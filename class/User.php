@@ -47,7 +47,7 @@ class User extends Config
                     $this->_Malert = 'Connexion réussie, vous allez être redirigé.';
                     $this->_Talert = 1;
 
-                    header("Refresh:3;url=historique.php");
+                    header("Refresh:3;url=index.php");
                 } else {
                     echo "2";
                     $this->_Malert = 'Mot de passe incorrect';
@@ -87,7 +87,7 @@ class User extends Config
 
                 $this->_Malert = 'Félicitations votre compté a bien été créé, vous pouvez maintenant vous connecter .';
                 $this->_Talert = 1;
-                header('refresh:3;url=connexion.php');
+                header('refresh:3;url=index.php?page=connexion.php');
             } elseif ($mail == 'admin' && $password == 'admin' && $password == $passwordverify) {
                 $password = hash('sha512', $password);
                 $req = $this->bdd->prepare("INSERT INTO `utilisateurs`(`nom`,`prenom`,`mail`,`password`,`adresse`,`code_postal`,`ville`,`id_droits`) VALUES (:nom, :prenom, :mail, :password, :adresse, :code_postal, :ville, :id_droits)");

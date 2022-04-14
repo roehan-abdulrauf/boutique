@@ -1,28 +1,33 @@
 <?php
+// session_start();
 // require('config.php');
 // require('User.php');
-
 $home = new View;
 $home -> headerStyle('Connexion');
-
 ?>
-
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
     <title> Page de connexion</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="Style.css" />
-</head> -->
+</head>
 
 <body>
     <main>
         <div align="center" class="formpadding">
             <form method="POST">
                 <?php if (isset($_POST['connexion'])) {
-                        $user = new User();
-                        $user->Connect(htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['password']));
+                    $user = new User();
+                    $user->Connect(htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['password']));
+                    $_SESSION['id'] = $user->getId();
+                    $_SESSION['mail'] = $user->getMail();
+                    $_SESSION['prenom'] = $user->getPrenom();
+                    $_SESSION['nom'] = $user->getNom();
+                    $_SESSION['adresse'] = $user->getAdresse();
+                    $_SESSION['code_postal'] = $user->getCodepostal();
+                    $_SESSION['ville'] = $user->getVille();
                     $user->alerts();
                 }
                 ?>
