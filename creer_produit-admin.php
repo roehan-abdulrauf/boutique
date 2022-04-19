@@ -1,9 +1,9 @@
 <?php
-session_start();
-require_once 'Config.php';
-require_once('Produit.php');
+
+// require_once 'Config.php';
+// require_once('Produit.php');
 $produit = new Produit();
-require_once('Categorie.php');
+// require_once('Categorie.php');
 $cat = new Categorie();
 ?>
 <!DOCTYPE html>
@@ -28,32 +28,32 @@ $cat = new Categorie();
                 $produit->alerts();
             }
             ?>
-            <div>
-                <label for="nom">Nom</label>
-                <input type="text" id="nom" name="nom" placeholder="Martin ..." required>
+            <div class="input">
+                <label class="label" for="nom">Nom</label>
+                <input class="inputtext" type="text" id="nom" name="nom" placeholder="Martin ..." required>
             </div>
-            <div>
-                <label for="description">Description</label>
-                <input type="text" id="description" name="description" placeholder="Ce produit est.." required>
+            <div class="input">
+                <label class="label" for="description">Description</label>
+                <input class="inputtext" type="text" id="description" name="description" placeholder="Ce produit est.." required>
             </div>
-            <div>
-                <label for="prix">Prix</label>
-                <input type="number" id="prix" name="prix" placeholder="En euro" required>
+            <div class="input">
+                <label class="label" for="prix">Prix</label>
+                <input class="inputnum" type="number" id="prix" name="prix" placeholder="En euro" required>
             </div>
-            <div>
-                <label for="quantite">Quantité</label>
-                <input type="number" id="quantite" name="quantite" placeholder="0" required>
+            <div class="input">
+                <label class="label" for="quantite">Quantité</label>
+                <input class="inputnum" type="number" id="quantite" name="quantite" placeholder="0" required>
             </div>
-            <div>
-                <label for="categorie">Catégorie</label>
-                <select id="categorie" name="categorie" required>
+            <div class="input">
+                <label class="label" for="categorie">Catégorie</label>
+                <select class="select" id="categorie" name="categorie" required>
                     <option>Choisir une catégorie</option>
                     <?= $cat->getCategories(); ?>
                 </select>
             </div>
-            <div>
-                <label for="img">Image</label>
-                <input type="file" id="img" name="img" placeholder="Lien de l'image" required>
+            <div class="input">
+                <label class="label" for="img">Image</label>
+                <input class="inputfile" type="file" id="img" name="img" placeholder="Lien de l'image" required>
             </div>
             <div class="form-admin-butt">
                 <button type="submit" name="submit">Ajouter</button>

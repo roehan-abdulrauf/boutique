@@ -316,7 +316,7 @@ color: #098cf8;
   font-size: 170%;
 }
  
-.form-admin form div input[type=text], input[type=textarea], input[type=number], input[type=file], select {
+.form-admin form .input .inputtext, .inputnum, .inputfile, .select {
   border-style: solid black;
     border-width: 1px;
     border-radius: 5px;
@@ -326,16 +326,7 @@ color: #098cf8;
     margin-top: 2%;
 }
 
-.form-admin form div input[type=textarea]{
-  border-style: solid black;
-  border-width: 1px;
-  border-radius: 5px;
-  width: 300%;
-  height: 40px;
-  margin-top: 2%;
-}
-
-.form-admin form div label{
+.form-admin form div .label{
   padding: 12px 12px 12px 0;
   display: block;
   font-size: 60%;
@@ -362,7 +353,7 @@ color: #098cf8;
   background-color: #45a049;
 }
 
-table{
+.table{
   border-collapse: collapse;
   border: 1px solid;
   padding: 1%;
@@ -370,18 +361,18 @@ table{
   width: 84%;
 }
 
-th{
+.th{
   background: #838181;
   padding: 10px 0 10px 0;
 }
 
-td{
+.td{
   padding: 20px 0 20px 20px;
   color: rgb(9, 114, 114);
   border-bottom: solid rgb(230, 227, 227) 1px;
 }
 
-td:nth-child(even) {
+.td:nth-child(even) {
   border-collapse: collapse;
   color: black;
   background: #f0f0f1;
@@ -412,3 +403,4 @@ td{
   }
 } */
 
+/* // css page paiement// */
