@@ -2,19 +2,21 @@
 // session_start();
 // require('config.php');
 // require('User.php');
-$home = new View;
-$home -> headerStyle('Connexion');
+
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title> Page de connexion</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="Style.css" />
+<title> Page de connexion</title>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+    <?php 
+        $home = new View;
+        $home -> headerStyle();
+    ?>
     <main>
         <div align="center" class="formpadding">
             <form method="POST">
@@ -28,6 +30,7 @@ $home -> headerStyle('Connexion');
                     $_SESSION['adresse'] = $user->getAdresse();
                     $_SESSION['code_postal'] = $user->getCodepostal();
                     $_SESSION['ville'] = $user->getVille();
+                    $_SESSION['id_droits'] = $user->getDroits();
                     $user->alerts();
                 }
                 ?>

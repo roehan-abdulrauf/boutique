@@ -1,7 +1,7 @@
 * {
 	box-sizing: border-box;
-	font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
-	font-size: 16px;
+	/* font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif; */
+	/* font-size: 16px; */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -16,6 +16,7 @@ body {
 	margin: 0;
 	padding-bottom: 100px; /* Same height as footer */
 }
+
 h1, h2, h3, h4, h5 {
 	color: #394352;
 }
@@ -341,4 +342,238 @@ footer {
 	border-top: 1px solid #EEEEEE;
 	padding: 20px 0;
 	width: 100%;
+}
+
+
+/* CSS page d'inscription */
+
+.input-inscription{
+    margin-left: -80%;
+    margin-bottom: 0%;
+    margin-top: 10%;
+    border: 2px solid black;
+    max-width: max-content;
+    border-bottom-style: none;  
+    padding: 2%;
+}
+.input-inscription2{
+    margin-left: -85%;
+    margin-bottom: 0%;
+    margin-top: 10%;
+    border: 2px solid black;
+    max-width: max-content;
+    border-bottom-style: none;  
+    padding: 2%;
+}
+
+.input-inscription3{
+    margin-left: -70%;
+    margin-bottom: 0%;
+    margin-top: 10%;
+    border: 2px solid black;
+    max-width: max-content;
+    border-bottom-style: none;  
+    padding: 2%;
+}
+
+.input-inscription4{
+    margin-left: -73.5%;
+    margin-bottom: 0%;
+    margin-top: 10%;
+    border: 2px solid black;
+    max-width: max-content;
+    border-bottom-style: none;  
+    padding: 2%;
+}
+
+.input-inscription5{
+    margin-left: -85.5%;
+    margin-bottom: 0%;
+    margin-top: 10%;
+    border: 2px solid black;
+    max-width: max-content;
+    border-bottom-style: none;  
+    padding: 2%;
+}
+
+.input-inscription6{
+    margin-left: -71.5%;
+    margin-bottom: 0%;
+    margin-top: 10%;
+    border: 2px solid black;
+    max-width: max-content;
+    border-bottom-style: none;  
+    padding: 2%;
+}
+
+.input-inscription7{
+    margin-left: -45.2%;
+    margin-bottom: 0%;
+    margin-top: 10%;
+    border: 2px solid black;
+    max-width: max-content;
+    border-bottom-style: none;  
+    padding: 2%;
+}
+
+/* Css page de connexion*/
+
+.titres{
+    text-align: start;
+}
+
+.espace{
+    margin-top:10%;
+}
+
+.forms{
+max-width:26rem;
+}
+
+.input-connexion{
+    margin-bottom: 0%;
+    margin-top: 0%;
+    border: 2px solid black;
+    max-width: max-content;
+    border-bottom-style: none;  
+    padding: 2%;
+    margin-left: -72%;
+}
+
+.input-connexion2{
+    margin-bottom: 0%;
+    margin-top: 0%;
+    border: 2px solid black;
+    max-width: max-content;
+    border-bottom-style: none;
+    padding: 2%;
+    margin-left: -73.5%;
+}
+
+.btn{
+    display: inline-block;
+    border: 2px solid black;
+    width: 100%;
+    padding: 4%;
+    text-align: center;
+    margin-top:11%;
+    background-color: black;
+    color:white;
+    transition: 0.5s ease-in-out;
+    margin-bottom: 10%;
+    font-weight: bold;
+}
+
+.btn:hover{
+ background-color: transparent;
+ color:black;
+}
+
+.input-icons i {
+    position: absolute;
+    
+}
+  
+.input-icons {
+    width: 100%;
+    margin-bottom: 1%;
+}
+  
+.icon {
+    padding: 1rem;
+    color: black;
+}
+  
+.input-field {
+    width: 100%;
+    padding: 4%;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.btn2{
+    border: 2px solid black;
+    width: 100%;
+    padding: 4%;
+    text-align: center;
+    margin-top: 1%;
+    background-color: white;
+    color: black;
+    margin-bottom: 10%;
+    font-weight: bold;
+}
+
+.btn2:hover{
+    background-color: black;
+    color:white;
+   }
+
+/* @media(max-width: 667px) { 
+    .input-icons.input-field.input-connexion.input-connexion2.btn.btn2 {
+      display: none;
+    }
+  } */
+
+  .space-between{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top:-3%;
+  }
+
+  .conditions{
+margin:3%;
+  }
+
+/* Css page profil */
+
+
+
+.labels {
+    font-size: 100%;
+	font-weight: bold;
+	margin-top: 5%;
+}
+
+.add-experience:hover {
+    background: navy;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px;
+}
+
+td,
+th {
+    border: 1px solid rgb(190, 190, 190);
+    padding: 10px;
+}
+
+td {
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #eee;
+}
+
+th[scope="col"] {
+    background-color: #696969;
+    color: #fff;
+}
+
+th[scope="row"] {
+    background-color: #d7d9f2;
+}
+
+
+.tab {
+    border-collapse: collapse;
+    border: 2px solid rgb(216, 216, 216);
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-size: .8rem;
+}
+
+#hide{
+	display:none;
 }

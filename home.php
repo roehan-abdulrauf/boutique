@@ -1,25 +1,34 @@
 <?php
-$home = new View;
-$home -> headerStyle('Accueil');
+
 
 $sales=new Products;
 $meilleures_ventes = $sales->bestSales();
+
 ?>
 
-        <!-- <div class="featured">
-            <h2></h2>
-            <p></p>
-        </div> -->
-        <div class="recentlyadded content-wrapper">
-
-            <h2>Les plus vendues</h2>
-
-            <div class="products">
-                
-                <?php foreach ($meilleures_ventes as $produit): ?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Accueil</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+</head>
+<body>
+<?php 
+$home = new View;
+$home -> headerStyle();
+?>
+    <div class="recentlyadded content-wrapper">
+        
+        <h2>Les plus vendues</h2>
+        
+        <div class="products">
+            
+            <?php foreach ($meilleures_ventes as $produit): ?>
                 <a href="index.php?page=product&id=<?=$produit['id']?>" class="product">
-                    <img src="<?=$produit['img']?>" width="200" height="200" alt="<?=$produit['nom']?>">
-                    <span class="name"><?=$produit['nom']?></span>
+                    <img src="<?=$produit['img']?>" width="200" height="200" alt="<?=$produit['blaze']?>">
+                    <span class="name"><?=$produit['blaze']?></span>
                     <span class="price">
                         <?=$produit['prix'].' euros';?>
                         
@@ -28,12 +37,13 @@ $meilleures_ventes = $sales->bestSales();
                 <?php endforeach?>
             </div>
         </div> 
-
-
-
-
-
-
+        
+    </body>
+        
+        
+        
+        
+        
 
 
 

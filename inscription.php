@@ -2,9 +2,10 @@
 // require('config.php');
 // require('User.php');
 
-$home = new View;
-$home -> headerStyle('Inscription');
+
+
 ?>
+
 
 <!-- <!DOCTYPE html>
 <html>
@@ -15,7 +16,21 @@ $home -> headerStyle('Inscription');
     <link rel="stylesheet" href="style.css" />
 </head> -->
 
+
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <meta charset="utf-8">
+                <title>Inscription</title>
+                <link href="style.css" rel="stylesheet" type="text/css">
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+            </head>
+            
 <body id="bodyform">
+    <?php
+        $home = new View;
+        $home -> headerStyle();
+    ?>
     <main>
         <div class="padding-top2 padding-left4 padding-bottom3">
             <button><a href="index.php">Retour a l'Accueil</a></button>
@@ -23,6 +38,7 @@ $home -> headerStyle('Inscription');
         <div align="center">
             <form method="POST">
                 <?php if (isset($_POST['inscription'])) {
+                    
                     $user = new User();
                     $user->Register(htmlspecialchars($_POST['prenom']),htmlspecialchars($_POST['nom']),htmlspecialchars($_POST['mail']) , htmlspecialchars($_POST['adresse']),htmlspecialchars($_POST['codepostal']),htmlspecialchars($_POST['ville']),htmlspecialchars($_POST['password']), htmlspecialchars($_POST['passwordverify']));
                     $user->alerts();

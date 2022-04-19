@@ -50,7 +50,7 @@ class Products extends Config
     public function catProduits($current_page,$produitsParPage){
 
         // Selection des produits triés par date et en fonction de leur categorie
-        $req = $this->bdd->prepare('SELECT * FROM produits WHERE id_cat = ? ORDER BY date DESC LIMIT ?,?');
+        $req = $this->bdd->prepare('SELECT * FROM produits WHERE id_categorie = ? ORDER BY date DESC LIMIT ?,?');
 
         // On ajoute les variables dans la requete grace à bindvalue
         $req->bindValue(1,$_GET['cat'] , PDO::PARAM_INT);
@@ -67,7 +67,7 @@ class Products extends Config
     public function totalCat(){
 
         // Recuperer le total de produits en fonction de leur categorie
-        $total = $this->bdd->prepare('SELECT * FROM produits WHERE id_cat = :categorie');
+        $total = $this->bdd->prepare('SELECT * FROM produits WHERE id_categorie = :categorie');
         $total->bindValue(':categorie',$_GET['cat'], PDO::PARAM_INT);
         $total->execute();
         return $total->rowCount();

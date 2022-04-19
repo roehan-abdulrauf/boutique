@@ -1,23 +1,24 @@
 <?php
-// session_start();
-// require('config.php');
-// require('User.php');
-$home = new View;
-$home -> headerStyle('Profil');
+
 $user = new User();
 ?>
 
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title> Modification de profil</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8">
+<title>Profil</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
 
+
+
 <body>
-    <!-- <?php include('header.php') ?> -->
+    <?php
+    $home = new View;
+    $home -> headerStyle();
+    ?>
     <main>
         <div align="center" class="formpadding padding-top7">
             <form method="POST">

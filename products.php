@@ -1,11 +1,25 @@
 <?php
 
-$header = new View;
-$header -> headerStyle('Shop');
+
 require_once 'back/back_products.php';
 ?>
 
+<!DOCTYPE html>
+        <html>
+            <head>
+                <meta charset="utf-8">
+                <title>Catégorie</title>
+                <link href="style.css" rel="stylesheet" type="text/css">
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+            </head>
 
+            <body>
+
+                <?php
+
+                $header = new View;
+                $header -> headerStyle();
+                ?>
 <div class="products content-wrapper">
 <h1>Montres</h1>
 <p><?=$total_products?> Products</p>
@@ -13,8 +27,8 @@ require_once 'back/back_products.php';
 <?php foreach ($shop as $produit): ?>  
 <a href="index.php?page=product&id=<?=$produit['id']?>" class="product">
 
-    <img src="<?=$produit['img']?>" width="200" height="200" alt="<?=$produit['nom']?>">
-    <span class="name"><?=$produit['nom']?></span>
+    <img src="<?=$produit['img']?>" width="200" height="200" alt="<?=$produit['blaze']?>">
+    <span class="name"><?=$produit['blaze']?></span>
     <span class="price">
         <?=$produit['prix'].' euros'?>
         
@@ -32,6 +46,8 @@ require_once 'back/back_products.php';
 
 </div>
 </div>
+</body>
+</html>
 
 
 

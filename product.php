@@ -1,17 +1,37 @@
 <?php
 
-$p = new View;
-$p->headerStyle('Produit');
+
 require_once 'back/back_product.php';
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+    <title>Page Administrateur</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style2.css" /> 
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+</head>
+<body>
+    <?php
+        $p = new View;
+        $p->headerStyle();
+    ?>
+</body>
+</html>
 <div class="product content-wrapper">
 
-                    <img src="<?=$produit['img']?>" width="500" height="500" alt="<?=$produit['nom']?>">
+                    <img src="<?=$produit['img']?>" width="500" height="500" alt="<?=$produit['blaze']?>">
 
                         <div>
 
-                            <h1 class="name"><?=$produit['nom']?></h1>
+                            <h1 class="name"><?=$produit['blaze']?></h1>
 
                             <span class="price">
                                 

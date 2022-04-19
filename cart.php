@@ -1,10 +1,23 @@
 <?php
 
-$header = new View;
-$header->headerStyle('Panier');
+
 require_once 'back/back_cart.php'
 ?>
-
+<head>
+    <title>Panier</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style2.css" /> 
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    
+    <?php
+$header = new View;
+$header->headerStyle();
+?>
 <div class="cart content-wrapper">
                 <h1>Shopping Cart</h1>
                 <form action="index.php?page=cart" method="post">
@@ -56,4 +69,5 @@ require_once 'back/back_cart.php'
                 </form>
             </div>
 
+        </body>
 
