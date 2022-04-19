@@ -23,21 +23,26 @@ class Commentaire extends  Config
     public function getCommentaires()
     {
 
-        $check = $this->bdd->prepare("SELECT * FROM `commentaires`,`produits`,`utilisateurs`");
+        $check = $this->bdd->prepare("SELECT * FROM `commentaires` INNER JOIN `utilisateurs` WHERE commentaires.id_utilisateur = utilisateurs.id");
         $check->execute();
         $res = $check->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach ($res as $data) { ?>
+        return $res;
+    }
 
-            <tr>
-                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['nom']; ?></td>
-                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['prenom']; ?></td>
-                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['mail']; ?></td>
-                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['blaze']; ?></td>
-                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['commentaire']; ?></td>
-                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['date']; ?></td>
-            </tr>
-<?php
-        }
+    public function getModifCommentaire()
+    {
+
+        $check = $this->bdd->prepare("SELECT * FROM `commentaires` WHERE id_utilisateur = ?");
+        $check->execute(array($_GET['id']));
+        return $check->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getSuppCommentaire()
+    {
+
+        $req = $this->bdd->prepare("DELETE FROM `commentaires` WHERE id_utilisateur = ?");
+        $req->execute(array($_GET['id']));
+        return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 }

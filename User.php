@@ -44,7 +44,7 @@ class User extends Config
                     $this->_Malert = 'Connexion réussie, vous allez être redirigé.';
                     $this->_Talert = 1;
 
-                    header("Refresh:3;url=historique.php");
+                    header("Refresh:3;url=admin.php");
                 } else {
                     echo "2";
                     $this->_Malert = 'Mot de passe incorrect';
@@ -195,58 +195,46 @@ class User extends Config
         }
     }
 
-    public function AdminUpdate($name, $surname, $mail, $id_droits)
+    public function AdminUpdate($id_droit, $mail)
     {
 
-        if (!empty($name) && !empty($surname) && !empty($mail) && !empty($id_droits)) {
-
-            $req = $this->bdd->query("SELECT * FROM `utilisateurs` WHERE mail = ?");
-            $req->execute(array($mail));
-            $res = $req->fetchAll(PDO::FETCH_ASSOC);
-            var_dump($res);
-
-            if (count($res)) {
-
-                $req = $this->bdd->prepare("UPDATE `utilisateurs` SET `id_droits`= ? WHERE mail = ?");
-                $req->execute(array($id_droits, $mail));
-
-                $this->_Malert = 'Les droits de l\'itulisateur ont bien été modifier.';
-                $this->_Talert = 1;
-            } else {
-                $this->_Malert = 'Erreur: Les informations de l\'itulisateur sont soit invalident soit inexistent.';
-                $this->_Talert = 2;
-            }
-        }
-    }
-
-    public function disconnect()
-    {
-        session_start();
-        $_SESSION = array();
-        session_destroy();
-        header("Location:../index.php");
+        $req = $this->bdd->prepare("UPDATE `utilisateurs` SET `id_droit`= ? WHERE mail = ?");
+        $req->execute(array($id_droit, $mail));
     }
     /*
-        GET LES INFOS
+    GET LES INFOS
     */
+
+    public function getAllInfosAdmin()
+    {
+        $req = $this->bdd->prepare("SELECT * FROM `utilisateurs` WHERE id = ?");
+        $req->execute(array($_GET['id']));
+        $res = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $res;
+    }
 
     public function getAllInfos()
     {
-        $check = $this->bdd->prepare("SELECT * FROM`utilisateurs`,`commentaires`");
+        $check = $this->bdd->prepare("SELECT * FROM`utilisateurs`");
         $check->execute();
         $res = $check->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach ($res as $data) { ?>
+        return $res;
+    }
 
-            <tr>
-                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['nom']; ?></td>
-                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['prenom']; ?></td>
-                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['mail']; ?></td>
-                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['id_droits']; ?></td>
-                <td value=" <?php echo $data['id']; ?>"> <?php echo $data['commentaire']; ?></td>
-            </tr>
-<?php
-        }
+    public function getUser()
+    {
+        $check = $this->bdd->prepare("SELECT * FROM `utilisateurs` WHERE id = ?");
+        $check->execute(array($_GET['id']));
+        return $check->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getSuppUser()
+    {
+
+        $req = $this->bdd->prepare("DELETE FROM `utilisateurs` WHERE id =$_GET[id]");
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getId()
@@ -258,16 +246,16 @@ class User extends Config
 
     public function getNom()
     {
-        $mail = $this->_nom;
+        $nom = $this->_nom;
 
-        return $mail;
+        return $nom;
     }
 
     public function getPrenom()
     {
-        $password = $this->_prenom;
+        $prenom = $this->_prenom;
 
-        return $password;
+        return $prenom;
     }
 
     public function getMail()
@@ -286,30 +274,28 @@ class User extends Config
 
     public function getAdresse()
     {
-        $mail = $this->_adresse;
+        $adresse = $this->_adresse;
 
-        return $mail;
+        return $adresse;
     }
 
     public function getCodepostal()
     {
-        $mail = $this->_codepostal;
+        $codepostal = $this->_codepostal;
 
-        return $mail;
+        return $codepostal;
     }
 
     public function getVille()
     {
-        $password = $this->_ville;
+        $ville = $this->_ville;
 
-        return $password;
+        return $ville;
     }
-    public function GetOrderHistoryById()
+
+    public function disconnect()
     {
-        $id = $_SESSION['id'];
-        $req = $this->bdd->prepare("SELECT * FROM `commandes` WHERE id=?");
-        $req->execute(array($id));
-        $req = $req->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($req);
+        $_SESSION = array();
+        session_destroy();
     }
 }

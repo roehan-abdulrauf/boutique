@@ -15,7 +15,8 @@ class Categorie extends Config
     public function getCategories()
     {
 
-        $check = $this->bdd->query("SELECT * FROM `categories`");
+        $check = $this->bdd->prepare("SELECT * FROM `categories`");
+        $check->execute();
         $res = $check->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($res as $data) { ?>

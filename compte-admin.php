@@ -1,7 +1,6 @@
 <?php
-require_once 'Config.php';
-require('User.php');
-$user = new User();
+session_start();
+require_once 'back_compte-admin.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,28 +8,38 @@ $user = new User();
 <head>
     <title>Page Creer Categories</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="#.css" />
+    <link rel="stylesheet" href="style2.css" />
 </head>
 
 <body>
+    <div class="h1-titre-admin">
+        <h1>Comptes</h1>
+    </div>
     <?php
-    // require_once 'header.php';
     require_once 'admin.php' ?>
     <section>
-        <table align="center">
+        <table>
             <thead>
                 <tr>
-                     <th scope="col">Nom</td>
-                     <th scope="col">Prenom</td>
-                     <th scope="col">Mail</td>
-                     <th scope="col">Rôle</td>
-                     <th scope="col">Commentaire</td>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prenom</th>
+                    <th scope="col">Mail</th>
+                    <th scope="col">Rôle</th>
+                    <th scope="col">Modifier Rôle</th>
+                    <th scope="col">Supprimer</th>
                 </tr>
             </thead>
             <tbody>
-                <?php
-                $user->getAllInfos();
-                ?>
+            <?php foreach ($infouser as $c) { ?>
+                    <tr>
+                        <td value=" <?php echo $c['id']; ?>"><?= $c['nom'] ?></td>
+                        <td value=" <?php echo $c['id']; ?>"><?= $c['prenom'] ?></td>
+                        <td value=" <?php echo $c['id']; ?>"><?= $c['mail'] ?></td>
+                        <td value=" <?php echo $c['id']; ?>"><?= $c['id_droit'] ?></td>
+                        <td><a href="modifier_droit-admin?action=modifier&id=<?php echo $c['id'] ?>">modifier</a></td>
+                        <td><a href="?action=suppression&id=<?php echo $c['id'] ?>">supprimer</a></td> -->
+                    </tr>
+                <?php }; ?>
             </tbody>
         </table>
     </section>

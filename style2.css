@@ -123,12 +123,13 @@ background-color: #2a333a;
   width: 100%;
   display: flex;
   align-items: center;
+   background-color: #36444e;
 }
 
 .sidebar .logo-details i {
   font-size: 30px;
   color: #fff;
-  background-color: red;
+  /* background-color: #0a0a0a; */
   height: 50px;
   min-width: 78px;
   text-align: center;
@@ -139,6 +140,10 @@ background-color: #2a333a;
   font-size: 22px;
   color: #fff;
   font-weight: 600;
+}
+
+.sidebar .logo-details .logo_name:hover {
+ border-bottom: 2px solid #098cf8;
 }
 
 .sidebar .nav-links {
@@ -169,7 +174,7 @@ background-color: #2a333a;
   text-align: center;
   line-height: 50px;
   color: #fff;
-  font-size: 20px;
+  font-size: 25px;
   transition: all 0.3s ease;
 }
 
@@ -178,6 +183,13 @@ background-color: #2a333a;
   align-items: center;
   text-decoration: none;
 }
+
+.sidebar a{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
 
 .sidebar .nav-links li a .link_name {
   font-size: 18px;
@@ -249,7 +261,7 @@ background-color: #2a333a;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #36444e;
+  /* background: #36444e; */
   margin: 0 14px 15px 0px;
   padding: 6px 0;
 }
@@ -270,14 +282,24 @@ background-color: #2a333a;
 
 .sidebar .profile-details .profile_name {
   color: #fff;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 500;
+}
+
+.sidebar .profile-details button{
+  border: none;
+  background: none;
 }
 
 .home-section .home-content {
   height: 60px;
   display: flex;
   align-items: center;
+}
+
+.sidebar .profile-details button i:hover{
+  cursor: pointer;
+color: #098cf8;
 }
 
 /* /// CSS form page admin /// */
@@ -291,19 +313,32 @@ background-color: #2a333a;
 .form-admin{
   display: flex;
   justify-content: center;
+  font-size: 170%;
 }
  
-.form-admin form div input[type=text], input[type=number], select {
+.form-admin form div input[type=text], input[type=textarea], input[type=number], input[type=file], select {
   border-style: solid black;
     border-width: 1px;
     border-radius: 5px;
-    height: 30px;
+    width: 300%;
+    height: 40px;
     text-align: center;
+    margin-top: 2%;
+}
+
+.form-admin form div input[type=textarea]{
+  border-style: solid black;
+  border-width: 1px;
+  border-radius: 5px;
+  width: 300%;
+  height: 40px;
+  margin-top: 2%;
 }
 
 .form-admin form div label{
   padding: 12px 12px 12px 0;
   display: block;
+  font-size: 60%;
 }
 
 .form-admin form .form-admin-butt {
@@ -319,6 +354,8 @@ background-color: #2a333a;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  position: relative;
+  left: 100%;
 }
 
 .form-admin form div button[type=submit]:hover {

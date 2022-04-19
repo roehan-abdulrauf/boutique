@@ -1,7 +1,8 @@
 <?php
 session_start();
-require('config.php');
-require('User.php');
+require_once('config.php');
+require_once('User.php');
+require_once('Produit.php');
 
 ?>
 <!DOCTYPE html>
