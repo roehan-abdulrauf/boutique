@@ -31,8 +31,9 @@
                     $_SESSION['adresse'] = $user->getAdresse();
                     $_SESSION['code_postal'] = $user->getCodepostal();
                     $_SESSION['ville'] = $user->getVille();
+                    $_SESSION['id_droit'] = $user->getDroits();
                     $user->alerts();
-                    var_dump( $_SESSION['id']);
+                    var_dump( $_SESSION['id_droit']);
                 }
                 ?>
 

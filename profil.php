@@ -20,50 +20,53 @@ $user = new User();
     $home -> headerStyle();
     ?>
     <main>
-        <div align="center" class="formpadding padding-top7">
+    <div align="center" class="formpadding padding-top7">
             <form method="POST">
                 <?php
                 if (isset($_POST['modifier'])) {
-                    $user->Update(htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['prenom']), htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['adresse']), htmlspecialchars($_POST['codepostal']), htmlspecialchars($_POST['ville']), htmlspecialchars($_POST['password']), htmlspecialchars($_POST['passwordverify']));
-                    $user->alerts();
+                    $user->Update(htmlspecialchars($_POST['mail']),htmlspecialchars($_POST['prenom']), htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['adresse']), htmlspecialchars($_POST['codepostal']), htmlspecialchars($_POST['ville']), htmlspecialchars($_POST['password']), htmlspecialchars($_POST['passwordverify']));
+                
                 }
+                $id = $user->getId();
                 ?>
                 <table class="form">
-                    <tr>
+                <tr>
                         <td>
                             <h1 class="h_1">Je modifie mes informations</h1>
                             <label>Mail*</label>
-                            <input type="email" name="mail" placeholder="Entrer votre nouveau mail" value="<?= $_SESSION['mail'] ?>" required>
+                            <input type="text" name="mail" placeholder="Entrer votre nouveau mail" value="<?= $id; ?>"required>
+                            
+                            
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>Prénom*</label>
-                            <input type="text" name="prenom" placeholder="Entrer votre nouveau prénom" value="<?= $_SESSION['prenom'] ?>" required>
+                            <input type="text" name="prenom" placeholder="Entrer votre nouveau prénom" required>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>Nom*</label>
-                            <input type="text" name="nom" placeholder="Entrer votre nouveau nom" value="<?= $_SESSION['nom'] ?>" required>
+                            <input type="text" name="nom" placeholder="Entrer votre nouveau nom" required>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>Adresse*</label>
-                            <input type="text" name="adresse" placeholder="Entrer votre nouvelle adresse" value="<?= $_SESSION['adresse'] ?>" required>
+                            <input type="text" name="adresse" placeholder="Entrer votre nouvelle adresse" required>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>Code Postal*</label>
-                            <input type="number" minlength="5" maxlength="5" name="codepostal" placeholder="Entrer votre nouveau code postal" value="<?= $_SESSION['code_postal'] ?>" required>
+                            <input type="number" minlength="5" maxlength="5" name="codepostal" placeholder="Entrer votre nouveau code postal" required>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>Ville*</label>
-                            <input type="text" name="ville" placeholder="Entrer votre nouvelle ville" value="<?= $_SESSION['ville'] ?>" required>
+                            <input type="text" name="ville" placeholder="Entrer votre nouvelle ville" required>
                         </td>
                     </tr>
                     <tr>
