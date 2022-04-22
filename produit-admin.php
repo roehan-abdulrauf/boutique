@@ -21,32 +21,32 @@ require_once './back/back_produit-admin.php';
     <div class="h1-titre-admin">
         <button type="submit"><a href="index.php?page=creer_produit-admin">Ajouter</a></button>
     </div>
-        <table>
+    <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Prix</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Quantité</th>
-                    <th scope="col">Catégorie</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">modifier</th>
-                    <th scope="col">Supprimer</th>
+                    <th class="th" scope="col">Nom</th>
+                    <th class="th" scope="col">Description</th>
+                    <th class="th" scope="col">Prix</th>
+                    <th class="th" scope="col">Image</th>
+                    <th class="th" scope="col">Quantité</th>
+                    <th class="th" scope="col">Catégorie</th>
+                    <th class="th" scope="col">Date</th>
+                    <th class="th" scope="col">modifier</th>
+                    <th class="th" scope="col">Supprimer</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($getproduits as $p) { ?>
                     <tr>
-                        <td value=" <?php echo $p['id']; ?>"><?= $p['blaze'] ?></td>
-                        <td value=" <?php echo $p['id']; ?>"><?= $p['description'] ?></td>
-                        <td value=" <?php echo $p['id']; ?>"><?= $p['prix'] ?></td>
-                        <td value=" <?php echo $p['id']; ?>"><img src="<?= $p['img'] ?>" alt=""></td>
-                        <td value=" <?php echo $p['id']; ?>"><?= $p['quantite'] ?></td>
-                        <td value=" <?php echo $p['id']; ?>"><?= $p['id_categorie'] ?></td>
-                        <td value=" <?php echo $p['id']; ?>"><?= $p['date'] ?></td>
-                        <td><a href="index.php?page=modifier_produit-admin&action=modifier&id=<?php echo $p['id'] ?>">modifier</a></td>
-                        <td><a href="index.php?page=modifier_produit-admin&action=suppression&id=<?php echo $p['id'] ?>">supprimer</a></td> -->
+                        <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['blaze'] ?></td>
+                        <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['description'] ?></td>
+                        <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['prix'] ?></td>
+                        <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['img'] ?></td>
+                        <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['quantite'] ?></td>
+                        <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['id_categorie'] ?></td>
+                        <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['date'] ?></td>
+                        <td class="td"><a href="index.php?page=modifier_produit-admin&action=modifier&id=<?php echo $p['id'] ?>">modifier</a></td>
+                        <td class="td"><a href="?action=suppression&id=<?php echo $p['id'] ?>">supprimer</a></td> -->
                     </tr>
                 <?php }; ?>
             </tbody>

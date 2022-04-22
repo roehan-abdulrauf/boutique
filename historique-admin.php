@@ -1,12 +1,15 @@
 <?php
 
 require_once './back/back_historique-admin.php';
+
 ?>
 <!DOCTYPE html>
 <html>
+<header>
 
+</header>
 <head>
-    <title>Page Creer Categories</title>
+    <title>Historique de commande</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style2.css" />
 </head>
@@ -18,28 +21,28 @@ require_once './back/back_historique-admin.php';
     <?php
     require_once 'admin.php' ?>
     <section>
-        <table>
+    <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Id_produit</th>
-                    <th scope="col">Id_utilisateur</th>
-                    <th scope="col">Montant</th>
-                    <th scope="col">Etat</th>
-                    <th scope="col">Adresse livraison</th>
-                    <th scope="col">Adresse facturation</th>
-                    <th scope="col">Date</th>
+                    <th class="th" scope="col">Id_produit</th>
+                    <th class="th" scope="col">Id_utilisateur</th>
+                    <th class="th" scope="col">Montant</th>
+                    <th class="th" scope="col">Etat</th>
+                    <th class="th" scope="col">Adresse livraison</th>
+                    <th class="th" scope="col">Adresse facturation</th>
+                    <th class="th" scope="col">Date</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($getOrderHistory as $h) { ?>
                     <tr>
-                        <td value=" <?php echo $h['id']; ?>"><?= $h['id_produit'] ?></td>
-                        <td value=" <?php echo $h['id']; ?>"><?= $h['id_utilisateur'] ?></td>
-                        <td value=" <?php echo $h['id']; ?>"><?= $h['montant'] ?></td>
-                        <td value=" <?php echo $h['id']; ?>"><?= $h['etat'] ?></td>
-                        <td value=" <?php echo $h['id']; ?>"><?= $h['adresse_livraison'] ?></td>
-                        <td value=" <?php echo $h['id']; ?>"><?= $h['adresse_facturation'] ?></td>
-                        <td value=" <?php echo $h['id']; ?>"><?= $h['date'] ?></td>
+                        <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['id_produit'] ?></td>
+                        <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['id_utilisateur'] ?></td>
+                        <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['montant'] ?></td>
+                        <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['etat'] ?></td>
+                        <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['adresse_livraison'] ?></td>
+                        <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['adresse_facturation'] ?></td>
+                        <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['date'] ?></td>
                     </tr>
                 <?php }; ?>
             </tbody>

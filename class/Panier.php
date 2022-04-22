@@ -25,8 +25,8 @@ class Panier extends Config
 
     public function payment(){
         
-        unset($_SESSION['panier']);
-        header('Location: index.php?page=placeorder');
+        // unset($_SESSION['panier']);
+        header('Location: index.php?page=validation_de_commande');
         exit;
     }
 
