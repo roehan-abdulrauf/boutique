@@ -20,9 +20,9 @@ class Carte extends Config
     {
 
         if (!empty($numero_carte) && !empty($nom_carte) && !empty($mois_carte) && !empty($annee_carte) && !empty($cvv)) {
-
+            echo 1;
             if ($enregistrer_carte) {
-
+                echo 2;
                 $enregistrer_carte = "oui";
 
                 $numero_carte = crypt($numero_carte, 'carte_bancaire');
@@ -39,18 +39,23 @@ class Carte extends Config
                 // $req = $dbh->prepare("INSERT INTO `contacts`(`nom-prenom`, `email`,`numero`, `sujet`,`message`) VALUE ('$nom','$email','$numero','$sujet','$message')");
                 // $req->execute();
             } else {
-
+                echo 3;
                 $enregistrer_carte = "non";
 
                 $numero_carte = crypt($numero_carte, 'carte_bancaire');
 
-                $req = $this->bdd->prepare("INSERT INTO cartes_bancaires (numero_carte, nom_carte, enregistrer_carte) VALUES ('$numero_carte','$nom_carte','$enregistrer_carte')");
-                $req->execute();
+                $req = $this->bdd->prepare("INSERT INTO cartes_bancaires (numero_carte, nom_carte, enregistrer_carte) VALUES (':numero_carte',':nom_carte',':enregistrer_carte')");
+                $req->execute(array(
+                    ':numero_carte' => $numero_carte,
+                    ':nom_carte' => $nom_carte,
+                    ':enregistrer_carte' => $enregistrer_carte,
+                ));
                 var_dump($req);
                 var_dump($req->execute());
             }
 
         } else {
+            echo 4;
             $this->_Malert = 'Vous devez remplir correctement tous les champs.';
             $this->_Talert = 2;
         }

@@ -36,7 +36,7 @@ require_once './back/back_compte-admin.php';
                         <td class="td" value=" <?php echo $c['id']; ?>"><?= $c['prenom'] ?></td>
                         <td class="td" value=" <?php echo $c['id']; ?>"><?= $c['mail'] ?></td>
                         <td class="td" value=" <?php echo $c['id']; ?>"><?= $c['id_droit'] ?></td>
-                        <td class="td"><a href="modifier_droit-admin?action=modifier&id=<?php echo $c['id'] ?>">modifier</a></td>
+                        <td class="td"><a href="index.php?page=modifier_droit-admin&action=modifier&id=<?php echo $c['id'] ?>">modifier</a></td>
                         <td class="td"><a href="?action=suppression&id=<?php echo $c['id'] ?>">supprimer</a></td> -->
                     </tr>
                 <?php }; ?>

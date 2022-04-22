@@ -1,5 +1,5 @@
 <?php
-
+require_once 'Config.php';
 class Produit extends  Config
 {
     public $_id;

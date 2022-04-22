@@ -1,15 +1,15 @@
 <?php
-session_start();
+// session_start();
 
-require_once('Config.php');
-require('Adresse.php');
+require_once('class/Config.php');
+require('class/Adresse.php');
 $adresse = new Adresse();
-require('Carte.php');
+require('class/Carte.php');
 $carte = new Carte();
 
 if (isset($_POST['btncommande'])) {
-    $adresse->AdresseFacturation(htmlspecialchars($_POST['nom_prenom']), htmlspecialchars($_POST['numero']), htmlspecialchars($_POST['adresse']), htmlspecialchars($_POST['complement_adresse']), htmlspecialchars($_POST['code_postale']), htmlspecialchars($_POST['ville']));
-    $adresse->AdresseLivraison(htmlspecialchars($_POST['nom_prenom_livr']), htmlspecialchars($_POST['numero_livr']), htmlspecialchars($_POST['adresse_livr']), htmlspecialchars($_POST['complement_adresse_livr']), htmlspecialchars($_POST['code_postale_livr']), htmlspecialchars($_POST['ville_livr']));
+    $adresse->AdresseFacturation(htmlspecialchars($_POST['nom_prenom']), htmlspecialchars($_POST['numero']), htmlspecialchars($_POST['adresse']), htmlspecialchars($_POST['complement_adresse']), htmlspecialchars($_POST['code_postal']), htmlspecialchars($_POST['ville']));
+    $adresse->AdresseLivraison(htmlspecialchars($_POST['nom_prenom_livr']), htmlspecialchars($_POST['numero_livr']), htmlspecialchars($_POST['adresse_livr']), htmlspecialchars($_POST['complement_adresse_livr']), htmlspecialchars($_POST['code_postal_livr']), htmlspecialchars($_POST['ville_livr']));
     $carte->RegisterCarte(htmlspecialchars($_POST['numero_carte']), htmlspecialchars($_POST['nom_carte']), htmlspecialchars($_POST['mois_carte']), htmlspecialchars($_POST['annee_carte']), htmlspecialchars($_POST['cvv']), htmlspecialchars($_POST['enregistrer_carte']));
     $adresse->alerts();
 }
@@ -21,10 +21,7 @@ if (isset($_POST['btncommande'])) {
 <head>
     <title>Votre adresse</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
+    <link rel="stylesheet" href="style2.css" />
     <script src="js/dupliquer_adresse_facturation.js"></script>
     <script src="js/show_hide-CVV.js"></script>
 </head>
@@ -33,63 +30,94 @@ if (isset($_POST['btncommande'])) {
     <div align="center">
         <form method="POST">
             <div class="container rounded bg-white mt-5 mb-5">
+                <h1 class="h1form text-left border-bottom">Adresse</h1>
                 <div class="row">
-                    <div class="col-md-5 border-right">
-                        <div class="p-3 py-5">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="text-right">Adresse de facturation</h4>
+                    <div class="border-right">
+                        <div class="padd-3">
+                            <h4 class="h4form text-left padd-4">Adresse de facturation</h4>
+                            <div>
+                                <label class="label titrelabel">Nom complet</label>
+                                <input type="text" class="inputtext" id="nom_prenom" name="nom_prenom" placeholder="Entrez votre nom et prénom" required>
                             </div>
-
-                            <div class="row mt-3">
-                                <div class="col-md-12"><label class="labels">Nom complet</label><input type="text" class="form-control" id="nom_prenom" name="nom_prenom" placeholder="Entrez votre nom et prénom" required></div>
-                                <div class="col-md-12"><label class="labels">Numero</label><input type="number" minlength="5" maxlength="5" class="form-control" id="numero" name="numero" placeholder="Entrez votre numero de téléphone" required></div>
-                                <div class="col-md-12"><label class="labels">Adresse</label><input type="text" class="form-control" id="adresse" name="adresse" placeholder="Entrez votre adresse" required></div>
-                                <div class="col-md-12"><label class="labels">Complement d'adresse (facultatif)</label><input type="text" class="form-control" id="complement_adresse" name="complement_adresse" placeholder="Entrez votre Apt, suite, etage, nom de l'entreprise" required></div>
+                            <div>
+                                <label class="label titrelabel">Numero</label>
+                                <input type="number" class="inputnum" id="numero" name="numero" minlength="12" maxlength="12" placeholder="Entrez votre numero de téléphone" required>
                             </div>
-                            <div class="row mt-3">
-                                <div class="col-md-6"><label class="labels">Ville</label><input type="text" class="form-control" id="ville" name="ville" placeholder="Entrez votre ville" required></div>
-                                <div class="col-md-6"><label class="labels">Code postal</label><input type="number" class="form-control" id="code_postal" name="code_postal" placeholder="Entrez votre code postal" required></div>
+                            <div>
+                                <label class="label titrelabel">Adresse</label>
+                                <input type="text" class="inputtext" id="adresse" name="adresse" placeholder="Entrez votre adresse" required>
                             </div>
-                            <div class="row mt-3">
-                                <div class="col-md-12"><input type="checkbox" id="adresse_factXlivr" name="adresse_factXlivr" onclick="afficher()"><label class="labels">Utiliser comme adresse de livraison</label></div>
+                            <div>
+                                <label class="label titrelabel">Complement d'adresse (facultatif)</label>
+                                <input type="text" class="inputtext" id="complement_adresse" name="complement_adresse" placeholder="Entrez votre Apt, suite, etage, nom de l'entreprise" required>
+                            </div>
+                            <div class="row">
+                                <div><label class="label titrelabel">Ville</label>
+                                    <input type="text" class="inputtext1" id="ville" name="ville" placeholder="Entrez votre ville" required>
+                                </div>
+                                <div><label class="label titrelabel">Code postal</label>
+                                    <input type="number" class="inputnum1" id="code_postal" name="code_postal" minlength="5" maxlength="5" placeholder="Entrez votre code postal" required>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="adresse_factXlivr" name="adresse_factXlivr" onclick="afficher()"><label class="label">Utiliser comme adresse de livraison</label>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-5 border-right">
-                        <div class="p-3 py-5">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="text-right">Adresse de livraison</h4>
+                    <div>
+                        <div class="padd-3">
+                            <h4 class="h4form text-left padd-4">Adresse de livraison</h4>
+                            <div>
+                                <label class="label titrelabel">Nom complet</label>
+                                <input type="text" class="inputtext" id="nom_prenom_livr" name="nom_prenom_livr" placeholder="Entrez votre nom et prénom" required>
                             </div>
-
-                            <div class="row mt-3">
-                                <div class="col-md-12"><label class="labels">Nom complet</label><input type="text" class="form-control" id="nom_prenom_livr" name="nom_prenom_livr" placeholder="Entrez votre nom et prénom" required></div>
-                                <div class="col-md-12"><label class="labels">Numero</label><input type="number" minlength="5" maxlength="5" class="form-control" id="numero_livr" name="numero_livr" placeholder="Entrez votre numero de téléphone" required></div>
-                                <div class="col-md-12"><label class="labels">Adresse</label><input type="text" class="form-control" id="adresse_livr" name="adresse_livr" placeholder="Entrez votre adresse" required></div>
-                                <div class="col-md-12"><label class="labels">Complement d'adresse (facultatif)</label><input type="text" class="form-control" id="complement_adresse_livr" name="complement_adresse_livr" placeholder="Entrez votre Apt, suite, etage, nom de l'entreprise" required></div>
+                            <div>
+                                <label class="label titrelabel">Numero</label>
+                                <input type="number" class="inputnum" id="numero_livr" name="numero_livr" minlength="12" maxlength="12" placeholder="Entrez votre numero de téléphone" required>
                             </div>
-                            <div class="row mt-3">
-                                <div class="col-md-6"><label class="labels">Ville</label><input type="text" class="form-control" id="ville_livr" name="ville_livr" placeholder="Entrez votre ville" required></div>
-                                <div class="col-md-6"><label class="labels">Code postal</label><input type="number" class="form-control" id="code_postal_livr" name="code_postal_livr" placeholder="Entrez votre code postal" required></div>
+                            <div>
+                                <label class="label titrelabel">Adresse</label>
+                                <input type="text" class="inputtext" id="adresse_livr" name="adresse_livr" placeholder="Entrez votre adresse" required>
+                            </div>
+                            <div>
+                                <label class="label titrelabel">Complement d'adresse (facultatif)</label>
+                                <input type="text" class="inputtext" id="complement_adresse_livr" name="complement_adresse_livr" placeholder="Entrez votre Apt, suite, etage, nom de l'entreprise" required>
+                            </div>
+                            <div class="row">
+                                <div>
+                                    <label class="label titrelabel">Ville</label>
+                                    <input type="text" class="inputtext1" id="ville_livr" name="ville_livr" placeholder="Entrez votre ville" required>
+                                </div>
+                                <div>
+                                    <label class="label titrelabel">Code postal</label>
+                                    <input type="number" class="inputnum1" id="code_postal_livr" name="code_postal_livr" minlength="5" maxlength="5" placeholder="Entrez votre code postal" required>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container rounded bg-white mt-5 mb-5">
+                <h1 class="h1form text-left border-bottom">Moyen de Paiement</h1>
                 <div class="row">
-                    <div class="col-md-5 border-right">
-                        <div class="p-3 py-5">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="text-right">Ajouter votre carte</h4>
+                    <div class="border-right">
+                        <div class="padd-3">
+                            <h4 class="text-left padd-4">Ajouter votre carte</h4>
+
+                            <div>
+                                <label class="label titrelabel text-left">Numéro de la carte</label>
+                                <input type="number" class="inputnum" id="numero_carte" name="numero_carte" minlength="16" maxlength="16" placeholder="Entrez votre nom et prénom" required>
+                            </div>
+                            <div>
+                                <label class="label titrelabel">Nom sur la carte</label>
+                                <input type="text" class="inputtext" class="form-control" id="nom_carte" name="nom_carte" placeholder="Entrez votre numero de téléphone" required>
                             </div>
 
-                            <div class="row mt-3">
-                                <div class="col-md-12"><label class="labels">Numéro de la carte</label><input type="number" class="form-control" id="numero_carte" name="numero_carte" placeholder="Entrez votre nom et prénom" required></div>
-                                <div class="col-md-12"><label class="labels">Nom sur la carte</label><input type="text" minlength="5" maxlength="5" class="form-control" id="nom_carte" name="nom_carte" placeholder="Entrez votre numero de téléphone" required></div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-6"><label class="labels">Date d'expiration</label>
-                                    <select type="number" id="mois_carte" name="mois_carte" required>
+
+                            <div>
+                                <label class="label titrelabel">Date d'expiration</label>
+                                <div class="row">
+                                    <select type="number" class="select" id="mois_carte" name="mois_carte" required>
                                         <option> 01 Janvier</option>
                                         <option> 02 Février</option>
                                         <option> 03 Mars</option>
@@ -103,7 +131,7 @@ if (isset($_POST['btncommande'])) {
                                         <option> 11 Novembre</option>
                                         <option> 12 Décembre</option>
                                     </select>
-                                    <select type="number" id="annee_carte" name="annee_carte" required>
+                                    <select type="number" class="select" id="annee_carte" name="annee_carte" required>
                                         <?php
 
                                         // cette fonction me permet de pré_remplir le mois et l'annee d'expiration
@@ -121,23 +149,39 @@ if (isset($_POST['btncommande'])) {
                                     </select>
                                 </div>
                             </div>
-                            <div class="row mt-3">
-                                <div class="col-md-6"><label class="labels">Code de sécurité (CVV)</label><input type="number" class="form-control" minlength="5" maxlength="5" class="form-control" id="cvv" name="cvv" placeholder="Code CVV" required></div>
-                                <div class="col-md-6"> <img class="imgeye" src="images/red_eye.png" id="eye" onclick="changer ()" /> </div>
+
+                            <div>
+                                <div>
+                                    <label class="label titrelabel">Code de sécurité (CVV)</label>
+                                    <input type="number" class="inputnum" minlength="3" maxlength="3" class="form-control" id="cvv" name="cvv" placeholder="Code CVV" required>
+                                </div>
+                                <div>
+                                    <img class="imgeye" src="images/red_eye.png" id="eye" onclick="changer ()" />
+                                </div>
+                                <div> <input type="checkbox" id="enregistrer_carte" name="enregistrer_carte">
+                                    <label for="enregistrer_carte">Enregistrer mes informations</label>
+                                </div>
                             </div>
+                            <button class="Buttonpaypal" id="paypal" onclick="checkvalue()">Payer via paypal</button>
+                            <p class="Ppaypal">Vous allez être redirigé vers notre page paypal pour finaliser votre paiement</p>
                         </div>
                     </div>
+                    <div class="padd-3">
+                        <h4>Cart
+                            <span class="price" style="color:black">
+                                <i class="fa fa-shopping-cart"></i>
+                                <b>4</b>
+                            </span>
+                        </h4>
+                        <p>Livraison Gratuite</p>
+                        <hr>
+                        <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+                    </div>
                 </div>
+                <span class="error" id="errorname"></span></p>
+                <button class="Buttoncommande" name="btncommande">Passer ma commande</button>
             </div>
-            <span class="error" id="errorname"></span></p>
-            <div>
-                <button id="paypal" onclick="checkvalue()">Payer via paypal</button>
-            </div>
-
-            <button name="btncommande">Passer ma commande</button>
-            <?php
-            // }else{}
-            ?>
+            <input type="checkbox" class="checkbox-round" />
         </form>
-    </div>
-</body>
+
+</body><

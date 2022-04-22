@@ -15,7 +15,7 @@ require_once './back/back_modifier_droit-admin.php';
         <h1>Modifier le role de l'utilisateur</h1>
     </div>
     <?php
-    // require_once 'admin.php' ?>
+    require_once 'admin.php' ?>
     <div class="form-admin">
         <form method="POST">
         <div class="input">
