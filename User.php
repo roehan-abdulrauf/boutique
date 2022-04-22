@@ -44,6 +44,7 @@ class User extends Config
                     $this->_adresse = $res[0]['adresse'];
                     $this->_codepostal = $res[0]['code_postal'];
                     $this->_ville = $res[0]['ville'];
+                    $this->_droits = $res[0]['id_droit'];
 
                     $this->_Malert = 'Connexion réussie, vous allez être redirigé.';
                     $this->_Talert = 1;
