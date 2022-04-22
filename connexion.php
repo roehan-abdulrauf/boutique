@@ -2,22 +2,24 @@
 // session_start();
 // require('config.php');
 // require('User.php');
-$home = new View;
-$home -> headerStyle('Connexion');
-?>
-<!-- <!DOCTYPE html>
-<html>
 
+?>
+<!DOCTYPE html>
+<html>
 <head>
-    <title> Page de connexion</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="Style.css" /> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<title> Page de connexion</title>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
 
-<body> -->
-<main>
-        <div align="center">
+<body>
+    <?php 
+        $home = new View;
+        $home -> headerStyle('connexion');
+    ?>
+    <main>
+    <div align="center">
             <form class="forms" method="POST">
                 <?php if (isset($_POST['connexion'])) {
                     $user = new User();
@@ -29,9 +31,12 @@ $home -> headerStyle('Connexion');
                     $_SESSION['adresse'] = $user->getAdresse();
                     $_SESSION['code_postal'] = $user->getCodepostal();
                     $_SESSION['ville'] = $user->getVille();
+                    $_SESSION['id_droit'] = $user->getDroits();
                     $user->alerts();
-                    var_dump( $_SESSION['id']);
+                    var_dump( $_SESSION['id_droit']);
+                    var_dump( $_SESSION['mail']);
                 }
+                
                 ?>
 
                             <h1 class="titres">Bonjour</h1>
@@ -55,9 +60,9 @@ $home -> headerStyle('Connexion');
     </main>
         <hr>
         <div align="center">
-        <form class="forms" action="inscription.php">
+        <form class="forms" method="post" action="./back/back_connexion.php">
         <h1 class="titres">Je suis nouveau ici</h1>
-        <button type="submit" class="btn2" name="page d'inscription">S'inscrire</button>
+        <button type="submit" class="btn2" name="pageInscription">S'inscrire</button>
         </form>
         </div>
         <div align="center">
@@ -73,6 +78,6 @@ $home -> headerStyle('Connexion');
         </div>
         </div>
         </div>
-<!-- </body> -->
+</body>
 
 </html>
