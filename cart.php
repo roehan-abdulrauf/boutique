@@ -18,11 +18,13 @@ require_once 'back/back_cart.php'
 $header = new View;
 $header->headerStyle();
 ?>
-<div class="cart content-wrapper">
-                <h1>Shopping Cart</h1>
-                <form action="index.php?page=cart" method="post">
-                    <table>
-                        <thead>
+<main>
+
+    <div class="cart content-wrapper">
+        <h1>Shopping Cart</h1>
+        <form action="index.php?page=cart" method="post">
+            <table>
+                <thead>
                             <tr>
                                 <td colspan="2">Product</td>
                                 <td>Price</td>
@@ -69,5 +71,10 @@ $header->headerStyle();
                 </form>
             </div>
 
-        </body>
+    </main>
+
+    <?php
+        $header->footerStyle();
+    ?>
+    </body>
 

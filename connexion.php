@@ -11,6 +11,7 @@
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="style.css"/>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -22,6 +23,7 @@
     <div align="center">
             <form class="forms" method="POST">
                 <?php if (isset($_POST['connexion'])) {
+
                     $user = new User();
                     $user->Connect(htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['password']));
                     $_SESSION['id'] = $user->getId();
@@ -33,7 +35,7 @@
                     $_SESSION['ville'] = $user->getVille();
                     $_SESSION['id_droit'] = $user->getDroits();
                     $user->alerts();
-                    var_dump( $_SESSION['id_droit']);
+                    
                 }
                 ?>
 
@@ -56,7 +58,10 @@
             </form>
         </div>
     </main>
-        <hr>
+    <?php
+    $home->footerStyle();
+    ?>
+        <!-- <hr>
         <div align="center">
         <form class="forms" method="post" action="./back/back_connexion.php">
         <h1 class="titres">Je suis nouveau ici</h1>
@@ -75,7 +80,7 @@
         Mentions légales
         </div>
         </div>
-        </div>
-<!-- </body> -->
+        </div> -->
+</body>
 
 </html>

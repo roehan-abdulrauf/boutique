@@ -46,7 +46,7 @@ require_once './back/back_produit-admin.php';
                         <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['id_categorie'] ?></td>
                         <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['date'] ?></td>
                         <td class="td"><a href="index.php?page=modifier_produit-admin&action=modifier&id=<?php echo $p['id'] ?>">modifier</a></td>
-                        <td class="td"><a href="?action=suppression&id=<?php echo $p['id'] ?>">supprimer</a></td> -->
+                        <td class="td"><a href="index.php?page=produit-admin&action=suppression&id=<?php echo $p['id'] ?>">supprimer</a></td> -->
                     </tr>
                 <?php }; ?>
             </tbody>
