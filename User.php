@@ -107,7 +107,7 @@ class User extends Config
                 );
                 header('refresh:3;url=connexion.php');
             } else {
-                $this->_Malert = '<font color="red">Vos mots de passe doivent correspondre </font>';
+                $this->_Malert = '<text-align="center"<font color="red">Vos mots de passe doivent correspondre </font><';
                 $this->_Talert = 2;
             }
         } else {
