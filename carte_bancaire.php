@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 require_once('class/Config.php');
 require('class/Adresse.php');
 $adresse = new Adresse();
@@ -28,7 +26,7 @@ if (isset($_POST['btncommande'])) {
     <div align="center">
         <form method="POST">
             <div class="container rounded bg-white mt-5 mb-5">
-                <h1 class="h1form text-left border-bottom">Moyen de Paiement</h1>
+                <h1 class="h1form text-left border-bottom">Paiement par Carte Bancaire</h1>
                 <div class="row">
                     <div class="border-right">
                         <div class="padd-3">
@@ -36,7 +34,7 @@ if (isset($_POST['btncommande'])) {
 
                             <div>
                                 <label class="label titrelabel text-left">Numéro de la carte</label>
-                                <input type="number" class="inputnum" id="numero_carte" name="numero_carte" minlength="16" maxlength="16" placeholder="Entrez votre nom et prénom" required>
+                                <input type="text" class="inputnum" id="numero_carte" name="numero_carte" minlength="16" maxlength="16" placeholder="Entrez votre nom et prénom" required>
                             </div>
                             <div>
                                 <label class="label titrelabel">Nom sur la carte</label>
@@ -83,7 +81,7 @@ if (isset($_POST['btncommande'])) {
                             <div>
                                 <div>
                                     <label class="label titrelabel">Code de sécurité (CVV)</label>
-                                    <input type="number" class="inputnum" minlength="3" maxlength="3" class="form-control" id="cvv" name="cvv" placeholder="Code CVV" required>
+                                    <input type="text" class="inputnum" minlength="3" maxlength="3" class="form-control" id="cvv" name="cvv" placeholder="Code CVV" required>
                                 </div>
                                 <div>
                                     <img class="imgeye" src="images/red_eye.png" id="eye" onclick="changer ()" />

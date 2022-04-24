@@ -25,6 +25,7 @@
                 <title>Inscription</title>
                 <link href="style.css" rel="stylesheet" type="text/css">
                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
             </head>
             
 <body id="bodyform">
@@ -75,25 +76,12 @@
                             <button class="btn" type="submit" name="inscription">S'inscrire</button>
             </form>
         </div>
-        <div align="center">
-        <div class="space-between">
-        <div class="conditions">
-        Politique de confidentialité
-        </div>
-        <div class="conditions">
-        Conditions d’utilisation
-        </div>
-        <div class="conditions">
-        Mentions légales
-        </div>
-        </div>
-        </div>
-        <footer>
-        <div>
-            <p class=" ">Copyright ©2022 . Tous droits réservés.</p>
-        </div>
-                </footer>
+        
     </main>
+
+    <?php
+    $home->footerStyle()
+    ?>
 </body>
 
 </html>

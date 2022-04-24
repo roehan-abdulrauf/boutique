@@ -39,7 +39,7 @@ require_once './back/back_commentaire-admin.php';
                         <td class="td" value=" <?php echo $c['id']; ?>"><?= $c['id_produit'] ?></td>
                         <td class="td" value=" <?php echo $c['id']; ?>"><?= $c['commentaire'] ?></td>
                         <td class="td" value=" <?php echo $c['id']; ?>"><span>publié le</span><?= $c['date'] ?></td>
-                        <td class="td"><a href="?action=suppression&id=<?php echo $c['id'] ?>">supprimer</a></td> 
+                        <td class="td"><a href="index.php?page=commentaire-admin&action=suppression&id=<?php echo $c['id'] ?>">supprimer</a></td> 
                     </tr>
                 <?php }; ?>
             </tbody>

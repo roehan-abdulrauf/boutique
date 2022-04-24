@@ -130,5 +130,33 @@ class View
                                 <?php
     }
 
+    public function footerStyle(){
+        ?>
+        <footer>
+        <div class="footer-content">
+            <h6 class="titre-footer">Iced Watches </h6>
+            <p>Bonjour et bienvenue surIced Watches, le site où trouver les modèles les plus incroyables de montres pour tous les passionnés de la haute horlogerie.</p>
+            <ul class="socials">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>copyright 2022&copy; <a href="index.php">Iced Watches</a>  </p>
+                    <div class="footer-menu">
+                      <ul class="f-menu">
+                        <li><a href="index.php?page=aboutus">Qui sommes-nous?</a></li>
+                      </ul>
+                    </div>
+        </div>
+        </footer>
+
+    <?php
+    }
+
+
 
 }

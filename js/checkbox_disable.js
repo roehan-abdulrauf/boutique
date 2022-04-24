@@ -16,21 +16,21 @@
 // }
 
 function ckChange(ckType) {
-  // e = true;
-  // if(e){fyj
-  var ckId1 = document.getElementById("checkbox1");
-  var ckId2 = document.getElementById("checkbox2");
-  if (ckId1.checked) {
-    ckId2.disabled = true;
-  }else if(!ckId1.checked){
-    ckId2.disabled = false;
-  }
+    // e = true;
+    // if(e){fyj
+    var ckId1 = document.getElementById("checkbox1");
+    var ckId2 = document.getElementById("checkbox2");
+    if (ckId1.checked) {
+      ckId2.disabled = true;
+    }else if(!ckId1.checked){
+      ckId2.disabled = false;
+    }
+    
+    if (ckId2.checked) {
+      ckId1.disabled = true;
+    }else if(!ckId2.checked){
+      ckId1.disabled = false;
+    }
   
-  if (ckId2.checked) {
-    ckId1.disabled = true;
-  }else if(!ckId2.checked){
-    ckId1.disabled = false;
+  
   }
-
-
-}

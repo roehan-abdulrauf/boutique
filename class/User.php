@@ -29,11 +29,14 @@ class User extends Config
         $req->execute(array($mail));
         $res = $req->fetchAll(PDO::FETCH_ASSOC);
 
-        // var_dump($res);
+        
         $password = hash('sha512', $password);
         if (count($res)) {
+
             if (!empty($mail) && !empty($password)) {
+
                 if ($password == $res[0]['password']) {
+
                     $this->_id = $res[0]['id'];
                     $this->_mail =  $res[0]['mail'];
                     $this->_prenom = $res[0]['prenom'];
@@ -48,12 +51,14 @@ class User extends Config
 
                     header("Refresh:3;url=index.php");
                 } else {
+
                     echo "2";
                     $this->_Malert = 'Mot de passe incorrect';
                     $this->_Talert = 2;
                 }
             }
         } else {
+
             echo "3";
             $this->_Malert = 'Aucun utilisateur trouvé';
             $this->_Talert = 2;
@@ -120,25 +125,24 @@ class User extends Config
         $requser->execute(array($mail));
         $userinfo = $requser->fetchAll(PDO::FETCH_ASSOC);
 
-        
-
         if (isset($mail) && !empty($mail)) {
             if ($mail != $_SESSION['mail']) {
                 if (count($userinfo)) {
 
-                    $this->_Malert = 'L\'adresse mail existe déjà.';
+                    $this->_Malert = '<font color="red">L\'adresse mail existe déjà</font>';
                     $this->_Talert = 2;
                 } elseif (count($userinfo) == 0) {
 
                     $insertmail = $this->bdd->prepare("UPDATE utilisateurs SET mail = ? WHERE id = ?");
                     $insertmail->execute(array($mail, $_SESSION['id']));
-                    $this->_Malert = 'Votre adresse email a bien été modifiée.';
+                    $this->_Malert = '<font color="green"> Profil modifié avec succès </font>';
                     $this->_Talert = 1;
+                    $_SESSION['mail']=$mail;
                     header('refresh:3;url=index.php?page=profil.php');
                 } else {
                     $this->_Malert = 'Veuillez remplir correctement le champs .';
                     $this->_Talert = 2;
-                    header('Location:index.php?page=profil.php');
+                    header('refresh:3;url=index.php?page=profil.php');
                 }
             }
         }
@@ -148,9 +152,10 @@ class User extends Config
 
                 $insertprenom = $this->bdd->prepare("UPDATE utilisateurs SET prenom = ? WHERE id = ?");
                 $insertprenom->execute(array($prenom, $_SESSION['id']));
-                $this->_Malert = 'Votre prénom a bien été modifiée.';
+                $this->_Malert = '<font color="green">Profil modifié avec succès</font>';
                 $this->_Talert = 1;
-                header('refresh:3;url=index.php?page=profil.php');
+                $_SESSION['prenom']=$prenom;
+                header('refresh:3;url=index.php?page=profil');
             }
         }
 
@@ -158,43 +163,64 @@ class User extends Config
             if ($nom != $_SESSION['nom']) {
                 $insertnom = $this->bdd->prepare("UPDATE utilisateurs SET nom = ? WHERE id = ?");
                 $insertnom->execute(array($nom, $_SESSION['id']));
+                $this->_Malert = '<font color="Profil modifié avec succès</font>';
+                $this->_Talert = 1;
+                $_SESSION['nom']=$nom;
+                header('refresh:3;url=index.php?page=profil');
             }
         }
         if (isset($adresse) && !empty($adresse)) {
             if ($adresse != $_SESSION['adresse']) {
                 $insertadresse = $this->bdd->prepare("UPDATE utilisateurs SET adresse = ? WHERE id = ?");
                 $insertadresse->execute(array($adresse, $_SESSION['id']));
+                $this->_Malert = '<font color="green">Profil modifié avec succès </font>';
+                $this->_Talert = 1;
+                $_SESSION['adresse']=$adresse;
+                header('refresh:3;url=index.php?page=profil');
             }
         }
         if (isset($codepostal) && !empty($codepostal)) {
             if ($codepostal != $_SESSION['code_postal']) {
                 $insertcodepostal = $this->bdd->prepare("UPDATE utilisateurs SET code_postal = ? WHERE id = ?");
                 $insertcodepostal->execute(array($codepostal, $_SESSION['id']));
+                $this->_Malert = '<font color="green">Profil modifié avec succès</font>';
+                $_SESSION['code_postal']=$codepostal;
+                $this->_Talert = 1;
+                header('refresh:3;url=index.php?page=profil');
             }
         }
         if (isset($ville) && !empty($ville)) {
             if ($ville != $_SESSION['ville']) {
                 $insertville = $this->bdd->prepare("UPDATE utilisateurs SET ville = ? WHERE id = ?");
                 $insertville->execute(array($ville, $_SESSION['id']));
+                $this->_Malert = '<font color="green"> Profil modifié avec succès</font>'; 
+                $this->_Talert = 1;
+                $_SESSION['ville']=$ville;
+                header('refresh:3;url=index.php?page=profil');
             }
         }
         if (isset($password) && !empty($password) && isset($passwordverify) && !empty($passwordverify)) {
             if ($password != $_SESSION['password']) {
+                
                 if ($password == $passwordverify) {
                     $newpassword = hash('sha512', $password);
                     $insertpassword = $this->bdd->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
                     $insertpassword->execute(array($newpassword, $_SESSION['id']));
-                    unset($_SESSION['fail']);
-                    header('refresh:3;url=connexion.php');
-                } else {
-                    $_SESSION['fail'] = '<font color="red">les passwords ne correspondent pas </font>';
-                    header('refresh:3;url=profil.php');
+                    $this->_Malert = '<font color="green"> Profil modifié avec succès</font>'; 
+                    $this->_Talert = 1;
+                    
+                } elseif($password != $passwordverify) {
+                    $this->_Malert = 'text align:center<font color="red"> les passwords ne correspondent pas </font>'; 
+                    $this->_Talert = 1;
+                    
                 }
-            } else {
-                $_SESSION['fail'] = '<font color="red"> Tous les champs doivent être complétés</font>';
-                header('refresh:3;url=profil.php');
             }
-        }
+        } elseif(empty($password) || empty($passwordverify)) {
+            
+            $this->_Malert =  '<font color="red"> Tous les champs doivent être complétés</font>';
+            $this->_Talert = 1;
+            
+            }
     }
 
     public function AdminUpdate($id_droit, $mail)
@@ -306,5 +332,24 @@ class User extends Config
     {
         $_SESSION = array();
         session_destroy();
+    }
+
+    public function GetOrderHistoryById()
+    {
+        $id = $_SESSION['id'];
+        $req = $this->bdd->prepare("SELECT * FROM `commandes` WHERE id_utilisateurs=?");
+        $req->execute(array($id));
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+        
+    }
+
+    public function password(){
+
+        $id = $_SESSION['id'];
+        $req = $this->bdd->prepare("SELECT password FROM `utilisateurs` WHERE id=?");
+        $req->execute(array($id));
+        $result = $req->fetch(PDO::FETCH_ASSOC);
+        return $result;
     }
 }
