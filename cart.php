@@ -6,8 +6,8 @@ require_once 'back/back_cart.php'
 <head>
     <title>Panier</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style2.css" /> 
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <!-- <link rel="stylesheet" href="style2.css" />  -->
+    <link href="cartStyle.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -40,11 +40,11 @@ $header->headerStyle();
                             <tr>
                                 <td class="img">
                                     <a href="index.php?page=product&id=<?=$product['id']?>">
-                                        <img src="<?=$product['img']?>" width="50" height="50" alt="<?=$product['nom']?>">
+                                        <img src="<?=$product['img']?>" width="50" height="50" alt="<?=$product['blaze']?>">
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="index.php?page=product&id=<?=$product['id']?>"><?=$product['nom']?></a>
+                                    <a href="index.php?page=product&id=<?=$product['id']?>"><?=$product['blaze']?></a>
                                     <br>
                                     <a href="index.php?page=cart&remove=<?=$product['id']?>" class="remove">Remove</a>
                                 </td>

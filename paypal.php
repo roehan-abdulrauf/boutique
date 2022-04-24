@@ -1,3 +1,4 @@
+<html lang="en">
 <html lang="fr">
 
 <head>
@@ -7,9 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="style2.css" />
 </head>
-
 <body>
-
     <form method="POST">
         <div>
             <input type="text" id="adresse" name="adresse" value="REGARDER LE MOT DE PASSE SVP" required>
@@ -19,5 +18,4 @@
         </div>
         <button class="" type="submit" id="btnNext" name="btnNext" value="Next">Cliquer pour confirmer achat</button>
     </form>
-
 </html>

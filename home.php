@@ -1,6 +1,5 @@
 <?php
 
-
 $sales=new Products;
 $meilleures_ventes = $sales->bestSales();
 

@@ -8,7 +8,7 @@ if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['produc
 
     $objet = new Panier;
     $product = $objet->getProduit($product_id);
-    var_dump($product);
+    
 
     // Si le produit existe et que le user a selectionné plus de zero pour la quantité
     if ($product && $quantity > 0) {

@@ -28,32 +28,32 @@ $cat = new Categorie();
                 $produit->alerts();
             }
             ?>
-            <div class="input">
-                <label class="label" for="nom">Nom</label>
-                <input class="inputtext" type="text" id="nom" name="nom" placeholder="Martin ..." required>
+            <div>
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" placeholder="Martin ..." required>
             </div>
-            <div class="input">
-                <label class="label" for="description">Description</label>
-                <input class="inputtext" type="text" id="description" name="description" placeholder="Ce produit est.." required>
+            <div>
+                <label for="description">Description</label>
+                <input type="text" id="description" name="description" placeholder="Ce produit est.." required>
             </div>
-            <div class="input">
-                <label class="label" for="prix">Prix</label>
-                <input class="inputnum" type="number" id="prix" name="prix" placeholder="En euro" required>
+            <div>
+                <label for="prix">Prix</label>
+                <input type="number" id="prix" name="prix" placeholder="En euro" required>
             </div>
-            <div class="input">
-                <label class="label" for="quantite">Quantité</label>
-                <input class="inputnum" type="number" id="quantite" name="quantite" placeholder="0" required>
+            <div>
+                <label for="quantite">Quantité</label>
+                <input type="number" id="quantite" name="quantite" placeholder="0" required>
             </div>
-            <div class="input">
-                <label class="label" for="categorie">Catégorie</label>
-                <select class="select" id="categorie" name="categorie" required>
+            <div>
+                <label for="categorie">Catégorie</label>
+                <select id="categorie" name="categorie" required>
                     <option>Choisir une catégorie</option>
                     <?= $cat->getCategories(); ?>
                 </select>
             </div>
-            <div class="input">
-                <label class="label" for="img">Image</label>
-                <input class="inputfile" type="file" id="img" name="img" placeholder="Lien de l'image" required>
+            <div>
+                <label for="img">Image</label>
+                <input type="file" id="img" name="img" placeholder="Lien de l'image" required>
             </div>
             <div class="form-admin-butt">
                 <button type="submit" name="submit">Ajouter</button>

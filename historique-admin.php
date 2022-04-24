@@ -1,12 +1,15 @@
 <?php
 
 require_once './back/back_historique-admin.php';
+
 ?>
 <!DOCTYPE html>
 <html>
+<header>
 
+</header>
 <head>
-    <title>Page Creer Categories</title>
+    <title>Historique de commande</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style2.css" />
 </head>

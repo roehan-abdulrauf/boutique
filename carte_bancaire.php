@@ -1,18 +1,16 @@
 <?php
-// session_start();
+session_start();
 
-// require_once('class/Config.php');
-// require('class/Adresse.php');
-// $adresse = new Adresse();
-// require('class/Carte.php');
-// $carte = new Carte();
+require_once('class/Config.php');
+require('class/Adresse.php');
+$adresse = new Adresse();
+require('class/Carte.php');
+$carte = new Carte();
 
-// if (isset($_POST['btncommande'])) {
-//     $adresse->AdresseFacturation(htmlspecialchars($_POST['nom_prenom']), htmlspecialchars($_POST['numero']), htmlspecialchars($_POST['adresse']), htmlspecialchars($_POST['complement_adresse']), htmlspecialchars($_POST['code_postal']), htmlspecialchars($_POST['ville']));
-//     $adresse->AdresseLivraison(htmlspecialchars($_POST['nom_prenom_livr']), htmlspecialchars($_POST['numero_livr']), htmlspecialchars($_POST['adresse_livr']), htmlspecialchars($_POST['complement_adresse_livr']), htmlspecialchars($_POST['code_postal_livr']), htmlspecialchars($_POST['ville_livr']));
-//     $carte->RegisterCarte(htmlspecialchars($_POST['numero_carte']), htmlspecialchars($_POST['nom_carte']), htmlspecialchars($_POST['mois_carte']), htmlspecialchars($_POST['annee_carte']), htmlspecialchars($_POST['cvv']), htmlspecialchars($_POST['enregistrer_carte']));
-//     $adresse->alerts();
-// }
+if (isset($_POST['btncommande'])) {
+    $carte->RegisterCarte(htmlspecialchars($_POST['numero_carte']), htmlspecialchars($_POST['nom_carte']), htmlspecialchars($_POST['mois_carte']), htmlspecialchars($_POST['annee_carte']), htmlspecialchars($_POST['cvv']), htmlspecialchars($_POST['enregistrer_carte']));
+    $adresse->alerts();
+}
 
 ?>
 <!DOCTYPE html>
@@ -97,7 +95,6 @@
                         </div>
                     </div>
                 </div>
-                <input type="checkbox" class="checkbox-round" />
                 <span class="error" id="errorname"></span></p>
                 <button class="Buttoncommande" name="btncommande">Payer</button>
             </div>

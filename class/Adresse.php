@@ -1,5 +1,6 @@
 <?php
 
+
 class Adresse extends Config
 {
     public $_nom_prenom;

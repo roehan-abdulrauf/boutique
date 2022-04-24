@@ -1,5 +1,5 @@
 <?php
-if($_SESSION['id_droits'] === '23'){
+if($_SESSION['id_droit'] === '23'){
 
     // require_once('Config.php');
     // require_once('User.php');

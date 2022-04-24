@@ -21,7 +21,7 @@ class View
             <body>  -->
                 
             
-            <?php if(isset($_SESSION['id_droits']) && $_SESSION['id_droits'] === '1'){ ?>
+            <?php if(isset($_SESSION['id_droit']) && $_SESSION['id_droit'] === '1'){ ?>
                 <header>
                     
                         <div class="content-wrapper">
@@ -48,7 +48,7 @@ class View
                             </div>
                         </div>
                 </header>
-                    <?php } elseif (isset($_SESSION['id_droits']) && $_SESSION['id_droits'] === '23') { ?>
+                    <?php } elseif (isset($_SESSION['id_droit']) && $_SESSION['id_droit'] === '23') { ?>
                     
 
                         <header>
