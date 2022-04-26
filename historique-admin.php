@@ -25,24 +25,24 @@ require_once './back/back_historique-admin.php';
             <thead>
                 <tr>
                     <th class="th" scope="col">Id_produit</th>
-                    <th class="th" scope="col">Id_utilisateur</th>
                     <th class="th" scope="col">Montant</th>
                     <th class="th" scope="col">Etat</th>
                     <th class="th" scope="col">Adresse livraison</th>
                     <th class="th" scope="col">Adresse facturation</th>
                     <th class="th" scope="col">Date</th>
+                    <th class="th" scope="col">Modifier</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($getOrderHistory as $h) { ?>
                     <tr>
                         <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['id_produit'] ?></td>
-                        <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['id_utilisateur'] ?></td>
                         <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['montant'] ?></td>
                         <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['etat'] ?></td>
-                        <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['adresse_livraison'] ?></td>
-                        <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['adresse_facturation'] ?></td>
+                        <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['id_adresse_livraison'] ?></td>
+                        <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['id_adresse_facturation'] ?></td>
                         <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['date'] ?></td>
+                        <td class="td"><a href="index.php?page=modifier_historique-admin&action=modifier&id=<?php echo $h['id'] ?>">modifier</a></td>
                     </tr>
                 <?php }; ?>
             </tbody>

@@ -1,6 +1,6 @@
 <?php
 if($_SESSION['id_droit'] === '23'){
-
+    $_SESSION['id_droitAdmin'] = 23; 
     // require_once('Config.php');
     // require_once('User.php');
     $user = new User;
@@ -19,7 +19,7 @@ if (isset($_POST['deconnexion'])) {
     //     exit();
     // }
 }
-
+// var_dump($_SESSION['id_droit']);
 
         ?>
 
@@ -39,7 +39,7 @@ if (isset($_POST['deconnexion'])) {
     
     <div class="sidebar close">
         <div class="logo-details">
-            <a href="#">
+            <a href="index.php">
                 <i class='bx bxs-watch'></i>
                 <span class="logo_name">Boutique</span>
             </a>

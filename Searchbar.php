@@ -11,12 +11,12 @@ class Searchbar extends Config
         $req->execute();
         $produits = $req->fetchAll(PDO::FETCH_ASSOC);
 
-        var_dump($produits);
+        // var_dump($produits);
 
         if (!empty($q)) {
-            echo 2;
+            // echo 2;
             if (count($produits)) {
-                echo 3;
+                // echo 3;
                 foreach ($produits as $a) { ?>
                     <li><?= $a['blaze'] ?>
                         <?= $a['description'] ?>

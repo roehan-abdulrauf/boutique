@@ -8,7 +8,7 @@ foreach ($modifuser as $p) {
     $_SESSION['nom'] = $p['nom'];
     $_SESSION['prenom'] = $p['prenom'];
     $_SESSION['mail'] = $p['mail'];
-    $_SESSION['id_droit'] = $p['id_droit'];
+    $_SESSION['droit'] = $p['id_droit'];
 };
 
 if (isset($_POST['submit'])) {
@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
             var_dump($_SESSION['mail']);
             var_dump($user);
             echo 'Les droits de l\'itulisateur ont bien été modifier.';
-            header('refresh:2;url=compte-admin.php');
+            header('refresh:2;url=index.php?page=compte-admin');
         } else {
             echo 'Vous devez remplir tous les champs.';
         }

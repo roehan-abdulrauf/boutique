@@ -1,5 +1,5 @@
 <?php
 
-$produit = new Produit();
-$getOrderHistory = $produit->GetAllOrderHistory();
+$commande = new Commande();
+$getOrderHistory = $commande->GetAllOrderHistory();
 ?>

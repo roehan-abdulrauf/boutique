@@ -49,7 +49,7 @@ class User extends Config
                     $this->_Malert = 'Connexion réussie, vous allez être redirigé.';
                     $this->_Talert = 1;
 
-                    header("Refresh:3;url=index.php");
+                    header("Refresh:1;url=index.php");
                 } else {
 
                     echo "2";
