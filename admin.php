@@ -75,12 +75,12 @@ if (isset($_POST['deconnexion'])) {
                         <i class='bx bxs-user'></i>
                         <span class="link_name">Compte</span>
                     </a>
-                    <i class='bx bx-chevron-down'></i>
+                    <!-- <i class='bx bx-chevron-down'></i> -->
                 </div>
-                <ul class="sub-menu">
-                    <!-- <li><a href="#" class="link_name">Compte</a></li> -->
+                <!-- <ul class="sub-menu">
+                    <li><a href="#" class="link_name">Compte</a></li>
                     <li><a href="index.php?page=modifier_droit-admin">Moifer un role</a></li>
-                </ul>
+                </ul> -->
             </li>
             <li>
                 <div class="icon-links">
