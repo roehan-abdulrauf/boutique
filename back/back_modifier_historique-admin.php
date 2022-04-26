@@ -1,6 +1,6 @@
 <?php
-require_once './class/Config.php';
-require_once './class/Commande.php';
+// require_once './class/Config.php';
+// require_once './class/Commande.php';
 $commande = new Commande();
 $orders = $commande->GetAllOrderHistorybyId();
 var_dump($orders);
