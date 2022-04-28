@@ -1,6 +1,9 @@
 <?php
 $commande = new View;
-$commande->headerStyle('Commande');
+$commande->headerStyle();
+unset($_SESSION['panier']);
+unset($_SESSION['adresse_livraison']);
+unset($_SESSION['adresse_facturation']);
 ?>
 
 <div class="placeorder content-wrapper">

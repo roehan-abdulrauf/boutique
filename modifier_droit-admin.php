@@ -1,5 +1,6 @@
 <?php
 require_once './back/back_modifier_droit-admin.php';
+// var_dump($_SESSION['id_droit']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,7 +16,7 @@ require_once './back/back_modifier_droit-admin.php';
         <h1>Modifier le role de l'utilisateur</h1>
     </div>
     <?php
-    require_once 'admin.php' ?>
+    require_once ('admin.php') ;?>
     <div class="form-admin">
         <form method="POST">
         <div class="input">
@@ -32,7 +33,7 @@ require_once './back/back_modifier_droit-admin.php';
             </div>
             <div class="input">
                 <label class="label" for="id_droit">Rôle</label>
-                <input class="inputtext" type="text" id="id_droit" name="id_droit" value="<?= $_SESSION['id_droit'] ?>" required>
+                <input class="inputtext" type="text" id="id_droit" name="id_droit" value="<?= $_SESSION['droit'] ?>" required>
             </div>
             <div class="form-admin-butt">
                 <button type="submit" name="submit">Modifier</button>

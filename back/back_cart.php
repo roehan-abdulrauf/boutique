@@ -72,10 +72,32 @@ if (isset($_POST['update']) && isset($_SESSION['panier'])) {
 
  // Lien vers la page confirmation de paiement quand le user clique sur 'payer'/ le panier de doit pas être vide
  if (isset($_POST['placeorder']) && isset($_SESSION['panier']) && !empty($_SESSION['panier'])) {
+    
 
-    $payment = new Panier;
-    $payment->payment();
-     
+    if(!isset($_SESSION['id'])){
+
+        header('refresh:1 url=index.php?page=connexion');
+
+    } else{
+
+        // $nombre_produit = count($_SESSION['panier']);
+        // $num_commande = rand(0,100000000);
+       
+
+
+        //     foreach($_SESSION['panier'] as $id_produit_panier => $quantite_produit_panier){
+                
+        //         // echo $id_produit_panier; 
+        //         $_SESSION['id_produit_panier'] = $id_produit_panier;
+        //         $_SESSION['quantite_produit_panier'] = $quantite_produit_panier;
+        //         $payment = new Panier;
+        //         $payment->payment($_SESSION['id_produit_panier'],$num_commande,$_SESSION['quantite_produit_panier']);
+                
+        //     }
+        header('Location: index.php?page=validation_de_commande');
+        
+    }
+    
 }
 
 
@@ -93,3 +115,13 @@ if ($products_in_cart) {
         $subtotal += (float)$product['prix'] * (int)$products_in_cart[$product['id']];
     }
 }
+
+
+// foreach($_SESSION['panier'] as $id_produit_panier => $quantite_produit_panier){
+
+//     $_SESSION['id_produit_panier'] = $id_produit_panier;
+//     $_SESSION['quantite_produit_panier'] = $quantite_produit_panier;
+// }
+
+$_SESSION['total'] = $subtotal;
+

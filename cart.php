@@ -11,6 +11,8 @@ require_once 'back/back_cart.php'
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 </head>
 <body>
     
@@ -61,10 +63,12 @@ $header->headerStyle();
                         </tbody>
                     </table>
                     <div class="subtotal">
+
                         <span class="text">Subtotal</span>
                         <span class="price"><?=$subtotal?> euros </span>
                     </div>
                     <div class="buttons">
+
                         <input type="submit" value="Update" name="update">
                         <input type="submit" value="Place Order" name="placeorder">
                     </div>
@@ -74,7 +78,8 @@ $header->headerStyle();
     </main>
 
     <?php
-        $header->footerStyle();
+        // $header->footerStyle();
+        
     ?>
     </body>
 

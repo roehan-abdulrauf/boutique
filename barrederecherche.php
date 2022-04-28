@@ -1,5 +1,5 @@
 <?php
-require_once 'Config.php';
+require_once 'class/Config.php';
 require('Searchbar.php');
 $adresse = new Searchbar();
 ?>
@@ -15,4 +15,3 @@ $adresse = new Searchbar();
         ?>
     </form>
 </body>
-
