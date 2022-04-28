@@ -73,7 +73,7 @@ class Commande extends Config
                 ':adresse_facturation' => $adresse_facturation,
                 ':id_utilisateur' => $id_utilisateur
             ));
-            echo '2 ';
+            
     }
 
 

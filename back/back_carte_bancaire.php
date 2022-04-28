@@ -32,7 +32,7 @@ if (isset($_POST['btncommande'])) {
             
             foreach($_SESSION['panier'] as $id_produit_panier => $quantite_produit_panier){
                 
-                // echo $id_produit_panier;
+                // echo $id_produit_panier; 
                 // $_SESSION['id_produit_panier'] = $id_produit_panier;
                 // $_SESSION['quantite_produit_panier'] = $quantite_produit_panier;
                 var_dump($id_produit_panier);
@@ -41,7 +41,11 @@ if (isset($_POST['btncommande'])) {
                 var_dump($num_commande);
                 
                 $payment->payment($id_produit_panier,$num_commande,$quantite_produit_panier);
-                
+                $s=$stock->getStock($id_produit_panier);
+                // var_dump($s);
+                $i = $s[0];
+
+                $stock->updateStock($i,$quantite_produit_panier,$id_produit_panier);
                 
             }
             
@@ -54,6 +58,7 @@ if (isset($_POST['btncommande'])) {
             $date = date("Y-m-d H:i:s");
             $etat = 'En cours';
             $payment = new Commande;
+            $stock = new Products;
             // $payment->payment($_SESSION['panier'],$num_commande);
             
             foreach($_SESSION['panier'] as $id_produit_panier => $quantite_produit_panier){
@@ -61,13 +66,17 @@ if (isset($_POST['btncommande'])) {
                 // echo $id_produit_panier;
                 // $_SESSION['id_produit_panier'] = $id_produit_panier;
                 // $_SESSION['quantite_produit_panier'] = $quantite_produit_panier;
-                var_dump($id_produit_panier);
-                var_dump($quantite_produit_panier);
-                var_dump($id_produit_panier);
-                var_dump($num_commande);
+                // var_dump($id_produit_panier);
+                // var_dump($quantite_produit_panier);
+                // var_dump($id_produit_panier);
+                // var_dump($num_commande);
                 
                 $payment->payment($id_produit_panier,$num_commande,$quantite_produit_panier);
-                
+                $s=$stock->getStock($id_produit_panier);
+                // var_dump($s);
+                $i = $s[0];
+
+                $stock->updateStock($i,$quantite_produit_panier,$id_produit_panier);
                 
             }
             

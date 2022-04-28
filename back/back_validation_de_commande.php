@@ -26,14 +26,14 @@ if (isset($_POST['btncommande'])) {
                 $adresse_facturation = $nom_prenom.' '.$adresse.' '.$complement_adresse.' '.$ville.' '.$code_postale;
                 // $req = $adres->AdresseFacturationComplement($nom_prenom, $numero, $adresse, $complement_adresse, $code_postale, $ville);
                 // var_dump($req);
-                var_dump($adresse_facturation);
+                // var_dump($adresse_facturation);
                 $_SESSION['adresseFacturation'] = $adresse_facturation;
             } else {
                 
                 $adresse_facturation = $nom_prenom.' '.$adresse.' '.$ville.' '.$code_postale;
                 // $req = $adres->AdresseFacturation($nom_prenom, $numero, $adresse, $code_postale, $ville);
                 // var_dump($req);
-                var_dump($adresse_facturation);
+                // var_dump($adresse_facturation);
                 $_SESSION['adresseFacturation'] = $adresse_facturation;
             }
         } else {
@@ -59,14 +59,14 @@ if (isset($_POST['btncommande'])) {
                 $adresse_livraison = $nom_prenom_livr.' '.$adresse_livr.' '.$complement_adresse_livr.' '.$ville_livr.' '.$code_postale_livr;
                 // $req = $adres->AdresseLivraisonComplement($nom_prenom_livr, $numero_livr, $adresse_livr, $complement_adresse_livr, $code_postale_livr, $ville_livr);
                 // var_dump($req);
-                var_dump($adresse_livraison);
+                // var_dump($adresse_livraison);
                 $_SESSION['adresseLivraison'] = $adresse_livraison;
-            } else { 
+            } else {
                 
                 $adresse_livraison = $nom_prenom_livr.' '.$adresse_livr.' '.$ville_livr.' '.$code_postale_livr;
                 // $req = $adres->AdresseLivraison($nom_prenom_livr, $numero_livr, $adresse_livr, $code_postale_livr, $ville_livr);
                 // var_dump($req);
-                var_dump($adresse_livraison);
+                // var_dump($adresse_livraison);
                 $_SESSION['adresseLivraison'] = $adresse_livraison;
             }
         } else {
@@ -77,6 +77,7 @@ if (isset($_POST['btncommande'])) {
         if ($_POST['checkbox1']) {
 
             header('location:index.php?page=carte_bancaire');
+
         } elseif ($_POST['checkbox2']) {
 
             
@@ -84,6 +85,7 @@ if (isset($_POST['btncommande'])) {
             $date = date("Y-m-d H:i:s");
             $etat = 'En cours';
             $payment = new Commande;
+            $stock = new Products;
             // $payment->payment($_SESSION['panier'],$num_commande);
             
             foreach($_SESSION['panier'] as $id_produit_panier => $quantite_produit_panier){
@@ -97,8 +99,11 @@ if (isset($_POST['btncommande'])) {
                 // var_dump($num_commande);
                 
                 $payment->payment($id_produit_panier,$num_commande,$quantite_produit_panier);
-                
-                
+                $s=$stock->getStock($id_produit_panier);
+                // var_dump($s);
+                $i = $s[0];
+
+                $stock->updateStock($i,$quantite_produit_panier,$id_produit_panier);
             }
             
             $payment->insertCommand($num_commande,$date,$_SESSION['total'],$etat,$adresse_livraison,$adresse_facturation,$_SESSION['id']);
