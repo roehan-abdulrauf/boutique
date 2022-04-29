@@ -3,15 +3,15 @@
 // require_once './class/Commande.php';
 $commande = new Commande();
 $orders = $commande->GetAllOrderHistorybyId();
-var_dump($orders);
+// var_dump($orders);
 // var_dump($modifuser);
 foreach ($orders as $p) {
     $_SESSION['id'] = $p['id'];
-    $_SESSION['id_produit'] = $p['id_produit'];
+    $_SESSION['num_commande'] = $p['num_commande'];
     $_SESSION['montant'] = $p['montant'];   
     $_SESSION['etat'] = $p['etat'];
-    $_SESSION['id_adresse_livraison'] = $p['id_adresse_livraison'];
-    $_SESSION['id_adresse_facturation'] = $p['id_adresse_facturation'];
+    $_SESSION['adresse_livraison'] = $p['adresse_livraison'];
+    $_SESSION['adresse_facturation'] = $p['adresse_facturation'];
 };
 
 if (isset($_POST['submit'])) { 

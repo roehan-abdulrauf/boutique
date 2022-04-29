@@ -47,7 +47,7 @@ if (isset($_POST['deconnexion'])) {
         <ul class="nav-links">
             <li>
                 <div class="icon-links">
-                    <a href="#">
+                    <a href="index.php?page=tableau_de_bord-admin">
                         <i class='bx bxs-dashboard'></i>
                         <span class="link_name">Tableau de bord</span>
                     </a>

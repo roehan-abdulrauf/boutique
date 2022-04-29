@@ -24,11 +24,11 @@ require_once './back/back_carte_bancaire.php';
                             <div class="cartecss">
                                 <div>
                                     <label class="label titrelabel text-left">Numéro de la carte</label>
-                                    <input type="text" class="inputnum" id="numero_carte" name="numero_carte" minlength="16" maxlength="16" placeholder="Entrez votre nom et prénom" required>
+                                    <input type="text" class="inputnum" id="numero_carte" name="numero_carte" minlength="16" maxlength="16" placeholder="Entrez le numéro de la carte" required>
                                 </div>
                                 <div>
                                     <label class="label titrelabel">Nom sur la carte</label>
-                                    <input type="text" class="inputtext" class="form-control" id="nom_carte" name="nom_carte" placeholder="Entrez votre numero de téléphone" required>
+                                    <input type="text" class="inputtext" class="form-control" id="nom_carte" name="nom_carte" placeholder="Entrez le nom sur la carte" required>
                                 </div>
                                 <div>
                                     <label class="label titrelabel">Date d'expiration</label>

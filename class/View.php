@@ -64,7 +64,7 @@ class View
                         <a href="index.php?page=products">Nos produits</a>
                         <a href="index.php?page=categorie&cat=1">Montres homme</a>
                         <a href="index.php?page=categorie&cat=2">Montres femme</a>
-                        <a href="index.php?page=admin">Admin</a>
+                        <a href="index.php?page=tableau_de_bord-admin">Admin</a>
                         <a href="index.php?page=deconnexion">Deconnexion</a>
                     </nav>
                     <div class="link-icons">

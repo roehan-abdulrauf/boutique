@@ -15,7 +15,7 @@ class Commande extends Config
 
     public function GetAllOrderHistory()
     {
-        $req = $this->bdd->prepare("SELECT * FROM `commandes`");
+        $req = $this->bdd->prepare("SELECT * FROM `commandes` INNER JOIN `produit_commande` WHERE commandes.num_commande = produit_commande.num_commande");
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }

@@ -15,12 +15,12 @@ require_once './back/back_modifier_historique-admin.php';
         <h1>Modifier la commande</h1>
     </div>
     <?php
-    // require_once 'admin.php' ?>
+    require_once 'admin.php' ?>
     <div class="form-admin">
         <form method="POST">
         <div class="input">
-                <label class="label" for="nom">Id_produit</label>
-                <input class="inputtext" type="text" id="id_produit" name="id_produit" value="<?= $_SESSION['id_produit'] ?>" readonly="<?= $_SESSION['id_produit'] ?>" required>
+                <label class="label" for="nom">Reference produit</label>
+                <input class="inputtext" type="text" id="num_commande" name="num_commande" value="<?=  $_SESSION['num_commande'] ?>" readonly="<?= $_SESSION['id_produit'] ?>" required>
             </div>
             <div class="input">
                 <label class="label" for="mail">Montant</label>

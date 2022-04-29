@@ -31,7 +31,7 @@ require_once './back/back_validation_de_commande.php';
                             </div>
                             <div>
                                 <label class="label titrelabel">Numero</label>
-                                <input type="number" class="inputnum" id="numero" name="numero" minlength="12" maxlength="12" placeholder="Entrez votre numero de téléphone" required>
+                                <input type="text" class="inputnum" id="numero" name="numero" minlength="12" maxlength="12" placeholder="Entrez votre numero de téléphone" required>
                             </div>
                             <div>
                                 <label class="label titrelabel">Adresse</label>
@@ -46,7 +46,7 @@ require_once './back/back_validation_de_commande.php';
                                     <input type="text" class="inputtext1" id="ville" name="ville" placeholder="Entrez votre ville" required>
                                 </div>
                                 <div><label class="label titrelabel">Code postal</label>
-                                    <input type="number" class="inputnum1" id="code_postal" name="code_postal" minlength="5" maxlength="5" placeholder="Entrez votre code postal" required>
+                                    <input type="text" class="inputnum1" id="code_postal" name="code_postal" minlength="5" maxlength="5" placeholder="Entrez votre code postal" required>
                                 </div>
                             </div>
                             <div>

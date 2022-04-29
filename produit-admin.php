@@ -41,7 +41,7 @@ require_once './back/back_produit-admin.php';
                         <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['blaze'] ?></td>
                         <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['description'] ?></td>
                         <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['prix'] ?></td>
-                        <td class="td" value=" <?php echo $p['id']; ?>"><img src="<?= $p['img']?>" width="100"></td>
+                        <td class="td" value=" <?php echo $p['id']; ?>"><img src="<?= $p['img']?>" width="90"></td>
                         <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['quantite'] ?></td>
                         <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['id_categorie'] ?></td>
                         <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['date'] ?></td>
