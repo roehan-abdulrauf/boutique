@@ -367,11 +367,15 @@ form .container .row .select {
   font-size: 1.1rem;
 }
 
-form .container .row .inputtext:active,
-form .container .row .inputnum:active,
-form .container .row .inputfile:active,
-form .container .row .select:active {
-border: 1px solid #008afb;
+form .container .row .inputtextarea {
+  border: 1px solid rgb(77, 74, 74);
+  border-width: 1px;
+  border-radius: 5px;
+  width: 100%;
+  height: 160px;
+  padding-left: 4%;
+  margin-bottom: 2%;
+  font-size: 1.1rem;
 }
 
 form .container .row .inputtext1,

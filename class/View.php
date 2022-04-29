@@ -154,6 +154,11 @@ class View
                             <li><a href="index.php?page=aboutus">Qui sommes-nous?</a></li>
                         </ul>
                     </div>
+                    <div class="footer-menu">
+                        <ul class="f-menu">
+                            <li><a href="index.php?page=page_contact">Contact</a></li>
+                        </ul>
+                    </div>
                 </div>
             </footer>
 

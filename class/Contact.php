@@ -21,33 +21,37 @@ class Contact extends Config
         }
     }
 
-    public function Contacts($nom, $email, $numero, $sujet, $message)
+    public function InsertContact($sujet, $message)
     {
-        $this->_nom = $nom;
-        $this->_email = $email;
-        $this->_numero = $numero;
-        $this->_sujet = $sujet;
-        $this->_message = $message;
-        
-            if (!empty($nom) && !empty($email) && !empty($numero) && !empty($sujet) && !empty($message)) {
-
-                $req = $this->bdd->prepare("INSERT INTO `contacts`(`nom-prenom`, `email`,`numero`, `sujet`,`message`) VALUES ('$nom','$email','$numero','$sujet','$message')");
-                $req->execute();
-                // $db_user = 'root';
-                // $db_pass = '';
-                // $dbh = new PDO ('mysql:host=localhost;dbname=boutique', $db_user, $db_pass);
-                // $req = $dbh->prepare("INSERT INTO `contacts`(`nom-prenom`, `email`,`numero`, `sujet`,`message`) VALUE ('$nom','$email','$numero','$sujet','$message')");
-                // $req->execute();
-
-                $this->_Malert = 'Votre mesage à été envoyer avec succès.';
-                $this->_Talert = 1;
-
-                header('refresh:3;url= page contact.php');
-
-            } else {
-                $this->_Malert = 'Vous devez remplir correctement tous les champs.';
-                $this->_Talert = 2;
-            }
-        }
+        $req = $this->bdd->prepare("INSERT INTO `contacts`(`sujet`,`message`,`id_utilisateur`) VALUES (:sujet,:message,:id_utilisateur)");
+        $req->execute(array(
+            ':sujet' => $sujet,
+            ':message' => $message,
+            ':id_utilisateur' => $_SESSION['id'],
+        ));
+        return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getContact()
+    {
+        $req = $this->bdd->prepare("SELECT * FROM contacts INNER JOIN utilisateurs WHERE contacts.id_utilisateur = utilisateurs.id");
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getContactByid()
+    {
+
+        $check = $this->bdd->prepare("SELECT * FROM `contacts` WHERE id_utilisateur = ?");
+        $check->execute(array($_GET['id']));
+        return $check->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getSuppContact()
+    {
+
+        $req = $this->bdd->prepare("DELETE FROM `contacts` WHERE id_utilisateur = ?");
+        $req->execute(array($_GET['id']));
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+}

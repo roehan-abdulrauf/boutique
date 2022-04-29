@@ -12,6 +12,8 @@ require_once './class/Adresse.php';
 require_once './class/Carte.php';
 require_once './class/Commande.php';
 require_once './class/Connecte.php';
+require_once './class/Contact.php';
+
 
 
 // Page is set to home (home.php) by default, so when the visitor visits that will be the page they see.
