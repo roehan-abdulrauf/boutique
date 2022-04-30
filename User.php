@@ -72,11 +72,11 @@ class User extends Config
             $id_droits1 = 23;
             $id_droits2 = 1;
 
-            if ($password == $passwordverify) {
+            if ($mail != htmlspecialchars('admin@gmail.com') && $password == $passwordverify) {
                 if (preg_match('#^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,35})$#', $password)) {
                     $password = hash('sha512', $password);
-                    $req = $this->bdd->prepare("INSERT INTO `utilisateurs`(`nom`,`prenom`,`mail`,`password`,`adresse`,`code_postal`,`ville`,`id_droits`) values (:nom, :prenom, :mail, :password, :adresse, :code_postal, :ville, :id_droits)");
-                    $req->execute(array(
+                    $req = $this->bdd->prepare("INSERT INTO `utilisateurs`(`nom`,`prenom`,`mail`,`password`,`adresse`,`code_postal`,`ville`,`id_droit`) values (:nom, :prenom, :mail, :password, :adresse, :code_postal, :ville, :id_droits)");
+                    $i=$req->execute(array(
                         ':nom' => $nom,
                         ':prenom' => $prenom,
                         ':mail' => $mail,
@@ -86,10 +86,11 @@ class User extends Config
                         ':ville' => $ville,
                         ':id_droits' => $id_droits2,
                     ));
-
+                    var_dump($i);
+                    echo 1;
                     $this->_Malert = '<p style="color:green;font-size:120%;text-align:center"> <strong>* Votre compte a été créé avec succès, vous pouvez maintenant vous connecter </p>';
                     $this->_Talert = 1;
-                    header('refresh:3;url=index.php?page=connexion.php');
+                    header('refresh:3;url=index.php?page=connexion');
                 } else {$this->_Malert =' <p style="color:red;font-size:120%;text-align:center">Le mot de passe doit contenir : <br> au moins 8 caractères <br>
                 au moins une lettre minuscule <br>
                 au moins une lettre majuscule <br>
@@ -97,10 +98,10 @@ class User extends Config
                 au moins l\'un de ces caractères spéciaux: $ @ % * + - _ !<br>
                 <strong><p>';}
 
-            } elseif ($mail == 'admin' && $password == 'admin' && $password == $passwordverify) {
+            } elseif ($mail == htmlspecialchars('admin@gmail.com') && $password == $passwordverify) {
                 $password = hash('sha512', $password);
-                $req = $this->bdd->prepare("INSERT INTO `utilisateurs`(`nom`,`prenom`,`mail`,`password`,`adresse`,`code_postal`,`ville`,`id_droits`) VALUES (:nom, :prenom, :mail, :password, :adresse, :code_postal, :ville, :id_droits)");
-                $req->execute(
+                $req = $this->bdd->prepare("INSERT INTO `utilisateurs`(`nom`,`prenom`,`mail`,`password`,`adresse`,`code_postal`,`ville`,`id_droit`) VALUES (:nom, :prenom, :mail, :password, :adresse, :code_postal, :ville, :id_droits)");
+                $i=$req->execute(
                     array(
                         ':nom' => $nom,
                         ':prenom' => $prenom,
@@ -111,8 +112,11 @@ class User extends Config
                         ':ville' => $ville,
                         ':id_droits' => $id_droits1,
                     )
+                    
                 );
-                header('refresh:1;url=connexion.php');
+                var_dump($i);
+                echo 2;
+                header('refresh:1;url=connexion');
             } else {
                 $this->_Malert = '<p style="color:red;font-size:120%;text-align:center"> <strong>* Vos mots de passe doivent correspondre</p>';
                 $this->_Talert = 2;
