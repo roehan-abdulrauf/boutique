@@ -7,12 +7,11 @@ require_once 'back/back_cart.php'
     <title>Panier</title>
     <meta charset="UTF-8" />
     <!-- <link rel="stylesheet" href="style2.css" />  -->
-    <link href="cartStyle.css" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    
 </head>
 <body>
     
@@ -23,21 +22,21 @@ $header->headerStyle();
 <main>
 
     <div class="cart content-wrapper">
-        <h1>Shopping Cart</h1>
+        <h1>Panier</h1>
         <form action="index.php?page=cart" method="post">
             <table>
                 <thead>
                             <tr>
-                                <td colspan="2">Product</td>
-                                <td>Price</td>
-                                <td>Quantity</td>
+                                <td colspan="2">Produit</td>
+                                <td>Prix</td>
+                                <td>Quantité</td>
                                 <td>Total</td>
                             </tr>
                         </thead>
                         <tbody>
                             <?php if (empty($products)): ?>
                             <tr>
-                                <td colspan="5" style="text-align:center;">You have no products added in your Shopping Cart</td>
+                                <td colspan="5" style="text-align:center;">Vous n'avez aucun produit dans votre panier</td>
                             </tr>
                             <?php else: ?>
                             <?php foreach ($products as $product): ?>
@@ -50,7 +49,7 @@ $header->headerStyle();
                                 <td>
                                     <a href="index.php?page=product&id=<?=$product['id']?>"><?=$product['blaze']?></a>
                                     <br>
-                                    <a href="index.php?page=cart&remove=<?=$product['id']?>" class="remove">Remove</a>
+                                    <a href="index.php?page=cart&remove=<?=$product['id']?>" class="remove">Supprimer</a>
                                 </td>
                                 <td class="price"><?=$product['prix']?> euros</td>
                                 <td class="quantity">
@@ -63,12 +62,10 @@ $header->headerStyle();
                         </tbody>
                     </table>
                     <div class="subtotal">
-
-                        <span class="text">Subtotal</span>
+                        <span class="text">Sous-total</span>
                         <span class="price"><?=$subtotal?> euros </span>
                     </div>
                     <div class="buttons">
-
                         <input type="submit" value="Update" name="update">
                         <input type="submit" value="Place Order" name="placeorder">
                     </div>
@@ -78,8 +75,6 @@ $header->headerStyle();
     </main>
 
     <?php
-        // $header->footerStyle();
-        
+        $header->footerStyle();
     ?>
     </body>
-

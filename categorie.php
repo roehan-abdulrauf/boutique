@@ -14,7 +14,7 @@ $view = new View;
                 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
             </head>
 
-            <body>
+            <body class="body-products">
 
                 <?php
 
@@ -24,7 +24,7 @@ $view = new View;
                 <main>
 
                     <div class="products content-wrapper">
-                        <h1>Montres</h1>
+                        <h1 class="titre-vendues">Nos montres</h1>
                         <p><?=$totalProduit?> Products</p>
                         <div class="products-wrapper">
 
