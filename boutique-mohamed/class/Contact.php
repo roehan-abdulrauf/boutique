@@ -1,5 +1,7 @@
 <?php
 
+require_once 'config.php';
+
 class Contact extends Config
 {
     public $_nom;

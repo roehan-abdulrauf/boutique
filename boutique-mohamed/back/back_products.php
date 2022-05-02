@@ -10,4 +10,4 @@ $back = new products;
 $shop = $back->getAllProducts($produitsParPage,$current_page);
 
 
-$total_products = $back->totalProducts();
+$total_products = $back->totalProducts(); 

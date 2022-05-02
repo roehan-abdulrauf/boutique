@@ -9,7 +9,9 @@
 <head>
 <title> Page de connexion</title>
 <meta charset="UTF-8" />
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -18,9 +20,10 @@
         $home -> headerStyle();
     ?>
     <main>
-        <div align="center" class="formpadding">
-            <form method="POST">
+    <div align="center">
+            <form class="forms" method="POST">
                 <?php if (isset($_POST['connexion'])) {
+
                     $user = new User();
                     $user->Connect(htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['password']));
                     $_SESSION['id'] = $user->getId();
@@ -30,33 +33,54 @@
                     $_SESSION['adresse'] = $user->getAdresse();
                     $_SESSION['code_postal'] = $user->getCodepostal();
                     $_SESSION['ville'] = $user->getVille();
-                    $_SESSION['id_droits'] = $user->getDroits();
+                    $_SESSION['id_droit'] = $user->getDroits();
                     $user->alerts();
+                    
                 }
                 ?>
-                <table class="form">
-                    <tr>
-                        <td>
-                            <h1 class="h_1">Bonjour, connectez-vous</h1>
-                            <label>Votre adresse email</label>
-                            <input type="email" name="mail" placeholder="Entrer votre adresse email" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>Mot de passe</label>
-                            <input type="password" name="password" placeholder="Entrer un mot de passe" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            <button class="button" type="submit" name="connexion">Me connecter</button>
-                        </td>
-                    </tr>
-                </table>
+
+                            <h1 class="titres">Bonjour</h1>
+                            <h4 class="input-connexion">Adresse email</h4>
+                            <div class="input-icons">
+                            <i class="fas fa-envelope icon"></i>
+                            <input class="input-field" type="email" name="mail" placeholder="Adresse email" required >
+                            </div>
+                            <div class="espace">
+                            <h4 class="input-connexion2">Mot de passe</h4>
+                            </div>
+                            <div class="input-icons">
+                            <i class="fas fa-key icon"></i>
+                            
+                            <input class="input-field" type="password" name="password" placeholder="Mot de passe" required> 
+                            </div>
+                            <button type="submit" class="btn" name="connexion">Se connecter</button>
+            
             </form>
         </div>
     </main>
+    <?php
+    $home->footerStyle();
+    ?>
+        <!-- <hr>
+        <div align="center">
+        <form class="forms" method="post" action="./back/back_connexion.php">
+        <h1 class="titres">Je suis nouveau ici</h1>
+        <button type="submit" class="btn2" name="pageInscription">S'inscrire</button>
+        </form>
+        </div>
+        <div align="center">
+        <div class="space-between">
+        <div class="conditions">
+        Politique de confidentialité
+        </div>
+        <div class="conditions">
+        Conditions d’utilisation
+        </div>
+        <div class="conditions">
+        Mentions légales
+        </div>
+        </div>
+        </div> -->
 </body>
 
 </html>

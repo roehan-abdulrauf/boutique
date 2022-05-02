@@ -55,3 +55,4 @@ class Contact extends Config
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 }
+

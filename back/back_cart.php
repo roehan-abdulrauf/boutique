@@ -49,14 +49,14 @@ if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['pa
 // Update quantité produit
 if (isset($_POST['update']) && isset($_SESSION['panier'])) {
 
-    // Loop through the post data so we can update the quantities for every product in cart
+    // on boucle sur les données pour update les quantités pour chaque produit dans le panier
     foreach ($_POST as $i => $j) {
 
         if (strpos($i, 'quantity') !== false && is_numeric($j)) {
             $id = str_replace('quantity-', '', $i);
             $quantity = (int)$j;
 
-            // Always do checks and validation
+            // checks et validation
             if (is_numeric($id) && isset($_SESSION['panier'][$id]) && $quantity > 0) {
 
                 // Update quantité
@@ -65,17 +65,25 @@ if (isset($_POST['update']) && isset($_SESSION['panier'])) {
         }
     }
 
-    // // Prevent form resubmission...
-    // header('location: index.php?page=cart');
-    // exit;
+    
 }
 
  // Lien vers la page confirmation de paiement quand le user clique sur 'payer'/ le panier de doit pas être vide
  if (isset($_POST['placeorder']) && isset($_SESSION['panier']) && !empty($_SESSION['panier'])) {
+    
 
-    $payment = new Panier;
-    $payment->payment();
-     
+    if(!isset($_SESSION['id'])){
+
+        $_SESSION['message']= '<p style="color:red;font-size:120%;text-align:center"> <strong>*Vous devez vous connecter pour valider votre panier</p>';
+        header('refresh:2 url=index.php?page=connexion');
+        
+
+    } else{
+
+        header('Location: index.php?page=validation_de_commande');
+        
+    }
+    
 }
 
 
@@ -88,8 +96,12 @@ if ($products_in_cart) {
     $objet = new Panier;
     $products = $objet->produitsPanier($products_in_cart);
 
-    // Calculate the subtotal
+    // Calcul du total
     foreach ($products as $product) {
         $subtotal += (float)$product['prix'] * (int)$products_in_cart[$product['id']];
     }
 }
+
+
+$_SESSION['total'] = $subtotal;
+

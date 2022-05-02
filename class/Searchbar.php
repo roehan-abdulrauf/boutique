@@ -1,6 +1,7 @@
 <?php
 class Searchbar extends Config
 {
+
     public function BarreDeRecherche($q)
     {
         // echo 1;

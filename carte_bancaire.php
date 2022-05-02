@@ -87,3 +87,5 @@ require_once './back/back_carte_bancaire.php';
                 <button class="Buttoncommande" name="btncommande">Payer</button>
             </div>
         </form>
+
+        

@@ -14,7 +14,7 @@ body {
 	color: #555555;
 	background-color: #FFFFFF;
 	margin: 0;
-	padding-bottom: 100px; /* Same height as footer */
+	/* padding-bottom: 100px; Same height as footer */
 }
 
 h1, h2, h3, h4, h5 {
@@ -336,14 +336,6 @@ main .placeorder h1 {
 main .placeorder p {
 	text-align: center;
 }
-footer {
-	position: absolute;
-	bottom: 0;
-	border-top: 1px solid #EEEEEE;
-	padding: 20px 0;
-	width: 100%;
-}
-
 
 /* CSS page d'inscription */
 
@@ -414,6 +406,14 @@ footer {
     max-width: max-content;
     border-bottom-style: none;  
     padding: 2%;
+}
+
+
+
+.cgu{
+	color:rgb(104, 101, 101);
+	font-size: 80%;
+	max-width: 90%;
 }
 
 /* Css page de connexion*/
@@ -518,7 +518,7 @@ max-width:26rem;
     display: flex;
     justify-content: center;
     margin: auto;
-    margin-top:-3%;
+    margin-top: 4%;
   }
 
   .conditions{
@@ -574,6 +574,213 @@ th[scope="row"] {
     font-size: .8rem;
 }
 
-#hide{
+#tab{
 	display:none;
+	margin-top: 14%;
+}
+
+.imghide{
+	width: 85%;
+	vertical-align:baseline;
+}
+
+.plus-minus{
+	margin-left:10%;
+}
+
+.titre-historique{
+ min-width: max-content;
+ font-size: 140%;
+}
+
+/* Css footer */
+
+.titre-footer{
+	color:wheat !important;
+	font-size: 200%;
+	margin-top: 3%;
+margin-bottom: 2%;
+}
+
+footer{
+    /* position: absolute; */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #111;
+    height: auto;
+    width: 100vw;
+    color: #fff;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.footer-content h3{
+    font-size: 2.1rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    line-height: 3rem;
+}
+.footer-content p{
+    max-width: 500px;
+    margin: 10px auto;
+    line-height: 28px;
+    font-size: 14px;
+    color: #cacdd2;
+}
+.socials{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 3rem 0;
+}
+.socials li{
+    margin: 0 10px;
+}
+.socials a{
+    text-decoration: none;
+    color: #fff;
+    border: 1.1px solid white;
+    padding: 20%;
+    border-radius: 50%;
+
+}
+.socials a i{
+    font-size: 1.1rem;
+    width: 20px;
+
+
+    transition: color .4s ease;
+
+}
+.socials a:hover i{
+    color: wheat;
+}
+
+.footer-bottom{
+    background: #000;
+    width: 100vw;
+padding-bottom: 40px;
+    text-align: center;
+}
+.footer-bottom p{
+float: left;
+    font-size: 14px;
+    word-spacing: 2px;
+    text-transform: capitalize;
+}
+.footer-bottom p a{
+  color:wheat;
+  font-size: 16px;
+  text-decoration: none;
+}
+.footer-bottom span{
+    text-transform: uppercase;
+    opacity: .4;
+    font-weight: 200;
+}
+.footer-menu{
+  float: right;
+
+}
+.footer-menu ul{
+  display: flex;
+}
+.footer-menu ul li{
+padding-right: 10px;
+display: block;
+}
+.footer-menu ul li a{
+  color: #cfd2d6;
+  text-decoration: none;
+}
+.footer-menu ul li a:hover{
+  color: wheat;
+}
+
+@media (max-width:800px) {
+.footer-menu ul{
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+}
+
+/* css page qui sommes-nous */
+
+
+
+/* .body-propos{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans",sans-serif;
+    box-sizing: border-box;
+} */
+
+.about-section{
+    background: url(img/apropos1.jpg) no-repeat left;
+    background-size: 60%;
+    background-color: #fdfdfd;
+    overflow: hidden;
+    padding: 100px 0;
+    
+}
+
+.inner-container{
+    width: 55%;
+    float: right;
+    background-color: #fdfdfd;
+    padding: 5%;
+}
+
+.inner-container h1{
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.text-propos{
+    font-size: 100%;
+	font-weight: bold;
+    color: #545454;
+    line-height: 200%;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+
+@media screen and (max-width:1200px){
+    .inner-container{
+        padding: 80px;
+    }
+}
+
+@media screen and (max-width:1000px){
+    .about-section{
+        background-size: 100%;
+        padding: 100px 40px;
+    }
+    .inner-container{
+        width: 75%;
+    }
+}
+
+@media screen and (max-width:600px){
+    .about-section{
+        padding: 0;
+    }
+    .inner-container{
+        padding: 60px;
+    }
 }

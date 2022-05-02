@@ -1,5 +1,5 @@
 <?php
-if($_SESSION['id_droits']=== '23'){
+if($_SESSION['id_droit'] === '23'){
 
     // require_once('Config.php');
     // require_once('User.php');
@@ -79,7 +79,7 @@ if (isset($_POST['deconnexion'])) {
                 </div>
                 <ul class="sub-menu">
                     <!-- <li><a href="#" class="link_name">Compte</a></li> -->
-                    <li><a href="index.php?page=modifier_droit-admin">Mofifer un role</a></li>
+                    <li><a href="index.php?page=modifier_droit-admin">Moifer un role</a></li>
                 </ul>
             </li>
             <li>

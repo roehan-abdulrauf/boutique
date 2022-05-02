@@ -1,6 +1,6 @@
 <?php
 require_once './back/back_modifier_droit-admin.php';
-var_dump($_SESSION['id_droit']);
+// var_dump($_SESSION['id_droit']);
 ?>
 <!DOCTYPE html>
 <html>

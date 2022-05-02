@@ -6,6 +6,7 @@ class Commande extends Config
 
     public function alerts()
     {
+        
         if ($this->_Talert == 1) {
             echo "<div class='succes'>" . $this->_Malert . "</div>";
         } else {
@@ -15,6 +16,7 @@ class Commande extends Config
 
     public function GetAllOrderHistory()
     {
+
         $req = $this->bdd->prepare("SELECT * FROM `commandes` INNER JOIN `produit_commande` WHERE commandes.num_commande = produit_commande.num_commande");
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);
@@ -22,6 +24,7 @@ class Commande extends Config
 
     public function GetAllOrderHistorybyId()
     {
+
         $req = $this->bdd->prepare("SELECT * FROM `commandes` WHERE id = ?");
         $req->execute(array($_GET['id']));
         return $req->fetchAll(PDO::FETCH_ASSOC);
@@ -29,6 +32,7 @@ class Commande extends Config
 
     public function GetOrderHistoryById()
     {
+
         $id = $_SESSION['id'];
         $req = $this->bdd->prepare("SELECT * FROM `commandes` WHERE id=?");
         $req->execute(array($id));
@@ -45,6 +49,61 @@ class Commande extends Config
             ':id' => $id,
         ));
     }
+
+    public function payment($id_produit_panier,$num_commande,$quantite_produit_panier)
+    {
+
+            $req = $this->bdd->prepare("INSERT INTO `produit_commande`(`id_produits`, `num_commande`, `quantite`) VALUES (:id_produits,:num_commande,:quantite)");
+            $res = $req->execute(array(
+                ':id_produits' => $id_produit_panier,
+                ':num_commande' => $num_commande,
+                ':quantite' => $quantite_produit_panier
+            ));
+            
+        
+    
+    }
+
+
+    public function insertCommand($num_commande,$date,$montant,$etat,$adresse_livraison,$adresse_facturation,$id_utilisateur){
+
+        $req2 = $this->bdd->prepare("INSERT INTO `commandes`(`num_commande`, `date`, `montant`, `etat`, `adresse_livraison`, `adresse_facturation`, `id_utilisateur`) VALUES (:num_commande,:date,:montant,:etat,:adresse_livraison,:adresse_facturation,:id_utilisateur)");
+            $req2->execute(array(
+                ':num_commande' => $num_commande,
+                ':date' => $date,
+                ':montant' => $montant,
+                ':etat' => $etat,
+                ':adresse_livraison' => $adresse_livraison,
+                ':adresse_facturation' => $adresse_facturation,
+                ':id_utilisateur' => $id_utilisateur
+            ));
+            
+    }
+
+
+    // public function setCommande($montant,$livraison,$paiement,$id_user,$id_produit,$num_commande,$quantite){
+
+    //         $date = date("Y-m-d H:i:s");
+    //         $etat = "En cours";
+    //         $num_commande = rand(0,100000000000);
+    //         $request = $this->bdd->prepare("INSERT INTO `commandes`(`num_commande`,`date`, `montant`, `etat`, `adresse_livraison`, `adresse_facturation`, `id_utilisateur`) VALUES (:num_commande, :date, :montant,:etat,:adresse_livraison,:adresse_facturation,:id_utilisateur)");
+    //         $request->execute(array(
+    //             ':num_commande' => $num_commande,
+    //             ':date' => $date,
+    //             ':montant' => $montant,
+    //             ':etat' => $etat,
+    //             ':adresse_livraison' => $livraison,
+    //             ':adresse_facturation' => $paiement,
+    //             ':id_utilisateur' => $id_user
+    //         ));
+
+    //         $req = $this->bdd->prepare("INSERT INTO `produit_commande`(`id_produits`, `num_commande`, `quantite`) VALUES (:id_produit,:num_commande,:quantite)");
+    //         $req->execute(array(
+    //             ':id_produit' => $id_produit,
+    //             ':num_commande' => $num_commande,
+    //             ':id_produit' => $quantite
+    //         ));
+    // }
 }
 
 

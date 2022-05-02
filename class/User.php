@@ -1,5 +1,8 @@
 <?php
+
 require_once 'config.php';
+
+
 class User extends Config
 {
     private $_id;
@@ -9,10 +12,10 @@ class User extends Config
     private $_adresse;
     private $_codepostal;
     private $_ville;
-    private $_droits;
     private $_password;
     private $_Malert;
     private $_Talert;
+    private $_droits;
 
     public function alerts()
     {
@@ -29,14 +32,11 @@ class User extends Config
         $req->execute(array($mail));
         $res = $req->fetchAll(PDO::FETCH_ASSOC);
 
-        
+        // var_dump($res);
         $password = hash('sha512', $password);
         if (count($res)) {
-
             if (!empty($mail) && !empty($password)) {
-
                 if ($password == $res[0]['password']) {
-
                     $this->_id = $res[0]['id'];
                     $this->_mail =  $res[0]['mail'];
                     $this->_prenom = $res[0]['prenom'];
@@ -46,21 +46,18 @@ class User extends Config
                     $this->_ville = $res[0]['ville'];
                     $this->_droits = $res[0]['id_droit'];
 
-                    $this->_Malert = 'Connexion réussie, vous allez être redirigé.';
+                    $this->_Malert = '<p style="color:green;font-size:120%;text-align:center"> <strong>* Connexion réussie, vous allez être redirigé</p>';
                     $this->_Talert = 1;
 
-                    header("Refresh:1;url=index.php");
+                    header("Refresh:3;url=index.php");
                 } else {
-
                     echo "2";
-                    $this->_Malert = 'Mot de passe incorrect';
+                    $this->_Malert = '<p style="color:red;font-size:120%;text-align:center"> <strong>* Mot de passe incorrect</p>';
                     $this->_Talert = 2;
                 }
             }
         } else {
-
-            echo "3";
-            $this->_Malert = 'Aucun utilisateur trouvé';
+            $this->_Malert = '<p style="color:red;font-size:120%;text-align:center"> <strong>* Aucun utilisateur trouvé</p>';
             $this->_Talert = 2;
         }
     }
@@ -75,27 +72,36 @@ class User extends Config
             $id_droits1 = 23;
             $id_droits2 = 1;
 
-            if ($password == $passwordverify) {
-                $password = hash('sha512', $password);
-                $req = $this->bdd->prepare("INSERT INTO `utilisateurs`(`nom`,`prenom`,`mail`,`password`,`adresse`,`code_postal`,`ville`,`id_droit`) values (:nom, :prenom, :mail, :password, :adresse, :code_postal, :ville, :id_droit)");
-                $req->execute(array(
-                    ':nom' => $nom,
-                    ':prenom' => $prenom,
-                    ':mail' => $mail,
-                    ':password' => $password,
-                    ':adresse' => $adresse,
-                    ':code_postal' => $code_postal,
-                    ':ville' => $ville,
-                    ':id_droit' => $id_droits2,
-                ));
+            if ($mail != htmlspecialchars('admin@gmail.com') && $password == $passwordverify) {
+                if (preg_match('#^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,35})$#', $password)) {
+                    $password = hash('sha512', $password);
+                    $req = $this->bdd->prepare("INSERT INTO `utilisateurs`(`nom`,`prenom`,`mail`,`password`,`adresse`,`code_postal`,`ville`,`id_droit`) values (:nom, :prenom, :mail, :password, :adresse, :code_postal, :ville, :id_droits)");
+                    $i=$req->execute(array(
+                        ':nom' => $nom,
+                        ':prenom' => $prenom,
+                        ':mail' => $mail,
+                        ':password' => $password,
+                        ':adresse' => $adresse,
+                        ':code_postal' => $code_postal,
+                        ':ville' => $ville,
+                        ':id_droits' => $id_droits2,
+                    ));
+                    var_dump($i);
+                    echo 1;
+                    $this->_Malert = '<p style="color:green;font-size:120%;text-align:center"> <strong>* Votre compte a été créé avec succès, vous pouvez maintenant vous connecter </p>';
+                    $this->_Talert = 1;
+                    header('refresh:3;url=index.php?page=connexion');
+                } else {$this->_Malert =' <p style="color:red;font-size:120%;text-align:center">Le mot de passe doit contenir : <br> au moins 8 caractères <br>
+                au moins une lettre minuscule <br>
+                au moins une lettre majuscule <br>
+                au moins un chiffre <br>
+                au moins l\'un de ces caractères spéciaux: $ @ % * + - _ !<br>
+                <strong><p>';}
 
-                $this->_Malert = 'Félicitations votre compté a bien été créé, vous pouvez maintenant vous connecter .';
-                $this->_Talert = 1;
-                header('refresh:3;url=index.php?page=connexion');
-            } elseif ($mail == 'admin' && $password == 'admin' && $password == $passwordverify) {
+            } elseif ($mail == htmlspecialchars('admin@gmail.com') && $password == $passwordverify) {
                 $password = hash('sha512', $password);
-                $req = $this->bdd->prepare("INSERT INTO `utilisateurs`(`nom`,`prenom`,`mail`,`password`,`adresse`,`code_postal`,`ville`,`id_droit`) VALUES (:nom, :prenom, :mail, :password, :adresse, :code_postal, :ville, :id_droit)");
-                $req->execute(
+                $req = $this->bdd->prepare("INSERT INTO `utilisateurs`(`nom`,`prenom`,`mail`,`password`,`adresse`,`code_postal`,`ville`,`id_droit`) VALUES (:nom, :prenom, :mail, :password, :adresse, :code_postal, :ville, :id_droits)");
+                $i=$req->execute(
                     array(
                         ':nom' => $nom,
                         ':prenom' => $prenom,
@@ -104,16 +110,18 @@ class User extends Config
                         ':adresse' => $adresse,
                         ':code_postal' => $code_postal,
                         ':ville' => $ville,
-                        ':id_droit' => $id_droits1,
+                        ':id_droits' => $id_droits1,
                     )
+                    
                 );
-                header('refresh:3;url=index.php?page=connexion');
+                
+                header('refresh:1;url=connexion');
             } else {
-                $this->_Malert = 'Vos mots de passe doivent correspondre.';
+                $this->_Malert = '<p style="color:red;font-size:120%;text-align:center"> <strong>* Vos mots de passe doivent correspondre</p>';
                 $this->_Talert = 2;
             }
         } else {
-            $this->_Malert = 'Adresse email déjà utilisée.';
+            $this->_Malert = '<p style="color:red;font-size:120%;text-align:center"> <strong>* Adresse email déjà utilisée ou mot de passe incorrect</p>';
             $this->_Talert = 2;
         }
     }
@@ -129,18 +137,18 @@ class User extends Config
             if ($mail != $_SESSION['mail']) {
                 if (count($userinfo)) {
 
-                    $this->_Malert = '<font color="red">L\'adresse mail existe déjà</font>';
+                    $this->_Malert = '<p style="color:red;font-size:120%;text-align:center"> <strong>* L\'adresse mail existe déjà </p>';
                     $this->_Talert = 2;
                 } elseif (count($userinfo) == 0) {
 
                     $insertmail = $this->bdd->prepare("UPDATE utilisateurs SET mail = ? WHERE id = ?");
                     $insertmail->execute(array($mail, $_SESSION['id']));
-                    $this->_Malert = '<font color="green"> Profil modifié avec succès </font>';
+                    $this->_Malert = '<p style="color:green;font-size:120%;text-align:center"> <strong>* Profil modifié avec succès </p>';
                     $this->_Talert = 1;
-                    $_SESSION['mail']=$mail;
+                    $_SESSION['mail'] = $mail;
                     header('refresh:3;url=index.php?page=profil.php');
                 } else {
-                    $this->_Malert = 'Veuillez remplir correctement le champs .';
+                    $this->_Malert = '<p style="color:red;font-size:120%;text-align:center"> <strong>* Veuillez remplir correctement le champs </p>';
                     $this->_Talert = 2;
                     header('refresh:3;url=index.php?page=profil.php');
                 }
@@ -152,9 +160,9 @@ class User extends Config
 
                 $insertprenom = $this->bdd->prepare("UPDATE utilisateurs SET prenom = ? WHERE id = ?");
                 $insertprenom->execute(array($prenom, $_SESSION['id']));
-                $this->_Malert = '<font color="green">Profil modifié avec succès</font>';
+                $this->_Malert = '<p style="color:green;font-size:120%;text-align:center"> <strong>* Profil modifié avec succès </p>';
                 $this->_Talert = 1;
-                $_SESSION['prenom']=$prenom;
+                $_SESSION['prenom'] = $prenom;
                 header('refresh:3;url=index.php?page=profil');
             }
         }
@@ -163,9 +171,9 @@ class User extends Config
             if ($nom != $_SESSION['nom']) {
                 $insertnom = $this->bdd->prepare("UPDATE utilisateurs SET nom = ? WHERE id = ?");
                 $insertnom->execute(array($nom, $_SESSION['id']));
-                $this->_Malert = '<font color="Profil modifié avec succès</font>';
+                $this->_Malert = '<p style="color:green;font-size:120%;text-align:center"> <strong>* Profil modifié avec succès </p>';
                 $this->_Talert = 1;
-                $_SESSION['nom']=$nom;
+                $_SESSION['nom'] = $nom;
                 header('refresh:3;url=index.php?page=profil');
             }
         }
@@ -173,9 +181,9 @@ class User extends Config
             if ($adresse != $_SESSION['adresse']) {
                 $insertadresse = $this->bdd->prepare("UPDATE utilisateurs SET adresse = ? WHERE id = ?");
                 $insertadresse->execute(array($adresse, $_SESSION['id']));
-                $this->_Malert = '<font color="green">Profil modifié avec succès </font>';
+                $this->_Malert = '<p style="color:green;font-size:120%;text-align:center"> <strong>* Profil modifié avec succès </p>';
                 $this->_Talert = 1;
-                $_SESSION['adresse']=$adresse;
+                $_SESSION['adresse'] = $adresse;
                 header('refresh:3;url=index.php?page=profil');
             }
         }
@@ -183,8 +191,8 @@ class User extends Config
             if ($codepostal != $_SESSION['code_postal']) {
                 $insertcodepostal = $this->bdd->prepare("UPDATE utilisateurs SET code_postal = ? WHERE id = ?");
                 $insertcodepostal->execute(array($codepostal, $_SESSION['id']));
-                $this->_Malert = '<font color="green">Profil modifié avec succès</font>';
-                $_SESSION['code_postal']=$codepostal;
+                $this->_Malert = '<p style="color:green;font-size:120%;text-align:center"> <strong>* Profil modifié avec succès </p>';
+                $_SESSION['code_postal'] = $codepostal;
                 $this->_Talert = 1;
                 header('refresh:3;url=index.php?page=profil');
             }
@@ -193,37 +201,38 @@ class User extends Config
             if ($ville != $_SESSION['ville']) {
                 $insertville = $this->bdd->prepare("UPDATE utilisateurs SET ville = ? WHERE id = ?");
                 $insertville->execute(array($ville, $_SESSION['id']));
-                $this->_Malert = '<font color="green"> Profil modifié avec succès</font>'; 
+                $this->_Malert = '<p style="color:green;font-size:120%;text-align:center"> <strong>* Profil modifié avec succès </p>';
                 $this->_Talert = 1;
-                $_SESSION['ville']=$ville;
+                $_SESSION['ville'] = $ville;
                 header('refresh:3;url=index.php?page=profil');
             }
         }
         if (isset($password) && !empty($password) && isset($passwordverify) && !empty($passwordverify)) {
-            if ($password != $_SESSION['password']) {
-                
+            if (!empty($password) && empty($passwordverify)) {
+                echo 3;
+                $this->_Malert =  '<p style="color:red;font-size:120%;text-align:center"> <strong>* Tous les champs doivent être complétés</p>';
+                $this->_Talert = 2;
+            } elseif (!empty($password) && !empty($passwordverify)) {
                 if ($password == $passwordverify) {
-                    $newpassword = hash('sha512', $password);
-                    $insertpassword = $this->bdd->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
-                    $insertpassword->execute(array($newpassword, $_SESSION['id']));
-                    $this->_Malert = '<font color="green"> Profil modifié avec succès</font>'; 
+                    if ($password != $_SESSION['password']) {
+
+                        $newpassword = hash('sha512', $password);
+                        $insertpassword = $this->bdd->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
+                        $insertpassword->execute(array($newpassword, $_SESSION['id']));
+                        $this->_Malert = '<p style="color:green;font-size:120%;text-align:center"> <strong>* Profil modifié avec succès </p>';
+                        $this->_Talert = 1;
+                        echo 1;
+                    }
+                } else {
+                    $this->_Malert = '<p style="color:red;font-size:120%;text-align:center"> <strong>* les passwords ne correspondent pas</p>';
                     $this->_Talert = 1;
-                    
-                } elseif($password != $passwordverify) {
-                    $this->_Malert = 'text align:center<font color="red"> les passwords ne correspondent pas </font>'; 
-                    $this->_Talert = 1;
-                    
+                    echo 2;
                 }
             }
-        } elseif(empty($password) || empty($passwordverify)) {
-            
-            $this->_Malert =  '<font color="red"> Tous les champs doivent être complétés</font>';
-            $this->_Talert = 1;
-            
-            }
+        }
     }
 
-    public function AdminUpdate($id_droit, $mail)
+     public function AdminUpdate($id_droit, $mail)
     {
 
         $req = $this->bdd->prepare("UPDATE `utilisateurs` SET `id_droit`= ? WHERE mail = ?");

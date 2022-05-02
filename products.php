@@ -13,7 +13,7 @@ require_once 'back/back_products.php';
                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
                 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
             </head>
-            <body>
+            <body class="body-products">
                 <main>
                             <?php
 
@@ -23,7 +23,7 @@ require_once 'back/back_products.php';
                                     
                                     
                                     <div class="products content-wrapper">
-                                        <h1>Montres</h1>
+                                        <h1 class="titre-vendues">Nos montres d'exception</h1>
                                         <p><?=$total_products?> Products</p>
                                         <div class="products-wrapper">
                                             <?php foreach ($shop as $produit): ?>  

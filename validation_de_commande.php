@@ -3,22 +3,34 @@
 //     echo 'vous devez vous connecter pour continuer';
 // } else {
 require_once './back/back_validation_de_commande.php';
+// var_dump($_POST['code_postal']);
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
+
     <title>Votre adresse</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style2.css" />
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style2.css"/>
     <script src="js/dupliquer_adresse_facturation.js"></script>
     <script src="js/show_hide-CVV.js"></script>
     <script src="js/checkbox_disable"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
+
+    <?php
+        $view = new View;
+        $view->headerStyle();
+    ?>
     <div align="center">
+
         <form method="POST">
+
             <div class="container rounded bg-white mt-5 mb-5">
                 <h1 class="h1form text-left border-bottom">Adresse</h1>
                 <div class="row">
@@ -31,7 +43,7 @@ require_once './back/back_validation_de_commande.php';
                             </div>
                             <div>
                                 <label class="label titrelabel">Numero</label>
-                                <input type="text" class="inputnum" id="numero" name="numero" minlength="12" maxlength="12" placeholder="Entrez votre numero de téléphone" required>
+                                <input type="number" class="inputnum" id="numero" name="numero" minlength="12" maxlength="12" placeholder="Entrez votre numero de téléphone" required>
                             </div>
                             <div>
                                 <label class="label titrelabel">Adresse</label>
@@ -46,7 +58,7 @@ require_once './back/back_validation_de_commande.php';
                                     <input type="text" class="inputtext1" id="ville" name="ville" placeholder="Entrez votre ville" required>
                                 </div>
                                 <div><label class="label titrelabel">Code postal</label>
-                                    <input type="text" class="inputnum1" id="code_postal" name="code_postal" minlength="5" maxlength="5" placeholder="Entrez votre code postal" required>
+                                    <input type="number" class="inputnum1" id="code_postal" name="code_postal" minlength="5" maxlength="5" placeholder="Entrez votre code postal" required>
                                 </div>
                             </div>
                             <div>
@@ -111,7 +123,7 @@ require_once './back/back_validation_de_commande.php';
                         </h4>
                         <p>Livraison Gratuite</p>
                         <hr>
-                        <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+                        <p>Total <span class="price" style="color:black"><b>$<?=$_SESSION['total'];?></b></span></p>
                     </div>
                 </div>
                 <span class="error" id="errorname"></span></p>

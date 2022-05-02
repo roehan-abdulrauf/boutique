@@ -26,110 +26,150 @@ class View
         <?php if (isset($_SESSION['id_droit']) && $_SESSION['id_droit'] === '1') { ?>
             <header>
 
-                <div class="content-wrapper">
 
-                    <h1>Timestamp</h1>
-                    <nav>
+                <nav>
+                    <input type="checkbox" id="check">
+                    <label for="check" class="checkbtn">
+                        <i class="fas fa-bars"></i>
+                    </label>
 
-                        <a href="index.php">Accueil</a>
-                        <a href="index.php?page=products">Nos produits</a>
-                        <a href="index.php?page=categorie&cat=1">Montres homme</a>
-                        <a href="index.php?page=categorie&cat=2">Montres femme</a>
-                        <a href="index.php?page=profil">Mon profil</a>
-                        <a href="index.php?page=deconnexion">Deconnexion</a>
-                        <!-- <a href="index.php?page=inscription">Inscription</a>
-                                <a href="index.php?page=connexion">Connexion</a> -->
-                    </nav>
-                    <div class="link-icons">
-                        <a href="index.php?page=cart">
-                            <i class="fas fa-shopping-cart"></i>
-                            <?php if ($items_panier > 0) { ?>
-                                <span><?= $items_panier ?></span>
-                            <?php } ?>
-                        </a>
-                    </div>
-                </div>
+                    <label class="logo">Iced Watches</label>
+                    <ul>
+                        <li><a href="index.php">Accueil</a></li>
+                        <li><a href="index.php?page=products">Nos produits</a></li>
+                        <li><a href="index.php?page=categorie&cat=1">Montres homme</a></li>
+                        <li><a href="index.php?page=categorie&cat=2">Montres femme</a></li>
+                        <li><a href="index.php?page=profil">Mon profil</a></li>
+                        <li><a href="index.php?page=deconnexion">Deconnexion</a></li>
+                        <li><a href="index.php?page=cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <?php if ($items_panier > 0) { ?>
+                            <span><?= $items_panier ?></span>
+                        <?php } ?>
+                    </a></li>
+                    <?php
+
+require_once 'config.php';
+require('Searchbar.php');
+$adresse = new Searchbar();
+
+?>
+
+<li>
+    <form method="POST">
+        <input type="search" name="q" id="q" placeholder="Recherche...">
+        <input type="submit" name="submit" value="Valider" />
+        <?php
+        if (isset($_POST['submit'])) {
+            $adresse->BarreDerecherche(htmlspecialchars($_POST['q']));
+        }
+        ?>
+    </form>
+</li>
+                    </ul>
+            </nav>
             </header>
         <?php } elseif (isset($_SESSION['id_droit']) && $_SESSION['id_droit'] === '23') { ?>
 
 
             <header>
 
-                <div class="content-wrapper">
+                <nav>
+                    <input type="checkbox" id="check">
+                    <label for="check" class="checkbtn">
+                        <i class="fas fa-bars"></i>
+                    </label>
+                    <label class="logo">Iced Watches</label>
+                    <ul>
 
-                    <h1>Timestamp</h1>
-                    <nav>
+                        <li><a href="index.php">Accueil</a></li>
+                        <li><a href="index.php?page=products">Nos produits</a></li>
+                        <li><a href="index.php?page=categorie&cat=1">Montres homme</a></li>
+                        <li><a href="index.php?page=categorie&cat=2">Montres femme</a></li>
+                        <li><a href="index.php?page=admin">Admin</a></li>
+                        <li><a href="index.php?page=deconnexion">Deconnexion</a></li>
+                        <li><a href="index.php?page=cart">
+                        <i class="fas fa-shopping-cart"></i>
 
-                        <a href="index.php">Accueil</a>
-                        <a href="index.php?page=products">Nos produits</a>
-                        <a href="index.php?page=categorie&cat=1">Montres homme</a>
-                        <a href="index.php?page=categorie&cat=2">Montres femme</a>
-                        <a href="index.php?page=tableau_de_bord-admin">Admin</a>
-                        <a href="index.php?page=deconnexion">Deconnexion</a>
-                    </nav>
-                    <div class="link-icons">
+                        <?php if ($items_panier > 0) { ?>
+                            <span><?= $items_panier ?></span>
+                        <?php } ?>
+                    </a></li>
+                    <?php
 
-                        <a href="index.php?page=cart">
-                            <i class="fas fa-shopping-cart"></i>
-                            <?php if ($items_panier > 0) { ?>
-                                <span><?= $items_panier ?></span>
-                            <?php } ?>
-                        </a>
-                    </div>
-                </div>
+require_once 'Config.php';
+require('Searchbar.php');
+$adresse = new Searchbar();
+
+?>
+
+<li>
+<form method="POST">
+        <input type="search" name="q" id="q" placeholder="Recherche...">
+        <input type="submit" name="submit" value="Valider" />
+        <?php
+        if (isset($_POST['submit'])) {
+            $adresse->BarreDerecherche(htmlspecialchars($_POST['q']));
+        }
+        ?>
+    </form>
+</li>
+                    </ul>
+            </nav>
             </header>
 
         <?php } else { ?>
 
 
             <header>
+                <nav>
+                    <input type="checkbox" id="check">
+                    <label for="check" class="checkbtn">
+                        <i class="fas fa-bars"></i>
+                    </label>
+                    <label class="logo">Iced Watches</label>
+                    <ul>
+                        <li><a href="index.php">Accueil</a></li>
+                        <li><a href="index.php?page=products">Nos produits</a></li>
+                        <li><a href="index.php?page=categorie&cat=1">Montres homme</a></li>
+                        <li><a href="index.php?page=categorie&cat=2">Montres femme</a></li>
+                        <li><a href="index.php?page=inscription">Inscription</a><li>
+                        <li><a href="index.php?page=connexion">Connexion</a></li>
+                        <li><a href="index.php?page=cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <?php if ($items_panier > 0) { ?>
+                            <span><?= $items_panier ?></span>
+                        <?php } ?>
+                    </a></li>
+                    <?php
 
-                <div class="content-wrapper">
+require_once 'Config.php';
+require('Searchbar.php');
+$adresse = new Searchbar();
 
-                    <h1>Timestamp</h1>
-                    <nav>
+?>
 
-                        <a href="index.php">Accueil</a>
-                        <a href="index.php?page=products">Nos produits</a>
-                        <a href="index.php?page=categorie&cat=1">Montres homme</a>
-                        <a href="index.php?page=categorie&cat=2">Montres femme</a>
-                        <a href="index.php?page=inscription">Inscription</a>
-                        <a href="index.php?page=connexion">Connexion</a>
-                    </nav>
-                    <div class="link-icons">
-
-                        <a href="index.php?page=cart">
-
-                            <i class="fas fa-shopping-cart"></i>
-                            <?php if ($items_panier > 0) { ?>
-                                <span><?= $items_panier ?></span>
-                            <?php } ?>
-                        </a>
-                    </div>
-                </div>
+    <li>
+    <form method="POST">
+        <input type="search" name="q" id="q" placeholder="Recherche...">
+        <input type="submit" name="submit" value="Valider" />
+        <?php
+        if (isset($_POST['submit'])) {
+            
+            $adresse->BarreDerecherche(htmlspecialchars($_POST['q']));
+        }
+        ?>
+    </form>
+    </li>
+                    </ul>
+            </nav>
             </header>
-            <?php
 
-            require_once 'Config.php';
-            require('class/Searchbar.php');
-            $adresse = new Searchbar();
-
-            ?>
-
-            <form method="POST">
-                <input type="search" name="q" id="q" placeholder="Recherche...">
-                <input type="submit" name="submit" value="Valider" />
-                <?php
-                if (isset($_POST['submit'])) {
-                    $adresse->BarreDerecherche(htmlspecialchars($_POST['q']));
-                }
-                ?>
-            </form>
 
         <?php    } ?>
         </header>
         <main>
-        <?php
+        <?php 
     }
 
     public function footerStyle()
@@ -138,7 +178,7 @@ class View
             <footer>
                 <div class="footer-content">
                     <h6 class="titre-footer">Iced Watches </h6>
-                    <p>Bonjour et bienvenue surIced Watches, le site où trouver les modèles les plus incroyables de montres pour tous les passionnés de la haute horlogerie.</p>
+                    <p>Bonjour et bienvenue sur Iced Watches, le site où trouver les modèles les plus incroyables de montres pour tous les passionnés de la haute horlogerie.</p>
                     <ul class="socials">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>

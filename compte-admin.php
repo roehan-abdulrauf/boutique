@@ -39,7 +39,7 @@ require_once './back/back_compte-admin.php';
                         <td class="td"><a href="index.php?page=modifier_droit-admin&action=modifier&id=<?php echo $c['id'] ?>">modifier</a></td>
                         <td class="td"><a href="index.php?page=compte-admin&action=suppression&id=<?php echo $c['id'] ?>">supprimer</a></td> -->
                     </tr>
-                <?php }; ?>
+                <?php }; ?> 
             </tbody>
         </table>
     </section>

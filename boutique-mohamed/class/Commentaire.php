@@ -1,5 +1,7 @@
 <?php
 
+require_once 'config.php';
+
 class Commentaire extends  Config
 {
     public $_id;
