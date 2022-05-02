@@ -6,6 +6,7 @@ class Commande extends Config
 
     public function alerts()
     {
+        
         if ($this->_Talert == 1) {
             echo "<div class='succes'>" . $this->_Malert . "</div>";
         } else {
@@ -15,13 +16,15 @@ class Commande extends Config
 
     public function GetAllOrderHistory()
     {
-        $req = $this->bdd->prepare("SELECT * FROM `commandes`");
+
+        $req = $this->bdd->prepare("SELECT * FROM `commandes` INNER JOIN `produit_commande` WHERE commandes.num_commande = produit_commande.num_commande");
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function GetAllOrderHistorybyId()
     {
+
         $req = $this->bdd->prepare("SELECT * FROM `commandes` WHERE id = ?");
         $req->execute(array($_GET['id']));
         return $req->fetchAll(PDO::FETCH_ASSOC);
@@ -29,6 +32,7 @@ class Commande extends Config
 
     public function GetOrderHistoryById()
     {
+
         $id = $_SESSION['id'];
         $req = $this->bdd->prepare("SELECT * FROM `commandes` WHERE id=?");
         $req->execute(array($id));
@@ -46,8 +50,8 @@ class Commande extends Config
         ));
     }
 
-
-    public function payment($id_produit_panier,$num_commande,$quantite_produit_panier){
+    public function payment($id_produit_panier,$num_commande,$quantite_produit_panier)
+    {
 
             $req = $this->bdd->prepare("INSERT INTO `produit_commande`(`id_produits`, `num_commande`, `quantite`) VALUES (:id_produits,:num_commande,:quantite)");
             $res = $req->execute(array(

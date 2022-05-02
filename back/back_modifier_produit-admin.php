@@ -3,6 +3,7 @@
 // require_once('Produit.php');
 $produit = new Produit();
 $modifproduits = $produit->getModifProduit();
+$cat = new Categorie();
 // var_dump($test);
 foreach ($modifproduits as $p) {
     $_SESSION['id_produit'] = $p['id'];
@@ -18,12 +19,12 @@ foreach ($modifproduits as $p) {
 if (isset($_POST['submit'])) {
     $nom = htmlspecialchars($_POST['nom']);
     $prix = htmlspecialchars($_POST['prix']);
-    $img = htmlspecialchars($_POST['img']);
+    // $img = htmlspecialchars($_POST['img']);
     $newimg = htmlspecialchars($_POST['newimg']);
     $description = htmlspecialchars($_POST['description']);
     $quantite = htmlspecialchars($_POST['quantite']);
     $categorie = htmlspecialchars($_POST['categorie']);
-    if (!empty($nom) && !empty($prix) && !empty($img) && !empty($newimg) && !empty($description) && !empty($quantite) && !empty($categorie)) {
+    if (!empty($nom) && !empty($prix) && !empty($newimg) && !empty($description) && !empty($quantite) && !empty($categorie)) {
         $product = $produit->getUpdateProduits(htmlspecialchars($_POST['nom']));
         if (count($product) == 0) {
             $produit->UpdateProduitsnewimg($_SESSION['blaze']);

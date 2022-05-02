@@ -35,7 +35,7 @@ class View
 
                     <label class="logo">Iced Watches</label>
                     <ul>
-                        <li><a class="active" href="index.php">Accueil</a></li>
+                        <li><a href="index.php">Accueil</a></li>
                         <li><a href="index.php?page=products">Nos produits</a></li>
                         <li><a href="index.php?page=categorie&cat=1">Montres homme</a></li>
                         <li><a href="index.php?page=categorie&cat=2">Montres femme</a></li>
@@ -49,21 +49,23 @@ class View
                     </a></li>
                     <?php
 
-require_once 'Config.php';
+require_once 'config.php';
 require('Searchbar.php');
 $adresse = new Searchbar();
 
 ?>
 
-<li><form method="POST">
-    <?php if (isset($POST['submit'])) {
-        $user->BarreDerecherche(htmlspecialchars($_POST['q']));
-        $user->alerts();
-    }
-    ?>
-    <input type="search" name="q" id="q" placeholder="Recherche...">
-    <input type="submit" value="Valider" />
-</form></li>
+<li>
+    <form method="POST">
+        <input type="search" name="q" id="q" placeholder="Recherche...">
+        <input type="submit" name="submit" value="Valider" />
+        <?php
+        if (isset($_POST['submit'])) {
+            $adresse->BarreDerecherche(htmlspecialchars($_POST['q']));
+        }
+        ?>
+    </form>
+</li>
                     </ul>
             </nav>
             </header>
@@ -80,7 +82,7 @@ $adresse = new Searchbar();
                     <label class="logo">Iced Watches</label>
                     <ul>
 
-                        <li><a class="active" href="index.php">Accueil</a></li>
+                        <li><a href="index.php">Accueil</a></li>
                         <li><a href="index.php?page=products">Nos produits</a></li>
                         <li><a href="index.php?page=categorie&cat=1">Montres homme</a></li>
                         <li><a href="index.php?page=categorie&cat=2">Montres femme</a></li>
@@ -88,6 +90,7 @@ $adresse = new Searchbar();
                         <li><a href="index.php?page=deconnexion">Deconnexion</a></li>
                         <li><a href="index.php?page=cart">
                         <i class="fas fa-shopping-cart"></i>
+
                         <?php if ($items_panier > 0) { ?>
                             <span><?= $items_panier ?></span>
                         <?php } ?>
@@ -100,15 +103,17 @@ $adresse = new Searchbar();
 
 ?>
 
-<li><form method="POST">
-    <?php if (isset($POST['submit'])) {
-        $user->BarreDerecherche(htmlspecialchars($_POST['q']));
-        $user->alerts();
-    }
-    ?>
-    <input type="search" name="q" id="q" placeholder="Recherche...">
-    <input type="submit" value="Valider" />
-</form></li>
+<li>
+<form method="POST">
+        <input type="search" name="q" id="q" placeholder="Recherche...">
+        <input type="submit" name="submit" value="Valider" />
+        <?php
+        if (isset($_POST['submit'])) {
+            $adresse->BarreDerecherche(htmlspecialchars($_POST['q']));
+        }
+        ?>
+    </form>
+</li>
                     </ul>
             </nav>
             </header>
@@ -124,7 +129,7 @@ $adresse = new Searchbar();
                     </label>
                     <label class="logo">Iced Watches</label>
                     <ul>
-                        <li><a class="active" href="index.php">Accueil</a></li>
+                        <li><a href="index.php">Accueil</a></li>
                         <li><a href="index.php?page=products">Nos produits</a></li>
                         <li><a href="index.php?page=categorie&cat=1">Montres homme</a></li>
                         <li><a href="index.php?page=categorie&cat=2">Montres femme</a></li>
@@ -144,15 +149,18 @@ $adresse = new Searchbar();
 
 ?>
 
-<li><form method="POST">
-    <?php if (isset($POST['submit'])) {
-        $user->BarreDerecherche(htmlspecialchars($_POST['q']));
-        $user->alerts();
-    }
-    ?>
-    <input type="search" name="q" id="q" placeholder="Recherche...">
-    <input type="submit" value="Valider" />
-</form></li>
+    <li>
+    <form method="POST">
+        <input type="search" name="q" id="q" placeholder="Recherche...">
+        <input type="submit" name="submit" value="Valider" />
+        <?php
+        if (isset($_POST['submit'])) {
+            
+            $adresse->BarreDerecherche(htmlspecialchars($_POST['q']));
+        }
+        ?>
+    </form>
+    </li>
                     </ul>
             </nav>
             </header>
@@ -161,7 +169,7 @@ $adresse = new Searchbar();
         <?php    } ?>
         </header>
         <main>
-        <?php
+        <?php 
     }
 
     public function footerStyle()
@@ -184,6 +192,11 @@ $adresse = new Searchbar();
                     <div class="footer-menu">
                         <ul class="f-menu">
                             <li><a href="index.php?page=aboutus">Qui sommes-nous?</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-menu">
+                        <ul class="f-menu">
+                            <li><a href="index.php?page=page_contact">Contact</a></li>
                         </ul>
                     </div>
                 </div>

@@ -74,7 +74,9 @@ if (isset($_POST['update']) && isset($_SESSION['panier'])) {
 
     if(!isset($_SESSION['id'])){
 
-        header('refresh:1 url=index.php?page=connexion');
+        $_SESSION['message']= '<p style="color:red;font-size:120%;text-align:center"> <strong>*Vous devez vous connecter pour valider votre panier</p>';
+        header('refresh:2 url=index.php?page=connexion');
+        
 
     } else{
 
@@ -94,7 +96,7 @@ if ($products_in_cart) {
     $objet = new Panier;
     $products = $objet->produitsPanier($products_in_cart);
 
-    // Calculate the subtotal
+    // Calcul du total
     foreach ($products as $product) {
         $subtotal += (float)$product['prix'] * (int)$products_in_cart[$product['id']];
     }
