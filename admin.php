@@ -95,14 +95,6 @@ if ($_SESSION['id_droit'] === '23') {
                 </li>
                 <li>
                     <div class="icon-links">
-                        <a href="index.php?page=commentaire-admin">
-                            <i class='bx bxs-comment-edit'></i>
-                            <span class="link_name">Commentaires</span>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div class="icon-links">
                         <a href="index.php?page=message_reçu-admin">
                             <i class='bx bxs-comment-detail'></i>
                             <span class="link_name">Message Reçu</span>

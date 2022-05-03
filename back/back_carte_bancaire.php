@@ -26,8 +26,9 @@ if (isset($_POST['btncommande'])) {
             // var_dump($req);
             $num_commande = rand(0,100000000);
             $date = date("Y-m-d H:i:s");
-            $etat = 'En cours';
+            $etat = 'En cours de prepation';
             $payment = new Commande;
+            $stock = new Products;
             // $payment->payment($_SESSION['panier'],$num_commande);
             
             foreach($_SESSION['panier'] as $id_produit_panier => $quantite_produit_panier){
@@ -56,7 +57,7 @@ if (isset($_POST['btncommande'])) {
 
             $num_commande = rand(0,100000000);
             $date = date("Y-m-d H:i:s");
-            $etat = 'En cours';
+            $etat = 'En cours de prepation';
             $payment = new Commande;
             $stock = new Products;
             // $payment->payment($_SESSION['panier'],$num_commande);

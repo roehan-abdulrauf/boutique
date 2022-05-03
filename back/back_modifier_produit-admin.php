@@ -19,24 +19,25 @@ foreach ($modifproduits as $p) {
 if (isset($_POST['submit'])) {
     $nom = htmlspecialchars($_POST['nom']);
     $prix = htmlspecialchars($_POST['prix']);
-    // $img = htmlspecialchars($_POST['img']);
-    $newimg = htmlspecialchars($_POST['newimg']);
+    $img = htmlspecialchars($_POST['img']);
     $description = htmlspecialchars($_POST['description']);
     $quantite = htmlspecialchars($_POST['quantite']);
     $categorie = htmlspecialchars($_POST['categorie']);
-    if (!empty($nom) && !empty($prix) && !empty($newimg) && !empty($description) && !empty($quantite) && !empty($categorie)) {
+    $newcategorie = htmlspecialchars($_POST['newcategorie']);
+    // var_dump($newcategorie);
+    if (!empty($nom) && !empty($prix) && !empty($img) && !empty($description) && !empty($quantite) && !empty($categorie) && empty($newcategorie)) {
         $product = $produit->getUpdateProduits(htmlspecialchars($_POST['nom']));
-        if (count($product) == 0) {
-            $produit->UpdateProduitsnewimg($_SESSION['blaze']);
-        } else {
-            echo 'Nom de produit invalide ou déjà utiliser.';
-        }
-    } elseif (!empty($nom) && !empty($prix) && !empty($img) && empty($newimg) && !empty($description) && !empty($quantite) && !empty($categorie)) {
-        $product =  $produit->getUpdateProduits(htmlspecialchars($_POST['nom']));
-        if (count($product) == 0) {
+        if (count($product) == 1) {
             $produit->UpdateProduits($_SESSION['blaze']);
         } else {
-            echo 'Nom de produit invalide ou déjà utiliser.';
+            echo 'Produit inexistent.';
+        }
+    } elseif (!empty($nom) && !empty($prix) && !empty($img) && !empty($description) && !empty($quantite) && !empty($categorie) && !empty($newcategorie)) {
+        $product =  $produit->getUpdateProduits(htmlspecialchars($_POST['nom']));
+        if (count($product) == 1) {
+            $produit->UpdateProduitsnewcat($_SESSION['blaze']);
+        } else {
+            echo 'Produit inexistent.';
         }
     } else {
         echo 'Vous devez remplir tous les champs.';

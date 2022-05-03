@@ -8,22 +8,26 @@ $orders = $commande->GetAllOrderHistorybyId();
 foreach ($orders as $p) {
     $_SESSION['id'] = $p['id'];
     $_SESSION['num_commande'] = $p['num_commande'];
-    $_SESSION['montant'] = $p['montant'];   
+    $_SESSION['montant'] = $p['montant'];
     $_SESSION['etat'] = $p['etat'];
     $_SESSION['adresse_livraison'] = $p['adresse_livraison'];
     $_SESSION['adresse_facturation'] = $p['adresse_facturation'];
 };
 
-if (isset($_POST['submit'])) { 
+if (isset($_POST['submit'])) {
     echo 1;
-    $etat = htmlspecialchars($_POST['etat']);
-    if (!empty($etat)) {
-        echo 2;
-        $commande->UpdateOrderHistory($etat, $_SESSION['id']);
-            var_dump($_SESSION['id']);
-            var_dump($_SESSION['etat']);
+    $newetat = htmlspecialchars($_POST['newetat']);
+    if (!empty($newetat)) {
+        if ($newetat === "Choisir une option") {
+            echo "veuillez choisir une option";
+        } else {
+            $commande->UpdateOrderHistory($newetat, $_SESSION['id']);
+            // var_dump($_SESSION['id']);
+            // var_dump($_SESSION['etat']);
+            $_SESSION['etat'] = $newetat;
             echo 'Etat de commande modifier.';
-            // header("Refresh:2;url=modifier_historique-admin.php");
-            // header("Refresh:2;url=index.php?page=produit-admin");
+            $id =  $_SESSION['id'];
+            header('Refresh:2;url=index.php?page=modifier_historique-admin&action=modifier&id="' . $id . '"');
         }
     }
+}

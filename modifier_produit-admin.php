@@ -34,16 +34,21 @@ require_once './back/back_modifier_produit-admin.php';
                 <label class="label" for="quantite">Quantité</label>
                 <input class="inputtext" type="number" id="quantite" name="quantite" value="<?= $_SESSION['quantite'] ?>" placeholder="0" required>
             </div>
+            
             <div>
                 <label class="label" for="categorie">Catégorie</label>
-                <select id="categorie" name="categorie" required>
-                    <option>Choisir une catégorie</option>
+                <input class="inputtext" type="number" id="categorie" name="categorie" value="<?= $_SESSION['id_categorie'] ?>" readonly="readonly" placeholder="0" required>
+            </div>
+            <div>
+                <label class="label" for="categorie">Nouvelle Catégorie</label>
+                <select id="newcategorie" name="newcategorie">
+                    <option value="">Choisir une catégorie</option>
                     <?= $cat->getCategories(); ?>
                 </select>
             </div>
             <div>
                 <label class="label" for="img">Image</label>
-                <input class="inputtext" type="text" id="newimg" name="newimg" value="<?=  $_SESSION['img'] ?>" placeholder="0" required>
+                <input class="inputtext" type="text" id="img" name="img" value="<?=  $_SESSION['img'] ?>" placeholder="0" required>
             </div>
             <!-- <div>
                 <label class="label" for="newimg">Nouvelle image</label>

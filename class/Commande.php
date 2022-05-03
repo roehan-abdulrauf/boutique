@@ -40,12 +40,12 @@ class Commande extends Config
         var_dump($req);
     }
 
-    public function UpdateOrderHistory($etat, $id)
+    public function UpdateOrderHistory($newetat, $id)
     {
 
         $req = $this->bdd->prepare(" UPDATE `commandes` SET `etat` = :etat WHERE id = :id");
         $req->execute(array(
-            ':etat' => $etat,
+            ':etat' => $newetat,
             ':id' => $id,
         ));
     }

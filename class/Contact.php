@@ -21,28 +21,27 @@ class Contact extends Config
         }
     }
 
-    public function InsertContact($sujet, $message)
+    public function InsertContact($sujet, $message,$session)
     {
         $req = $this->bdd->prepare("INSERT INTO `contacts`(`sujet`,`message`,`id_utilisateur`) VALUES (:sujet,:message,:id_utilisateur)");
         $req->execute(array(
             ':sujet' => $sujet,
             ':message' => $message,
-            ':id_utilisateur' => $_SESSION['id'],
+            ':id_utilisateur' => $session
         ));
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getContact()
     {
-        $req = $this->bdd->prepare("SELECT * FROM contacts INNER JOIN utilisateurs WHERE contacts.id_utilisateur = utilisateurs.id");
+        $req = $this->bdd->prepare("SELECT * FROM `contacts` INNER JOIN utilisateurs WHERE contacts.id_utilisateur = utilisateurs.id");
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getContactByid()
     {
-
-        $check = $this->bdd->prepare("SELECT * FROM `contacts` WHERE id_utilisateur = ?");
+        $check = $this->bdd->prepare("SELECT * FROM `contacts` WHERE id_contact = ?");
         $check->execute(array($_GET['id']));
         return $check->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -50,9 +49,8 @@ class Contact extends Config
     public function getSuppContact()
     {
 
-        $req = $this->bdd->prepare("DELETE FROM `contacts` WHERE id_utilisateur = ?");
+        $req = $this->bdd->prepare("DELETE FROM `contacts` WHERE id_contact = ?");
         $req->execute(array($_GET['id']));
-        return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 }
 

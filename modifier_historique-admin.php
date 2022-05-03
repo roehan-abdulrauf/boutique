@@ -27,11 +27,16 @@ require_once './back/back_modifier_historique-admin.php';
                 <input class="inputtext" type="text" id="montant" name="montant" value="<?= $_SESSION['montant'] ?>" readonly="<?= $_SESSION['montant'] ?>" required>
             </div>
             <div class="input">
-                <label class="label" for="etat">Etat commande</label>
-                <select name="etat">
-                    <option>En cours de preparation</option>
-                    <option>En cours d'expédition</option>
-                    <option>Livré à destination</option>
+                <label class="label" for="mail">Etat commande</label>
+                <input class="inputtext" type="text" id="etat" name="etat" value="<?= $_SESSION['etat'] ?>" readonly="<?= $_SESSION['montant'] ?>" required>
+            </div>
+            <div class="input">
+                <label class="label" for="newetat">Novelle Etat commande</label>
+                <select name="newetat">
+                <option>Choisir une option</option>
+                    <option name="newetat">En cours de preparation</option>
+                    <option name="newetat">En cours d'expédition</option>
+                    <option name="newetat">Livré à destination</option>
                 </select>
             </div>
             <div class="form-admin-butt">

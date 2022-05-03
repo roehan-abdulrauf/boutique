@@ -12,18 +12,20 @@ foreach ($modifuser as $p) {
 };
 
 if (isset($_POST['submit'])) {
-    echo 1;
+    // echo 1;
     $mail = htmlspecialchars($_POST['mail']);
     $id_droit = htmlspecialchars($_POST['id_droit']);
     if (!empty($id_droit)) {
-        echo 2;
-            $user->AdminUpdate($id_droit, $_SESSION['mail']);
-            var_dump($_SESSION['id']);
-            var_dump($_SESSION['mail']);
-            var_dump($user);
-            echo 'Les droits de l\'itulisateur ont bien été modifier.';
-            header('refresh:2;url=index.php?page=compte-admin');
-        } else {
-            echo 'Vous devez remplir tous les champs.';
-        }
+        // echo 2;
+        $user->AdminUpdate($id_droit, $_SESSION['mail']);
+        // var_dump($_SESSION['id']);
+        // var_dump($_SESSION['mail']);
+        // var_dump($user);
+        echo 'Les droits de l\'itulisateur ont bien été modifier.';
+        $id =  $_SESSION['id'];
+        $_SESSION['droit'] = $id_droit;
+        header('refresh:2;url=index.php?page=modifier_droit-admin&action=modifier&id="' . $id . '"');
+    } else {
+        echo 'Vous devez remplir tous les champs.';
     }
+}

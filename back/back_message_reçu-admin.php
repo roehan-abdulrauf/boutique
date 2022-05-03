@@ -4,14 +4,14 @@ $contact = new Contact();
 $getcontact = $contact->getContact();
 
 if (isset($_GET['action']) && $_GET['action'] == "suppression") {
-    $comment = new Commentaire();
-    $modifcommentaire = $comment->getModifCommentaire();
+    $comment = new Contact();
+    $modifcommentaire = $comment->getContactByid();
     // var_dump($modifcommentaire);
     if (count($modifcommentaire)) {
-        $comment = new Commentaire();
-    $suppcommentaire = $comment->getSuppCommentaire();
+        $comment = new Contact();
+    $suppcommentaire = $comment->getSuppContact();
     // var_dump($suppcommentaire);
-    header('location:index.php?page=commentaire-admin.php');
+    // header('location:index.php?page=message_reçu-admin');
     }
 }
 ?>

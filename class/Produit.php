@@ -53,42 +53,20 @@ class Produit extends  Config
         // $res = $check->count();    
     }
 
-    public function CreerProduits($nom, $prix, $img, $description, $quantite, $categorie)
+    public function CreerProduits($nom, $prix, $img, $description, $quantite, $date, $categorie)
     {
-
-        $check = $this->bdd->prepare("SELECT `blaze`  FROM `produits` WHERE  `blaze` = :nom");
-        $check->execute(array(':nom' => $nom,));
-        $res = $check->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($res);
-        if (count($res) == 0) {
-            if (!empty($nom) && !empty($prix) && !empty($img) && !empty($description) && !empty($quantite) && !empty($categorie)) {
-                echo 2;
-                $date = date('Y-m-d H:i:s');
-                $req = $this->bdd->prepare("INSERT INTO produits (blaze, prix, img, description, quantite, date, id_categorie) VALUES (:blaze, :prix, :img, :description, :quantite, :date, :id_categorie)");
-                $req->execute(array(
-                    ':blaze' => $nom,
-                    ':prix' => $prix,
-                    ':img' => $img,
-                    ':description' => $description,
-                    ':quantite' => $quantite,
-                    ':date' => $date,
-                    ':id_categorie' => $categorie,
-                ));
-                var_dump($req);
-                var_dump($req->execute());
-                $this->_Malert = 'Le produit à bien été ajouter avec succès.';
-                $this->_Talert = 1;
-
-                // header('refresh:2;url=admin.php');
-            } else {
-                echo 5;
-                $this->_Malert = 'Vous devez remplir correctement tous les champs.';
-                $this->_Talert = 2;
-            }
-        } else {
-            $this->_Malert = 'Nom de produit déjà utilisé.';
-            $this->_Talert = 2;
-        }
+        $req = $this->bdd->prepare("INSERT INTO produits (blaze, prix, img, description, quantite, date, id_categorie) VALUES (:blaze, :prix, :img, :description, :quantite, :date, :id_categorie)");
+        $req->execute(array(
+            ':blaze' => $nom,
+            ':prix' => $prix,
+            ':img' => $img,
+            ':description' => $description,
+            ':quantite' => $quantite,
+            ':date' => $date,
+            ':id_categorie' => $categorie,
+        ));
+        // var_dump($req);
+        // var_dump($req->execute());
     }
 
     public function getUpdateProduits($nom)
@@ -96,6 +74,38 @@ class Produit extends  Config
         $check = $this->bdd->prepare("SELECT `blaze` FROM `produits` WHERE  `blaze` = ?");
         $check->execute(array($nom));
         return $check->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function UpdateProduitsnewcat($nom)
+    {
+        $newnom = htmlspecialchars($_POST['nom']);
+        $prix = htmlspecialchars($_POST['prix']);
+        $img = htmlspecialchars($_POST['img']);
+        $description = htmlspecialchars($_POST['description']);
+        $quantite = htmlspecialchars($_POST['quantite']);
+        $newcategorie = htmlspecialchars($_POST['newcategorie']);
+        $date = date('Y-m-d H:i:s');
+        $req = $this->bdd->prepare(" UPDATE `produits` SET  `blaze` = :blaze , `prix` = :prix , `img` = :img , `description` = :description , `quantite` = :quantite , `date` = :date , `id_categorie` = :id_categorie WHERE blaze = '$nom'");
+        $req->execute(array(
+            ':blaze' => $newnom,
+            ':prix' => $prix,
+            ':img' => $img,
+            ':description' => $description,
+            ':quantite' => $quantite,
+            ':date' => $date,
+            ':id_categorie' => $newcategorie
+        ));
+        $_SESSION['blaze'] = $newnom;
+        $_SESSION['prix'] = $prix;
+        $_SESSION['img'] = $img;
+        $_SESSION['description'] = $description;
+        $_SESSION['quantite'] = $quantite;
+        $_SESSION['date'] = $date;
+        $_SESSION['id_categorie'] = $newcategorie;
+        // var_dump($_SESSION['id_categorie']);
+        echo 'Les modifications ont bien été pris en compte.';
+        $id =  $_SESSION['id_produit'];
+        header('refresh:1;url=index.php?page=modifier_produit-admin&action=modifier&id="' . $id . '"');
     }
 
     public function UpdateProduits($nom)
@@ -106,7 +116,6 @@ class Produit extends  Config
         $description = htmlspecialchars($_POST['description']);
         $quantite = htmlspecialchars($_POST['quantite']);
         $categorie = htmlspecialchars($_POST['categorie']);
-
         $date = date('Y-m-d H:i:s');
         $req = $this->bdd->prepare(" UPDATE `produits` SET  `blaze` = :blaze , `prix` = :prix , `img` = :img , `description` = :description , `quantite` = :quantite , `date` = :date , `id_categorie` = :id_categorie WHERE blaze = '$nom'");
         $req->execute(array(
@@ -118,35 +127,16 @@ class Produit extends  Config
             ':date' => $date,
             ':id_categorie' => $categorie
         ));
-        $this->_Malert = 'Le produit à bien été modifier avec succès.';
-        $this->_Talert = 1;
-
-        header('refresh:2;url=produit-admin.php');
-    }
-
-    public function UpdateProduitsnewimg($nom)
-    {
-        $newnom = htmlspecialchars($_POST['nom']);
-        $prix = htmlspecialchars($_POST['prix']);
-        $newimg = htmlspecialchars($_POST['newimg']);
-        $description = htmlspecialchars($_POST['description']);
-        $quantite = htmlspecialchars($_POST['quantite']);
-        $categorie = htmlspecialchars($_POST['categorie']);
-        $date = date('Y-m-d H:i:s');
-        $req = $this->bdd->prepare(" UPDATE `produits` SET  `blaze` = :blaze , `prix` = :prix , `img` = :img , `description` = :description , `quantite` = :quantite , `date` = :date , `id_categorie` = :id_categorie WHERE blaze = '$nom'");
-        $req->execute(array(
-            ':blaze' => $newnom,
-            ':prix' => $prix,
-            ':img' => $newimg,
-            ':description' => $description,
-            ':quantite' => $quantite,
-            ':date' => $date,
-            ':id_categorie' => $categorie
-        ));
-        $this->_Malert = 'Le produit à bien été modifier avec succès.';
-        $this->_Talert = 1;
-
-        header('refresh:2;url=produit-admin.php');
+        $_SESSION['blaze'] = $newnom;
+        $_SESSION['prix'] = $prix;
+        $_SESSION['img'] = $img;
+        $_SESSION['description'] = $description;
+        $_SESSION['quantite'] = $quantite;
+        $_SESSION['date'] = $date;
+        $_SESSION['id_categorie'] = $categorie;
+        echo 'Les modifications ont bien été pris en compte.';
+        $id =  $_SESSION['id_produit'];
+        header('refresh:2;url=index.php?page=modifier_produit-admin&action=modifier&id="' . $id . '"');
     }
 
     public function DeleteProduits()

@@ -306,158 +306,95 @@ form section .row .label {
   background: #f0f0f1;
 }
 
-/* 
-@media (max-width: 990px) and (min-width: 0px){
-table {
-  margin-left: 28%;
-  width: 70%;
-}
-td{
-  padding-left: 20px;
-  padding-top: 3%;
-}
-}
-@media (max-width: 1850px) and (min-width: 990px){
-  table {
-    margin-left: 15%;
-    width: 84%;
+/* // css page contact// */
+
+.btn-send {
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  width: 80%;
+  margin-left: 3px;
   }
-  td{
-    padding-left: 90px;
-    padding-top: 3%;
-  }
-} */
+.help-block.with-errors {
+  color: #ff5050;
+  margin-top: 5px;
 
-/* // css page paiement// */
-form .container {
-  padding-top: 0.5%;
-  width: 70%;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  margin-right: auto;
-  margin-left: auto;
 }
 
-form .container .h1form{
-  font-size: 2.5rem;
-  font-weight:600;
+.card{
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-form .container .h4form{
-  font-size: 2rem;
-  font-weight:500;
-}
+/* // css page validation de commande// */
 
-form .container .row {
+#retour-accueil{
+  position: relative;
+  padding: 10px 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  margin: 40px;
+  text-decoration: none;
+  transition: 1s;
+  border-radius: 8px;
+  overflow: hidden;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0004);
+  --clr:#00ccff;--1:0;
+}
+#retour-accueil:hover{
+  background: var(--clr);
+  box-shadow: 0 0 10px var(--clr),
+              0 0 30px var(--clr),
+              0 0 60px var(--clr),
+              0 0 100px var(--clr);
+}
+#retour-accueil:before{
+  content: '';
+  position: absolute;
+   width: 100%;
+  height: 90%;
+  background: var(--clr);
+  transition: 1s;
+  animation: animate 2s linear infinite;
+  animation-delay: calc(0.33s * var(--1));
+}
+#retour-accueil:hover:before{
+  width: 120%;
+}
+@keyframes animate{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+#retour-accueil:after{
+  content: '';
+  position: absolute;
+  inset: 4px;
+  background: #0e1538;
+}
+#retour-accueil:hover:after{
+  background: var(--clr);
+}
+#retour-accueil span{
+  position: relative;
+  z-index: 1;
+  font-size: 1em;
+  color: white;
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  transition: 0.5s;
+}
+#retour-accueil:hover span{
+  opacity: 1;
 }
 
-form .container .row .inputtext,
-form .container .row .inputnum,
-form .container .row .inputfile,
-form .container .row .select {
-  border: 1px solid rgb(77, 74, 74);
-  border-width: 1px;
-  border-radius: 5px;
-  width: 100%;
-  height: 60px;
-  padding-left: 4%;
-  margin-bottom: 2%;
-  font-size: 1.1rem;
-}
-
-form .container .row .inputtextarea {
-  border: 1px solid rgb(77, 74, 74);
-  border-width: 1px;
-  border-radius: 5px;
-  width: 100%;
-  height: 160px;
-  padding-left: 4%;
-  margin-bottom: 2%;
-  font-size: 1.1rem;
-}
-
-form .container .row .inputtext1,
-form .container .row .inputnum1 {
-  border: 1px solid rgb(77, 74, 74);
-  border-width: 1px;
-  border-radius: 5px;
-  width: 90%;
-  height: 40px;
-  padding-left: 4%;
-  margin-top: 2%;
-}
-
-.titrelabel {
-  font-size: 1.2rem;
-  /* font-weight: 100; */
-}
-
-.text-left {
-  text-align: left !important;
-}
-
-.border-bottom {
-  border-bottom: 1px solid #dee2e6 !important;
-}
-
-.padd-3{
-  padding-top: 9%;
-padding-bottom: 4%;
-}
-
-.padd-4{
-  padding-bottom: 5%;
-  font-size: 150%;
-}
-
-.Buttonpaypal,
-.Buttoncommande {
-  cursor: pointer;
-  background: #143855;
-  color: #fff;
-  border-radius: 5px;
-  font-size: 1rem;
-  padding: 1%;
-}
-
-.Buttonpaypal:hover,
-.Buttoncommande:hover {
-  background: #0f4d80;
-  color: #fff;
-}
-
-.Ppaypal {
-  font-size: 70%;
-}
-
-.imgeye {
-  width: 10%;
-}
-
-.checkbox-round {
-  width: 1.3em;
-  height: 1.3em;
-  background-color: white;
-  border-radius: 50%;
-  vertical-align: middle;
-  border: 1px solid #ddd;
-  appearance: none;
-  -webkit-appearance: none;
-  outline: none;
-  cursor: pointer;
-}
-
-.checkbox-round:checked {
-  background-color: rgb(34, 156, 30);
-}
-
-
-/* // css carte bancaire// */
-
-.cartecss{
-  border: 1px solid gray;
-  border-radius: 2%;
-  padding: 5% 10% 5% 10%;
+.button-retour{
+  width: 50%;
+  
 }

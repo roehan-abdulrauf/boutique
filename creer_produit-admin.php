@@ -1,10 +1,5 @@
 <?php
-
-// require_once 'Config.php';
-// require_once('Produit.php');
-$produit = new Produit();
-// require_once('Categorie.php');
-$cat = new Categorie();
+require_once './back/back_creer_produit-admin.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,20 +12,16 @@ $cat = new Categorie();
 
 <body>
     <?php
-    require_once 'admin.php' ?>
+    require_once 'admin.php' 
+    ?>
     <div class="h1-titre-admin">
         <h1>Ajouter un produit</h1>
     </div>
     <div class="form-admin">
         <form method="POST">
-            <?php if (isset($_POST['submit'])) {
-                $produit->CreerProduits(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['prix']), htmlspecialchars($_POST['img']), htmlspecialchars($_POST['description']), htmlspecialchars($_POST['quantite']), htmlspecialchars($_POST['categorie']));
-                $produit->alerts();
-            }
-            ?>
             <div>
                 <label class="label" for="nom">Nom</label>
-                <input class="inputtext" type="text" id="nom" name="nom" placeholder="Martin ..." required>
+                <input class="inputtext" type="text" id="nom" name="nom" placeholder="Nom produit" required>
             </div>
             <div>
                 <label class="label" for="description">Description</label>

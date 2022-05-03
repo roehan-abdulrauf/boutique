@@ -189,13 +189,9 @@ $adresse = new Searchbar();
                 </div>
                 <div class="footer-bottom">
                     <p>copyright 2022&copy; <a href="index.php">Iced Watches</a> </p>
-                    <div class="footer-menu">
+                    <div class="footer-menu row">
                         <ul class="f-menu">
                             <li><a href="index.php?page=aboutus">Qui sommes-nous?</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-menu">
-                        <ul class="f-menu">
                             <li><a href="index.php?page=page_contact">Contact</a></li>
                         </ul>
                     </div>

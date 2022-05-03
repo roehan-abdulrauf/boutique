@@ -36,8 +36,8 @@ require_once './back/back_message_reçu-admin.php';
                         <td class="td" value=" <?php echo $c['id']; ?>"><?= $c['prenom'] ?></td>
                         <td class="td" value=" <?php echo $c['id']; ?>"><?= $c['mail'] ?></td>
                         <td class="td" value=" <?php echo $c['id']; ?>"><?= $c['sujet'] ?></td>
-                        <td class="td" value=" <?php echo $c['id']; ?>"><?= $c['message'] ?></td>
-                        <td class="td"><a href="index.php?page=message_reçu-admin&action=suppression&id=<?php echo $c['id'] ?>">supprimer</a></td>
+                        <td class="td" value=" <?php echo $c['id_contact']; ?>"><?= $c['message'] ?></td>
+                        <td class="td"><a href="index.php?page=message_reçu-admin&action=suppression&id=<?php echo $c['id_contact'] ?>">supprimer</a></td>
                     </tr>
                 <?php }; ?>
             </tbody>
