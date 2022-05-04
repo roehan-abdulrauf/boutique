@@ -1,6 +1,7 @@
 <?php
 require_once './back/back_carte_bancaire.php';
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -10,30 +11,40 @@ require_once './back/back_carte_bancaire.php';
     <link rel="stylesheet" href="style2.css" />
     <script src="js/dupliquer_adresse_facturation.js"></script>
     <script src="js/show_hide-CVV.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+
 </head>
 
-<body>
+<body class="body-paiement">
     <div align="center">
-        <form method="POST">
-            <div class="container">
-                <h1 class="h1form text-left border-bottom">Paiement par Carte Bancaire</h1>
-                <div class="row">
-                    <div class="border-right">
-                        <div class="padd-3">
-                            <h4 class="text-left padd-4">Ajouter votre carte</h4>
-                            <div class="cartecss">
-                                <div>
-                                    <label class="label titrelabel text-left">Numéro de la carte</label>
-                                    <input type="text" class="inputnum" id="numero_carte" name="numero_carte" minlength="16" maxlength="16" placeholder="Entrez le numéro de la carte" required>
-                                </div>
-                                <div>
-                                    <label class="label titrelabel">Nom sur la carte</label>
-                                    <input type="text" class="inputtext" class="form-control" id="nom_carte" name="nom_carte" placeholder="Entrez le nom sur la carte" required>
-                                </div>
-                                <div>
-                                    <label class="label titrelabel">Date d'expiration</label>
-                                    <div class="row">
-                                        <select type="number" class="select" id="mois_carte" name="mois_carte" required>
+        <div class="button-retour">
+            <a id="retour-accueil" href="index.php?page=cart"><span>Retour</span></a>
+        </div>
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center">
+                <div class="col-sm-12">
+                    <div class="card mx-auto">
+                        <p class="heading">Paiement</p>
+                        <img class="img-paiement" src="https://img.icons8.com/color/48/000000/visa.png" width="64px" height="60px" />
+                        <img class="img-paiement" src="https://img.icons8.com/color/344/mastercard.png" width="64px" height="60px" />
+                        <form class="card-details" method="POST">
+                            <div class="form-group mb-0">
+                                <p class="text-warning mb-0">Numéro de carte</p>
+                                <input class="input-paiement" type="text" id="numero_carte" name="numero_carte" minlength="16" maxlength="16" placeholder="1234 5678 9012 3457" size="17" minlength="16" maxlength="16">
+                            </div>
+
+                            <div class="form-group">
+                                <p class="text-warning mb-0">Nom de la carte</p> <input class="input-paiement" type="text" id="nom_carte" name="nom_carte" placeholder="Nom" size="17">
+                            </div>
+                            <div class="form-group pt-2">
+                                <div class="row d-flex">
+                                    <div class="col-sm-4">
+                                        <p class="text-warning mb-0">Date d'expiration</p>
+                                        <!-- <input type="text"  placeholder="MM/YYYY" size="7" id="mois_carte" name="mois_carte" minlength="7" maxlength="7"> -->
+                                        <select type="number" placeholder="MM/YYYY" id="mois_carte" name="mois_carte" required>
                                             <option> 01 Janvier</option>
                                             <option> 02 Février</option>
                                             <option> 03 Mars</option>
@@ -50,9 +61,9 @@ require_once './back/back_carte_bancaire.php';
                                         <select type="number" class="select" id="annee_carte" name="annee_carte" required>
                                             <?php
 
-                                            // cette fonction me permet de pré_remplir le mois et l'annee d'expiration
+                                            // cette boucle permet de pré-remplir le mois et l'année d'expiration
 
-                                            $annee = date("Y"); // tu recupere l'annee en cours
+                                            $annee = date("Y"); // on l'annee en cours
 
                                             $an_dernier = $annee + 10;
 
@@ -64,28 +75,30 @@ require_once './back/back_carte_bancaire.php';
                                             ?>
                                         </select>
                                     </div>
-                                </div>
-
-                                <div>
-                                    <div>
-                                        <label class="label titrelabel">Code de sécurité (CVV)</label>
-                                        <input type="text" class="inputnum" minlength="3" maxlength="3" class="form-control" id="cvv" name="cvv" placeholder="Code CVV" required>
+                                    <div class="col-sm-3">
+                                        <p class="text-warning mb-0">CVV</p>
+                                        <input class="input-paiement" type="password" name="cvv" id="cvv" placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3">
                                     </div>
-
                                     <div>
-                                        <img class="imgeye" src="images/red_eye.png" id="eye" onclick="changer ()" />
+                                        <img class="imgeye" src="images/red_eye.png" id="eye" width="40" onclick="changer ()" />
                                     </div>
                                 </div>
+                                <div class="col-sm-5 pt-0">
+                                    <!-- <button class="Buttoncommande" name="btncommande">Payer</button> -->
+                                    <button class="Buttoncommande" name="btncommande">Payer<i class="fas fa-arrow-right px-3 py-2"></i></button>
+                                </div>
+                                <?php if (isset($_SESSION['erreur'])) {
+                                    echo $_SESSION['erreur'];
+                                    unset($_SESSION['erreur']);
+                                }
+                                ?>
                             </div>
-                            <div> <input type="checkbox" id="enregistrer_carte" name="enregistrer_carte">
-                                <label for="enregistrer_carte">Enregistrer mes informations</label>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
-                <span class="error" id="errorname"></span></p>
-                <button class="Buttoncommande" name="btncommande">Payer</button>
             </div>
-        </form>
+        </div>
+    </div>
+</body>
 
-        
+</html>

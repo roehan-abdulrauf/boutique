@@ -17,27 +17,21 @@ class Commande extends Config
     public function GetAllOrderHistory()
     {
 
-        $req = $this->bdd->prepare("SELECT * FROM `commandes` INNER JOIN `produit_commande` WHERE commandes.num_commande = produit_commande.num_commande");
+        $req = $this->bdd->prepare("SELECT * FROM `produit_commande` INNER JOIN `commandes` INNER JOIN `produits` WHERE commandes.num_commande = produit_commande.num_commande AND produit_commande.id_produits = produits.id");
         $req->execute();
-        return $req->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    public function GetAllOrderHistorybyId()
-    {
-
-        $req = $this->bdd->prepare("SELECT * FROM `commandes` WHERE id = ?");
-        $req->execute(array($_GET['id']));
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function GetOrderHistoryById()
     {
-
+        
         $id = $_SESSION['id'];
-        $req = $this->bdd->prepare("SELECT * FROM `commandes` WHERE id=?");
+        $req = $this->bdd->prepare("SELECT * FROM `commandes` INNER JOIN `produit_commande` INNER JOIN `produits` INNER JOIN `utilisateurs` WHERE commandes.num_commande = produit_commande.num_commande AND produit_commande.id_produits = produits.id AND produit_commande.id_produits = produits.id AND commandes.id_utilisateur = utilisateurs.id AND id_utilisateur=?");
         $req->execute(array($id));
-        $req = $req->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($req);
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        // var_dump($id);
+        return $result;
+        
     }
 
     public function UpdateOrderHistory($newetat, $id)

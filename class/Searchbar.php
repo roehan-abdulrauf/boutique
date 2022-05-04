@@ -18,7 +18,7 @@ class Searchbar extends Config
             if (count($produits)) {
                 // echo 3;
                 foreach ($produits as $a) { ?>
-                   <a href="index.php?page=product&id=<?= $a['id'] ?>"><p><?= $a['blaze'] ?></p>
+                  <a href="index.php?page=product&id=<?= $a['id'] ?>"><li><?= $a['blaze'] ?></li></a>
                     <?php } ?>
                 <?php } else {
                 ?>

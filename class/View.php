@@ -50,7 +50,7 @@ class View
                     <?php
 
 require_once 'config.php';
-require('Searchbar.php');
+require('./class/Searchbar.php');
 $adresse = new Searchbar();
 
 ?>

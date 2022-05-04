@@ -21,11 +21,11 @@ require_once('./back/back_historique.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <script src="js/hide_show.js"></script>
 </head>
 
@@ -42,7 +42,7 @@ require_once('./back/back_historique.php');
                 <div class="row">
                     <div class="col-md-3 border-right">
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                            <img class="rounded-circle mt-5" width="150px" src="https://zupimages.net/up/22/16/zir5.png"><span class="font-weight-bold"><?= $_SESSION['prenom'] ?></span><span class="text-black-50"><br><?= $_SESSION['mail'] ?></span><span> </span>
+                            <img class="rounded-circle mt-5" width="50%" src="https://zupimages.net/up/22/16/zir5.png"><span class="font-weight-bold"><?= $_SESSION['prenom'] ?></span><span class="text-black-50"><br><?= $_SESSION['mail'] ?></span><span> </span>
                         </div>
                     </div>
                     <div class="col-md-5 border-right">
@@ -78,34 +78,49 @@ require_once('./back/back_historique.php');
                                 <?php
 
                                 foreach ($historique as $i) {
-                                    while ($lastoid != $i['id']) {
-                                        $lastoid = $i['id'];
+                                    // while ($lastoid != $i['id']) {
+                                    //     $lastoid = $i['id'];
                                 ?>
 
-                                        <table>
-                                            <tr>
-                                                <th scope="col">Commande n°</th>
-                                                <td><?= $lastoid  ?></td>
-                                            </tr>
+                                    <table>
+                                        <tr class="tr">
+                                            <th class="th" scope="col">Commande n°</th>
+                                            <td class="td"><?= $i['id']  ?></td>
+                                        </tr>
 
-                                            <tr>
-                                                <th scope="col">Prix</th>
-                                                <td><?= $i['montant'] ?></td>
-                                            </tr>
+                                        <tr class="tr">
+                                            <th class="th" scope="col">Reference de la commande</th>
+                                            <td class="td"><?= $i['num_commande']  ?></td>
+                                        </tr>
 
-                                            <tr>
-                                                <th scope="col">Statut de la commande</th>
-                                                <td><?= $i['etat'] ?></td>
-                                            </tr>
+                                        <tr class="tr">
+                                            <th class="th" scope="col">Prix</th>
+                                            <td class="td"><?= $i['montant'] ?></td>
+                                        </tr>
 
-                                            <tr>
-                                                <th scope="col">Date de la commande</th>
-                                                <td><?= $i['date'] ?></td>
-                                            </tr>
-                                        </table>
+                                        <tr class="tr">
+                                            <th class="th" scope="col">Statut de la commande</th>
+                                            <td class="td"><?= $i['etat'] ?></td>
+                                        </tr>
+
+                                        <tr class="tr">
+                                            <th class="th" scope="col">Date de la commande</th>
+                                            <td class="td"><?= $i['date'] ?></td>
+                                        </tr>
+
+                                        <tr class="tr">
+                                            <th class="th" scope="col">Produit</th>
+                                            <td class="td"><?= $i['blaze'] ?></td>
+                                        </tr>
+
+                                        <tr class="tr">
+                                            <th class="th" scope="col">Quantité</th>
+                                            <td class="td"><?= $i['quantite'] ?></td>
+                                        </tr><br>
+                                    </table>
                                 <?php
-                                    }
                                 }
+                                // }
 
                                 ?>
                             </div>
@@ -120,7 +135,7 @@ require_once('./back/back_historique.php');
             $home->footerStyle();
             ?>
     </main>
-    
+
 
 </body>
 
