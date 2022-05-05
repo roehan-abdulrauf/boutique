@@ -52,7 +52,7 @@ require_once './back/back_validation_de_commande.php';
 
               <div class="col-sm-6">
                 <label for="numero" class="form-label">Numéro de téléphone</label>
-                <input type="text" class="form-control" id="numero" name="numero" minlength="12" maxlength="12" placeholder="" value="" required>
+                <input type="text" class="form-control" id="numero" name="numero" minlength="10" maxlength="10" placeholder="" value="" required>
                 <div class="invalid-feedback">
                   Vous devez saisir un numéro de téléphone valide.
                 </div>
@@ -98,7 +98,7 @@ require_once './back/back_validation_de_commande.php';
                   </div>
                   <div class="col-sm-6">
                     <label for="numero_livr" class="form-label">Numéro de téléphone</label>
-                    <input type="text" class="form-control" id="numero_livr" name="numero_livr" minlength="12" maxlength="12" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="numero_livr" name="numero_livr" minlength="10" maxlength="10" placeholder="" value="" required>
                     <div class="invalid-feedback">
                       Vous devez saisir un numéro de téléphone valide.
                     </div>
@@ -160,8 +160,8 @@ require_once './back/back_validation_de_commande.php';
     <footer class="my-5 pt-5 text-muted text-center text-small">
       <p class="mb-1">&copy; 2022 Iced Watches</p>
       <ul class="list-inline">
-        <li class="list-inline-item"><a href="#">Qui sommes-nous</a></li>
-        <li class="list-inline-item"><a href="#">Contact</a></li>
+        <li class="list-inline-item"><a href="index.php?page=aboutus">Qui sommes-nous</a></li>
+        <li class="list-inline-item"><a href="index.php?page=page_contact">Contact</a></li>
       </ul>
     </footer>
   </div>

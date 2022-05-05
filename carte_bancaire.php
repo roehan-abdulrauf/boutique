@@ -21,7 +21,7 @@ require_once './back/back_carte_bancaire.php';
 <body class="body-paiement">
     <div align="center">
         <div class="button-retour">
-            <a id="retour-accueil" href="index.php?page=cart"><span>Retour</span></a>
+            <a id="retour-accueil" href="index.php?page=cart"><span>Retour au panier</span></a>
         </div>
         <div class="container-fluid">
             <div class="row d-flex justify-content-center">
