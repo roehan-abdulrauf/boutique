@@ -85,7 +85,28 @@ class Products extends Config
     }
 
     
-    
+    public function getStock($id_produit_panier){
+
+        
+        $req = $this->bdd->prepare('SELECT `quantite` FROM `produits` WHERE id = :id_produit');
+        $req->bindValue(':id_produit',$id_produit_panier,PDO::PARAM_INT);
+        $req->execute();
+        $res = $req->fetch();
+
+        return $res;
+
+        
+    }
+
+    public function updateStock($res,$quantite_produit_panier,$id_produit_panier){
+
+
+        $stock = $res - $quantite_produit_panier;
+        $req2 = $this->bdd->prepare('UPDATE `produits` SET `quantite`= :quantite WHERE id = :id_produit');
+        $req2->bindValue(':quantite',$stock,PDO::PARAM_INT);
+        $req2->bindValue(':id_produit',$id_produit_panier,PDO::PARAM_INT);
+        $req2->execute();
+    }
 
 
 

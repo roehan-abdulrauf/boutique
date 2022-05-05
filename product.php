@@ -9,13 +9,12 @@ require_once 'back/back_product.php';
 <html lang="en">
 <head>
 <head>
-    <title>Page Administrateur</title>
+    <title>Page Produitr</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style2.css" /> 
     <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-    <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 </head>
 <body>
@@ -23,15 +22,15 @@ require_once 'back/back_product.php';
         $p = new View;
         $p->headerStyle();
     ?>
-</body>
-</html>
-<div class="product content-wrapper">
+    <main>
 
-                    <img src="<?=$produit['img']?>" width="500" height="500" alt="<?=$produit['blaze']?>">
-
-                        <div>
-
-                            <h1 class="name"><?=$produit['blaze']?></h1>
+        <div class="product content-wrapper">
+            
+            <img src="<?=$produit['img']?>" width="500" height="500" alt="<?=$produit['blaze']?>">
+            
+            <div>
+                
+        <h1 class="name"><?=$produit['blaze']?></h1>
 
                             <span class="price">
                                 
@@ -50,14 +49,24 @@ require_once 'back/back_product.php';
 
                             </div>
                         </div>
-                </div> 
+                </div>
 
                 <div>
                             
                     <?php foreach($comments as $comment): ?>
                 
 
-                    <span><?php echo $comment['prenom']; ?> </span> 
-                    <span><?php echo $comment['commentaire']?></span>
-                    <?php endforeach ?> 
-                </div>
+                        <span><?php echo $comment['prenom']; ?> </span> 
+                        <span><?php echo $comment['commentaire']?></span>
+                        <?php endforeach ?> 
+                    </div>
+                </main>
+
+                <?php
+
+                    $p->footerStyle();
+
+                    ?>
+                    
+                </body>
+                </html>

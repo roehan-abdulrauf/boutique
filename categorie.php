@@ -2,7 +2,7 @@
     
 
 include 'back/back_categorie.php';
-
+$view = new View;
     ?>
 <!DOCTYPE html>
         <html>
@@ -11,39 +11,53 @@ include 'back/back_categorie.php';
                 <title>Catégorie</title>
                 <link href="style.css" rel="stylesheet" type="text/css">
                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
             </head>
 
-            <body>
+            <body class="body-products">
 
                 <?php
 
-                $produit = new View;
-                $produit->headerStyle();
+                
+                $view->headerStyle();
                 ?>
+                <main>
 
-<div class="products content-wrapper">
-    <h1>Montres</h1>
-    <p><?=$totalProduit?> Products</p>
-    <div class="products-wrapper">
-        <?php foreach ($produits as $produit): ?>
-            <a href="index.php?page=product&id=<?=$produit['id']?>" class="product">
-                <img src="<?=$produit['img']?>" width="200" height="200" alt="<?=$produit['blaze']?>">
-                <span class="name"><?=$produit['blaze']?></span>
-                <span class="price">
-                    <?=$produit['prix'].' euros'?>
-                    
-                </span>
-            </a>
-            <?php endforeach; ?>
-        </div>
-        <div class="buttons">
-            <?php if ($current_page > 1): ?>
-            <a href="index.php?page=categorie&cat=<?=$_GET['cat']?>&p=<?=$current_page-1?>">Prev</a>
-            <?php endif; ?>
-            <?php if ($totalProduit > ($current_page * $produitsParPage) - $produitsParPage + count($produits)): ?>
-            <a href="index.php?page=categorie&cat=<?=$_GET['cat']?>&p=<?=$current_page+1?>">Next</a>
-            <?php endif; ?>
-        </div>
-        </div>
+                    <div class="products content-wrapper">
+                        <h1 class="titre-vendues">Nos montres</h1>
+                        <p><?=$totalProduit?> Products</p>
+                        <div class="products-wrapper">
 
-</body>
+                            <?php foreach ($produits as $produit): ?>
+
+                            <a href="index.php?page=product&id=<?=$produit['id']?>" class="product">
+
+                                <img src="<?=$produit['img']?>" width="200" height="200" alt="<?=$produit['blaze']?>">
+
+                                <span class="name"><?=$produit['blaze']?></span>
+
+                                <span class="price">
+
+                                    <?=$produit['prix'].' euros'?>
+                                </span>
+                            </a>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="buttons">
+
+                            <?php if ($current_page > 1): ?>
+
+                                <a href="index.php?page=categorie&cat=<?=$_GET['cat']?>&p=<?=$current_page-1?>">Prev</a>
+                                <?php endif; ?>
+                                <?php if ($totalProduit > ($current_page * $produitsParPage) - $produitsParPage + count($produits)): ?>
+
+                                    <a href="index.php?page=categorie&cat=<?=$_GET['cat']?>&p=<?=$current_page+1?>">Next</a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+        </main>
+            
+        <?php
+            $view->footerStyle();
+        ?>
+        </body>
