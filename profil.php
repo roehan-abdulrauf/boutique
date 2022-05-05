@@ -83,10 +83,10 @@ require_once('./back/back_historique.php');
                                 ?>
 
                                     <table>
-                                        <tr class="tr">
+                                        <!-- <tr class="tr">
                                             <th class="th" scope="col">Commande n°</th>
                                             <td class="td"><?= $i['id']  ?></td>
-                                        </tr>
+                                        </tr> -->
 
                                         <tr class="tr">
                                             <th class="th" scope="col">Reference de la commande</th>
@@ -115,7 +115,7 @@ require_once('./back/back_historique.php');
 
                                         <tr class="tr">
                                             <th class="th" scope="col">Quantité</th>
-                                            <td class="td"><?= $i['quantite'] ?></td>
+                                            <td class="td"><?= $i['quantite_commande'] ?></td>
                                         </tr><br>
                                     </table>
                                 <?php

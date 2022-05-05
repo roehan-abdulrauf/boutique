@@ -19,9 +19,9 @@ if (isset($_POST['submit'])) {
     if (count($res) == 0) {
         if (!empty($nom) && !empty($prix) && !empty($img) && !empty($description) && !empty($quantite) && !empty($date) && !empty($categorie)) {
             $req = $produit->CreerProduits($nom, $prix, $img, $description, $quantite, $date, $categorie);
-            var_dump($req);
+            // var_dump($req);
             echo 'Le produit à bien été ajouter avec succès.';
-            header('refresh:1;url=index.php?page=produit-admin');
+            header('location:index.php?page=produit-admin');
         } else {
             echo 'Vous devez remplir correctement tous les champs.';
         }

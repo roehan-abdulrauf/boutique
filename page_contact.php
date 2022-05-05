@@ -69,7 +69,7 @@ require_once './back/back_page_contact.php';
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn btn-success btn-send  pt-2 btn-block" name="submit">Envoyer mon message</button>
+                                            <button type="submit" class="btn btn-success btn-send  pt-2 btn-block" name="submit_contact">Envoyer mon message</button>
                                         </div>
                                     </div>
                                 </div>

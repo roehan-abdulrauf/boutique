@@ -137,8 +137,9 @@ require_once './back/back_validation_de_commande.php';
                 <hr class="my-4">
 
                 <h4 class="mb-3">Moyen de paiement</h4>
-
+                
                 <div class="my-3">
+                 <p><strong><?= $_SESSION['total'];?> €</strong></p>
                   <div class="form-check">
                     <input type="checkbox" id="checkbox1" name="checkbox1" class="form-check-input" onClick="ckChange(this)">
                     <label class="form-check-label" for="credit">Carte bancaire</label>

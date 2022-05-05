@@ -49,8 +49,8 @@ class View
                     </a></li>
                     <?php
 
-require_once 'config.php';
-require('./class/Searchbar.php');
+// require_once 'config.php';
+// require('./class/Searchbar.php');
 $adresse = new Searchbar();
 
 ?>
@@ -97,8 +97,8 @@ $adresse = new Searchbar();
                     </a></li>
                     <?php
 
-require_once 'Config.php';
-require('Searchbar.php');
+// require_once 'Config.php';
+// require('Searchbar.php');
 $adresse = new Searchbar();
 
 ?>
@@ -143,8 +143,8 @@ $adresse = new Searchbar();
                     </a></li>
                     <?php
 
-require_once 'Config.php';
-require('Searchbar.php');
+// require_once 'Config.php';
+// require('./class/Searchbar.php');
 $adresse = new Searchbar();
 
 ?>

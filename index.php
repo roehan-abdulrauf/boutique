@@ -12,6 +12,7 @@ require_once './class/Adresse.php';
 require_once './class/Carte.php';
 require_once './class/Commande.php';
 require_once './class/Contact.php';
+require_once './class/Searchbar.php';
 
 
 

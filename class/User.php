@@ -86,8 +86,8 @@ class User extends Config
                         ':ville' => $ville,
                         ':id_droits' => $id_droits2,
                     ));
-                    var_dump($i);
-                    echo 1;
+                    // var_dump($i);
+                    // echo 1;
                     $this->_Malert = '<p style="color:green;font-size:120%;text-align:center"> <strong>* Votre compte a été créé avec succès, vous pouvez maintenant vous connecter </p>';
                     $this->_Talert = 1;
                     header('refresh:3;url=index.php?page=connexion');

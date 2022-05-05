@@ -45,7 +45,7 @@ require_once './back/back_historique-admin.php';
                         <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['montant'] ?></td>
                         <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['etat'] ?></td>
                         <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['id_produits'] ?></td>
-                        <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['quantite'] ?></td>
+                        <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['quantite_commande'] ?></td>
                         <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['id_utilisateur'] ?></td>
                         <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['adresse_livraison'] ?></td>
                         <td class="td" value=" <?php echo $h['id']; ?>"><?= $h['adresse_facturation'] ?></td>

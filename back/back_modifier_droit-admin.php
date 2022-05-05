@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
         echo 'Les droits de l\'itulisateur ont bien été modifier.';
         $id =  $_SESSION['id'];
         $_SESSION['droit'] = $id_droit;
-        header('refresh:2;url=index.php?page=modifier_droit-admin&action=modifier&id="' . $id . '"');
+        header('location:index.php?page=compte-admin');
     } else {
         echo 'Vous devez remplir tous les champs.';
     }

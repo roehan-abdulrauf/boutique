@@ -29,6 +29,7 @@ if (isset($_POST['submit'])) {
         $product = $produit->getUpdateProduits(htmlspecialchars($_POST['nom']));
         if (count($product) == 1) {
             $produit->UpdateProduits($_SESSION['blaze']);
+            header('location:index.php?page=produit-admin');
         } else {
             echo 'Produit inexistent.';
         }
@@ -36,6 +37,7 @@ if (isset($_POST['submit'])) {
         $product =  $produit->getUpdateProduits(htmlspecialchars($_POST['nom']));
         if (count($product) == 1) {
             $produit->UpdateProduitsnewcat($_SESSION['blaze']);
+            header('location:index.php?page=produit-admin');
         } else {
             echo 'Produit inexistent.';
         }

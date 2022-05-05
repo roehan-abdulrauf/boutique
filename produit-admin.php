@@ -30,7 +30,7 @@ require_once './back/back_produit-admin.php';
                     <th class="th" scope="col">Image</th>
                     <th class="th" scope="col">Quantité</th>
                     <th class="th" scope="col">Catégorie</th>
-                    <th class="th" scope="col">Date</th>
+                    <!-- <th class="th" scope="col">Date</th> -->
                     <th class="th" scope="col">modifier</th>
                     <th class="th" scope="col">Supprimer</th>
                 </tr>
@@ -44,7 +44,7 @@ require_once './back/back_produit-admin.php';
                         <td class="td" value=" <?php echo $p['id']; ?>"><img src="<?= $p['img']?>" width="90"></td>
                         <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['quantite'] ?></td>
                         <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['id_categorie'] ?></td>
-                        <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['date'] ?></td>
+                        <!-- <td class="td" value=" <?php echo $p['id']; ?>"><?= $p['date'] ?></td> -->
                         <td class="td"><a href="index.php?page=modifier_produit-admin&action=modifier&id=<?php echo $p['id'] ?>">modifier</a></td>
                         <td class="td"><a href="index.php?page=produit-admin&action=suppression&id=<?php echo $p['id'] ?>">supprimer</a></td> -->
                     </tr>

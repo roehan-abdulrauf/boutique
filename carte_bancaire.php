@@ -27,6 +27,7 @@ require_once './back/back_carte_bancaire.php';
             <div class="row d-flex justify-content-center">
                 <div class="col-sm-12">
                     <div class="card mx-auto">
+                    <p><strong><?= $_SESSION['total'];?> €</strong></p>
                         <p class="heading">Paiement</p>
                         <img class="img-paiement" src="https://img.icons8.com/color/48/000000/visa.png" width="64px" height="60px" />
                         <img class="img-paiement" src="https://img.icons8.com/color/344/mastercard.png" width="64px" height="60px" />

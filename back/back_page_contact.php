@@ -1,7 +1,7 @@
 <?php
 $contact = new Contact();
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit_contact'])) {
 
     $nom = htmlspecialchars($_POST['nom']);
     $sujet = htmlspecialchars($_POST['sujet']);

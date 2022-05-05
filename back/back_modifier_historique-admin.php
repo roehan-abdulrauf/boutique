@@ -15,7 +15,7 @@ foreach ($orders as $p) {
 };
 
 if (isset($_POST['submit'])) {
-    echo 1;
+    
     $newetat = htmlspecialchars($_POST['newetat']);
     if (!empty($newetat)) {
         if ($newetat === "Choisir une option") {
@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['etat'] = $newetat;
             echo 'Etat de commande modifier.';
             $id =  $_SESSION['id'];
-            header('Refresh:2;url=index.php?page=modifier_historique-admin&action=modifier&id="' . $id . '"');
+            header('location:index.php?page=historique-admin');
         }
     }
 }

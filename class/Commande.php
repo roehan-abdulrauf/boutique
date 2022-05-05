@@ -47,12 +47,14 @@ class Commande extends Config
     public function payment($id_produit_panier,$num_commande,$quantite_produit_panier)
     {
 
-            $req = $this->bdd->prepare("INSERT INTO `produit_commande`(`id_produits`, `num_commande`, `quantite`) VALUES (:id_produits,:num_commande,:quantite)");
+            $req = $this->bdd->prepare("INSERT INTO `produit_commande`(`id_produits`, `num_commande`, `quantite_commande`) VALUES (:id_produits,:num_commande,:quantite)");
             $res = $req->execute(array(
                 ':id_produits' => $id_produit_panier,
                 ':num_commande' => $num_commande,
                 ':quantite' => $quantite_produit_panier
             ));
+
+            // var_dump($res);
             
         
     
@@ -62,7 +64,7 @@ class Commande extends Config
     public function insertCommand($num_commande,$date,$montant,$etat,$adresse_livraison,$adresse_facturation,$id_utilisateur){
 
         $req2 = $this->bdd->prepare("INSERT INTO `commandes`(`num_commande`, `date`, `montant`, `etat`, `adresse_livraison`, `adresse_facturation`, `id_utilisateur`) VALUES (:num_commande,:date,:montant,:etat,:adresse_livraison,:adresse_facturation,:id_utilisateur)");
-            $req2->execute(array(
+        $r = $req2->execute(array(
                 ':num_commande' => $num_commande,
                 ':date' => $date,
                 ':montant' => $montant,
@@ -71,7 +73,7 @@ class Commande extends Config
                 ':adresse_facturation' => $adresse_facturation,
                 ':id_utilisateur' => $id_utilisateur
             ));
-            
+        // var_dump($r);
     }
 
 
