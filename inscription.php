@@ -34,9 +34,9 @@
         $home -> headerStyle();
     ?>
     <main>
-    <div class="">
+    <!-- <div class="">
             <button><a href="index.php">Retour a l'Accueil</a></button>
-        </div>
+        </div> -->
                 <?php if (isset($_POST['inscription'])) {
 
                     $user = new User();

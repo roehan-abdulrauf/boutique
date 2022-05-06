@@ -38,10 +38,11 @@ class Commande extends Config
     {
 
         $req = $this->bdd->prepare(" UPDATE `commandes` SET `etat` = :etat WHERE id = :id");
-        $req->execute(array(
+        $i=$req->execute(array(
             ':etat' => $newetat,
             ':id' => $id,
         ));
+        var_dump($i);
     }
 
     public function payment($id_produit_panier,$num_commande,$quantite_produit_panier)
