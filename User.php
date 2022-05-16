@@ -46,13 +46,13 @@ class User extends Config
 
                     header("Refresh:3;url=admin.php");
                 } else {
-                    echo "2";
+                    // echo "2";
                     $this->_Malert = 'Mot de passe incorrect';
                     $this->_Talert = 2;
                 }
             }
         } else {
-            echo "3";
+            // echo "3";
             $this->_Malert = 'Aucun utilisateur trouvé';
             $this->_Talert = 2;
         }

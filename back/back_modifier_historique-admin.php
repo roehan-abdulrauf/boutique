@@ -2,7 +2,7 @@
 // require_once './class/Config.php';
 // require_once './class/Commande.php';
 $commande = new Commande();
-$orders = $commande->GetAllOrderHistorybyId();
+$orders = $commande->GetOrderHistoryById();
 // var_dump($orders);
 // var_dump($modifuser);
 foreach ($orders as $p) {
@@ -21,13 +21,15 @@ if (isset($_POST['submit'])) {
         if ($newetat === "Choisir une option") {
             echo "veuillez choisir une option";
         } else {
-            $commande->UpdateOrderHistory($newetat, $_SESSION['id']);
+            $commande->UpdateOrderHistory($newetat, $_GET['id']);
             // var_dump($_SESSION['id']);
             // var_dump($_SESSION['etat']);
             $_SESSION['etat'] = $newetat;
             echo 'Etat de commande modifier.';
             $id =  $_SESSION['id'];
-            header('location:index.php?page=historique-admin');
+            // header('location:index.php?page=historique-admin');
+            var_dump($_SESSION['etat']);
+            var_dump($_GET['id']);
         }
     }
 }
